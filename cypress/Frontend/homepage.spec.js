@@ -1,4 +1,4 @@
-describe('Homepage Test',function(){
+describe.skip('Homepage Test',function(){
     it('Landing page',function(){
         cy.visit('/');
         cy.homepage();
