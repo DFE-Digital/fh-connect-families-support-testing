@@ -2,7 +2,9 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-     'baseUrl': 'https://localhost:7216/',
+      'baseUrl': 'http://localhost:21914/',
+    //  'baseUrl': 'https://localhost:7216/',
+
   //  'baseUrl': 'https://fh-family-experience-prototyp.herokuapp.com/',
    //'baseUrl': 'http://localhost:3000/mvp-1/find-services-group-or-activity', 
     'specPattern': ['**/*.spec.js', '**/*.feature'],
