@@ -23,7 +23,7 @@ describe('|FHG-274-Add a Service - How can people contact the service (Contact d
         cy.contains('Select all that apply.');
         cy.get('.govuk-checkboxes').contains('Email').click();
         cy.contains('Email address').should('be.visible');
-        cy.get('input#Email').should('be.visible');
+        cy.get('input#contact-by-email').should('be.visible');
         // no value entered
         cy.get('.govuk-button').click();
         cy.get('.govuk-error-message').contains('You must select at least one option');

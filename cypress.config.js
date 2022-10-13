@@ -2,11 +2,11 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-      // 'baseUrl': 'http://localhost:21914/',
-    //  'baseUrl': 'https://localhost:7216/',
-    'baseUrl': 'https://as-fh-service-directory-admin-ui-main.azurewebsites.net/',
-  //  'baseUrl': 'https://fh-family-experience-prototyp.herokuapp.com/',
-   //'baseUrl': 'http://localhost:3000/mvp-1/find-services-group-or-activity', 
+      //  'baseUrl': 'http://localhost:21914/',
+      'baseUrl': 'https://localhost:7216/',
+      // 'baseUrl': 'https://as-fh-service-directory-admin-ui-main.azurewebsites.net/',
+      // 'baseUrl': 'https://fh-family-experience-prototyp.herokuapp.com/',
+      // 'baseUrl': 'http://localhost:3000/mvp-1/find-services-group-or-activity', 
     'specPattern': ['**/*.spec.js', '**/*.feature'],
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -14,5 +14,4 @@ module.exports = defineConfig({
     'chromeWebSecurity': false,
     'firefoxWebSecurity': false,
   },
-  
 });
