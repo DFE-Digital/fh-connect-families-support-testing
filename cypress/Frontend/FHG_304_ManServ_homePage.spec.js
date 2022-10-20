@@ -11,6 +11,10 @@ describe('|FHG_304_ManageService_homePage|',function(){
         cy.get('div:nth-of-type(2) > .govuk-heading-m > a').click();
         cy.contains('Manage your services');
         cy.contains('View, change or delete services you have added to the directory.');
+        // services are displayed
+        cy.get('.govuk-table__row').contains('Aid for Children with Tracheostomies');
+       cy.get('.govuk-table__row').contains('View')
+       cy.get('.govuk-table__row').contains('Delete')
         // back button
         cy.get('.govuk-back-link').click();
         cy.contains('Bristol City Council');
