@@ -1,6 +1,7 @@
 // ***********************************************
 /* eslint-disable max-len */
 
+
 // before each hook with clearing cookies + uncaught exception override
 beforeEach(() => {
   cy.clearCookies();
@@ -10,13 +11,17 @@ beforeEach(() => {
             return false
         })
     });
-  Cypress.Commands.add('homepage',()=>{
-     cy.contains('This is a prototype used for research');
-        cy.get('input#password').click().type('family');
-        cy.get('.govuk-button').click();
-        cy.get('.govuk-heading-xl').contains('Family experience');
-        cy.contains('Legacy prototypes');
+  // Welcome page - landing
+  Cypress.Commands.add('welcomePage',(serviceType)=>{
+    cy.contains('Add a service')
+    cy.contains('Manage your services')
+    if (serviceType === 'add') {
+    cy.get('div:nth-of-type(1) > .govuk-heading-m > a').click();
+  } else if (serviceType === 'manage'){
+     cy.get('div:nth-of-type(2) > .govuk-heading-m > a').click();
+  }
   })
+<<<<<<< HEAD
   // Welcome page - landing
   Cypress.Commands.add('welcomePage',(serviceType)=>{
     cy.contains('Add a service')
@@ -28,6 +33,10 @@ beforeEach(() => {
   }
   })
   // Add service 
+=======
+  //
+  //******* Add services ******
+>>>>>>> 7c1c7d2 (Adds e2e tests)
   Cypress.Commands.add('addService',(serviceName)=>{
     cy.contains('What is the name of the service?')
     cy.get('input#service-name').click().clear().type(`${serviceName}`)
@@ -39,6 +48,7 @@ beforeEach(() => {
     cy.contains('Select the support you offer')
     cy.get(`input#${supportName}`).check();
     cy.get('.govuk-button').click()
+<<<<<<< HEAD
     cy.contains('How can families use the service?')
 });
   // Select ServiceDeliveryType
@@ -55,11 +65,94 @@ beforeEach(() => {
     cy.get(`data-testid#view-service${serviceID}`).click();
     //
    
+=======
+});
+  // Select ServiceDeliveryType
+   Cypress.Commands.add('serviceDeliveryType',(deliveryType)=>{
+    cy.contains('How can families use the service?')
+    cy.get(`input#${deliveryType}`).check();
+    cy.get('.govuk-button').click()
+   })
+   // Who for
+   Cypress.Commands.add('whoFor',(selection)=>{
+    cy.contains('Can children or young people use the service?')
+    if (selection === 'Yes') {
+    cy.get('input#Children').check();
+  } else if (selection === 'No'){
+     cy.get('input#Children-2').click();
+  }
+    cy.get('.govuk-button').click()
+   })
+
+   // What Language
+   Cypress.Commands.add('whatLanguage',(selection)=>{
+    cy.contains('Which language is the service offered in?')
+      //Select A Language
+    cy.get("#LanguageCode0.govuk-select").select(`${selection}`);
+    cy.contains('Continue').click()
+   })
+
+   //pay for service
+   Cypress.Commands.add('payForService',(selection)=>{
+    cy.contains('Does the service cost money to use?')
+    if (selection === 'Yes') {
+    cy.get('input#pay-service').check();
+  } else if (selection === 'No'){
+     cy.get('input#pay-service-2').click();
+  }
+    cy.get('.govuk-button').click()
+   })
+   // contact details
+    Cypress.Commands.add('contactDetails',(selection,category,data)=>{
+    cy.contains('How can people contact the service?')
+     cy.get('.govuk-checkboxes').contains(`${selection}`).click();
+     cy.get(`input#contact-by-${category}`).click().clear().type(`${data}`);
+    cy.get('.govuk-button').click()
+   })
+   // service description
+   Cypress.Commands.add('moreDetails',(data)=>{
+    cy.contains('More details')
+    cy.get('textarea#with-hint').click().clear().type(`${data}`)
+    cy.get('.govuk-button').click()
+   })
+   // check details
+   Cypress.Commands.add('checkDetails',(serviceName)=>{
+    cy.contains('Check the service details')
+    cy.get('div:nth-of-type(1) > .govuk-summary-list__value').contains(`${serviceName}`)
+    cy.contains('Confirm details').click()
+   })
+   // confirmation page
+   Cypress.Commands.add('serviceAdded',()=>{
+    cy.contains('Service added')
+    cy.contains('Go to home page').click()
+    cy.contains('Add a service')
+   })
+
+
+
+
+
+  
+
+  
+
+
+  //******* manage services ******
+
+//view services
+  Cypress.Commands.add('ViewServices',(serviceName)=>{
+    cy.contains('Manage your services').click()
+    cy.get('.govuk-grid-column-full').contains(`${serviceName}`)
+>>>>>>> 7c1c7d2 (Adds e2e tests)
 });
 //manage services
   Cypress.Commands.add('deleteServices',(serviceID)=>{
     cy.contains('Manage your services')
+<<<<<<< HEAD
     cy.get(`data-testid="delete-service${serviceID}"`).click();
+=======
+    cy.get('.govuk-table__row').contains(`${serviceName}`).contains('Delete').click()
+>>>>>>> 7c1c7d2 (Adds e2e tests)
 });
 
 

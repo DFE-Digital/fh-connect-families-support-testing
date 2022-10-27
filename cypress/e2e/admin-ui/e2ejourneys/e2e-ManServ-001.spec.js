@@ -4,7 +4,7 @@ describe('| e2e-ManServ_001 | Manage Service',function(){
         // select add service
         cy.welcomePage('manage')
         // view /edit
-       cy.ViewServices('1')
+       cy.ViewServices('Test Service')
         
     })
 })

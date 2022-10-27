@@ -13,5 +13,7 @@ module.exports = defineConfig({
     },
     'chromeWebSecurity': false,
     'firefoxWebSecurity': false,
+    'defaultCommandTimeout': 15000,
+    'responseTimeout': 60000,
   },
 });
