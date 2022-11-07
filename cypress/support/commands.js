@@ -21,52 +21,23 @@ beforeEach(() => {
      cy.get('div:nth-of-type(2) > .govuk-heading-m > a').click();
   }
   })
-<<<<<<< HEAD
-  // Welcome page - landing
-  Cypress.Commands.add('welcomePage',(serviceType)=>{
-    cy.contains('Add a service')
-    cy.contains('Manage your services')
-    if (serviceType === 'add') {
-    cy.get('div:nth-of-type(1) > .govuk-heading-m > a').click();
-  } else if (serviceType === 'manage'){
-     cy.get('div:nth-of-type(2) > .govuk-heading-m > a').click();
-  }
-  })
-  // Add service 
-=======
   //
   //******* Add services ******
->>>>>>> 7c1c7d2 (Adds e2e tests)
   Cypress.Commands.add('addService',(serviceName)=>{
     cy.contains('What is the name of the service?')
     cy.get('input#service-name').click().clear().type(`${serviceName}`)
     cy.get("form[method='post'] > .govuk-button").click()
     cy.wait(500)
   })
-  // Select support services
-  Cypress.Commands.add('selectSupport',(supportName)=>{
+ // Select support services
+ //organisation - bccsource:Organisation ,support - bccprimaryservicetype:38,children - bccagegroup:37,longtermhealthconditions- bccusergroup:56,testconditions - bccusergroupTestDelete:56
+  Cypress.Commands.add('selectSupport',(serviceType)=>{
     cy.contains('Select the support you offer')
-    cy.get(`input#${supportName}`).check();
-    cy.get('.govuk-button').click()
-<<<<<<< HEAD
-    cy.contains('How can families use the service?')
-});
-  // Select ServiceDeliveryType
-   Cypress.Commands.add('ServiceDeliveryType',(deliveryType)=>{
-    cy.contains('How can families use the service?')
-    cy.get(`input#inperson`).check();
-   })
-  
-
-
-  //manage services
-  Cypress.Commands.add('ViewServices',(serviceID)=>{
-    cy.contains('Manage your services')
-    cy.get(`data-testid#view-service${serviceID}`).click();
-    //
-   
-=======
-});
+    for (const [key, value] of Object.entries(serviceType)) {
+    cy.get(`input#${key}`).check(value);
+    }
+    cy.contains('Continue').click();
+})  
   // Select ServiceDeliveryType
    Cypress.Commands.add('serviceDeliveryType',(deliveryType)=>{
     cy.contains('How can families use the service?')
@@ -143,16 +114,11 @@ beforeEach(() => {
   Cypress.Commands.add('ViewServices',(serviceName)=>{
     cy.contains('Manage your services').click()
     cy.get('.govuk-grid-column-full').contains(`${serviceName}`)
->>>>>>> 7c1c7d2 (Adds e2e tests)
 });
 //manage services
   Cypress.Commands.add('deleteServices',(serviceID)=>{
     cy.contains('Manage your services')
-<<<<<<< HEAD
-    cy.get(`data-testid="delete-service${serviceID}"`).click();
-=======
     cy.get('.govuk-table__row').contains(`${serviceName}`).contains('Delete').click()
->>>>>>> 7c1c7d2 (Adds e2e tests)
 });
 
 
