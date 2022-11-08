@@ -2,8 +2,8 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-      //  'baseUrl': 'https://s181d01-ca-fh-sd-admin-ui-dev.calmstone-6ca2c9be.westeurope.azurecontainerapps.io/',
-  'baseUrl': 'https://s181d01-ca-fh-referral-ui-dev.calmstone-6ca2c9be.westeurope.azurecontainerapps.io/',
+       'baseUrl': 'https://s181d01-ca-fh-sd-admin-ui-dev.calmstone-6ca2c9be.westeurope.azurecontainerapps.io/',
+  // 'baseUrl': 'https://s181d01-ca-fh-referral-ui-dev.calmstone-6ca2c9be.westeurope.azurecontainerapps.io/',
   // 'baseUrl': 'https://localhost:7270/index',
 
     'specPattern': ['**/*.spec.js', '**/*.feature'],

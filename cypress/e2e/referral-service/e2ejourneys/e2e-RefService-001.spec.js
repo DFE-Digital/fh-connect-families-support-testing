@@ -1,6 +1,6 @@
 describe('| e2e-RefServ-001 | Referral Service - Valid post code + Filters cost |',function(){
     it('Referral Service - Valid post code + Filters - cost  ',function(){
-        cy.visit('/')
+        cy.visit('/', {failOnStatusCode: false})
        // landing page
         cy.refServLanding()
        //sign on page 

@@ -21,7 +21,6 @@ beforeEach(() => {
      cy.get('div:nth-of-type(2) > .govuk-heading-m > a').click();
   }
   })
-  //
   //******* Add services ******
   Cypress.Commands.add('addService',(serviceName)=>{
     cy.contains('What is the name of the service?')
