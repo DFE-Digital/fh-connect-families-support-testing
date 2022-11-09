@@ -18,7 +18,7 @@ Regression suites for each of these environments are configured using github act
 ### Prerequisites
 
 - node
-- yarn/npm
+- yarn
 
 Install dependencies with yarn
 
