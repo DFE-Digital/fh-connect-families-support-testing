@@ -1,4 +1,4 @@
-describe('|FHG-274-Add a Service - How can people contact the service (Contact details)|',function(){
+describe.skip('|FHG-274-Add a Service - How can people contact the service (Contact details)|',function(){
     it('AC 1,7,10 - Page content + select options + back button',function(){
         cy.visit('/OrganisationAdmin/ContactDetails');
         //Assert page has all the text and fields visible

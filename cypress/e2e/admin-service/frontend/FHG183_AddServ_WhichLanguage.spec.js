@@ -1,4 +1,4 @@
-describe('Add a Service Languages FHG-183',function(){
+describe.skip('Add a Service Languages FHG-183',function(){
     
 it('AC1 Which Language - Dropdown list of languages',function(){
 

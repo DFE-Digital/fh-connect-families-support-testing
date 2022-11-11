@@ -1,4 +1,4 @@
-describe('Add a Service Name FHG-12',function(){
+describe.skip('Add a Service Name FHG-12',function(){
     it('AC1 What is the name of the Service - Text on Page',function(){
        //landing page
         cy.visit('/');

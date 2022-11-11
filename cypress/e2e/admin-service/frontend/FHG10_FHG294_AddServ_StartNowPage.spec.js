@@ -1,4 +1,4 @@
-describe('Add a Service Start Now Page FHG-10, modified under FHG-294',function(){
+describe.skip('Add a Service Start Now Page FHG-10, modified under FHG-294',function(){
     it('AC1 Start Now Page Text on Page',function(){
         cy.visit('/');
         //Landing Page

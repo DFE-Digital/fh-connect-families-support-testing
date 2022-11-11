@@ -1,4 +1,4 @@
-describe('| e2e-ManServ_001 | Manage Service',function(){
+describe.skip('| e2e-ManServ_001 | Manage Service',function(){
     it('Journey 1 -  ',function(){
         cy.visit('/OrganisationAdmin/Welcome')
         // select add service

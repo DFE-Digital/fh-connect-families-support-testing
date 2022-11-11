@@ -1,4 +1,4 @@
-describe('Add a Service Homepage FHG-11',function(){
+describe.skip('Add a Service Homepage FHG-11',function(){
     it('AC1 Add a Service Page - Text on Page',function(){
 
         //landing page

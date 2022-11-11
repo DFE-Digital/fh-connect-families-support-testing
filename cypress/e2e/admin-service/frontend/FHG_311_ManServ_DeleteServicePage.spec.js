@@ -1,4 +1,4 @@
-describe('FHG_311_ManServ_DeleteServicePage.spec',function(){
+describe.skip('FHG_311_ManServ_DeleteServicePage.spec',function(){
     it('AC ',function(){
         cy.visit('OrganisationAdmin/ViewServices')
         cy.contains('Test Service')

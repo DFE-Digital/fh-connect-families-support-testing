@@ -1,4 +1,4 @@
-describe('Add A Service - How can Families Use Service FHG-257',function(){
+describe.skip('Add A Service - How can Families Use Service FHG-257',function(){
     it('AC1 How Can Families Use the Service - Correct Options',function(){
 
         const num = Date.now();

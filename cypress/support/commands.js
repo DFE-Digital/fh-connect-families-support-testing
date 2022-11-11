@@ -38,11 +38,32 @@ beforeEach(() => {
     cy.contains('Continue').click();
 })  
   // Select ServiceDeliveryType
-   Cypress.Commands.add('serviceDeliveryType',(deliveryType)=>{
+   Cypress.Commands.add('serviceDeliveryType',(ServiceDeliverySelection)=>{
     cy.contains('How can families use the service?')
-    cy.get(`input#${deliveryType}`).check();
-    cy.get('.govuk-button').click()
+     for (const [key, value] of Object.entries(ServiceDeliverySelection)) {  
+        cy.get(`[data-testid="${key}"]`).check(value);
+      }
+     cy.get('.govuk-button').click()
    })
+   // Address 
+   Cypress.Commands.add('addAddress',()=>{
+      cy.get('[data-testid="address-one"]').click().clear().type('address line 1')
+      cy.get('[data-testid="address-two"]').click().clear().type('address line 2')
+      cy.get('[data-testid="town-city"]').click().clear().type('random town')
+      cy.get('[data-testid="post-code"]').click().clear().type('M6 5UJ')
+      cy.get('.govuk-button').click()
+   })
+   // OfferAtFamiliesPlace
+   Cypress.Commands.add('OfferAtFamiliesPlace',(selection)=>{
+    cy.contains('Can families choose where they use the service?')
+      if (selection === 'Yes') {
+      cy.get('[data-testid="yes-select"]').check();
+    } else if (selection === 'No'){
+      cy.get('[data-testid="no-select"]').click();
+    }
+      cy.get('.govuk-button').click()
+    })
+
    // Who for
    Cypress.Commands.add('whoFor',(selection)=>{
     cy.contains('Can children or young people use the service?')

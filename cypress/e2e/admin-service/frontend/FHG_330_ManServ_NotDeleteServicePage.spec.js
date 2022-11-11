@@ -1,4 +1,4 @@
-describe('|FHG_330_ManServ_NotDeleteServicePage.spec|',function(){
+describe.skip('|FHG_330_ManServ_NotDeleteServicePage.spec|',function(){
     it('AC 1,2 - Page Content, directs to homepage',function(){
         cy.visit('/OrganisationAdmin/ServiceNotDeleted');
         cy.contains('You have not deleted the service');

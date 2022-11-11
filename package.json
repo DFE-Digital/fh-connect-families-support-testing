@@ -4,6 +4,7 @@
   },
   "scripts": {
     "mocha-report": "yarn cypress run --spec \"cypress/e2e/**/test-e2e.spec.js\"",
+    "adminservicetests":"yarn cypress run --spec \"cypress/e2e/admin-service/**/*.spec.js\"",
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
     "pretests": "yarn run clean:reports",
     "scripts": "yarn cypress run",

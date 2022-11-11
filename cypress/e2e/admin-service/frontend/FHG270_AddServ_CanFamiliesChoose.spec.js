@@ -1,4 +1,4 @@
-describe('Add a Service Can Families Choose Where They use it FHG-270',function(){
+describe.skip('Add a Service Can Families Choose Where They use it FHG-270',function(){
     it('AC1 Can Families Choose Where - Correct Options',function(){
 
         const num = Date.now();

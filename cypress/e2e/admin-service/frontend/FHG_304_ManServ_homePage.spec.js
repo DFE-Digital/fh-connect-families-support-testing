@@ -1,4 +1,4 @@
-describe('|FHG_304_ManageService_homePage|',function(){
+describe.skip('|FHG_304_ManageService_homePage|',function(){
     it('AC 1,2 - Page content + select options + back button',function(){
         cy.visit('/OrganisationAdmin/Welcome');
         //Assert page has all the text and fields visible

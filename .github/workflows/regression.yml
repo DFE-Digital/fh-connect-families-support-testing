@@ -1,0 +1,58 @@
+name: "| IS Regression Pack | CIP dev |"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cypress-run:
+    environment: Information-Sharing  CIP dev
+    env:
+      CYPRESS_BASE_URL: "https://as-fh-family-experience.azurewebsites.net/"
+    name: " 🛎️ RegressionTests - Information Sharing - Azure Dev Environment "
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+    steps:
+      - run: date
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v4
+        name: cypress
+        id: cypress
+        continue-on-error: true
+        with:
+          quiet: true
+          browser: chrome
+          headless: true
+          spec: "cypress/e2e/**/*.spec.js"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: ./cypress/reports/
+
+      - name: Checkout reports repo
+        uses: actions/checkout@v2
+        with:
+          ref: reports
+          path: reports_repo
+
+      - name: Copy report into reports repo
+        run: |
+          cd reports_repo
+          DATE=$(date +%d-%m-%Y)
+          [ -e docs/fx/$DATE ] && rm -rf docs/fx/$DATE
+          cp -a ../cypress/reports  docs/fx/$DATE
+          pushd docs/fx/$DATE
+          rm -rf assets
+          rm -rf screenshots
+          ln -s ../../assets/
+          popd
+          git add docs .
+      - name: Commit todays report to reports branch
+        run: |
+          cd reports_repo
+          git config --local user.email "DFE-Digital+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "report for $(date +%d-%m-%Y)" -a
+
+
+     
