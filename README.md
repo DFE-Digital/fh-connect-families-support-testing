@@ -6,7 +6,7 @@ Applications:
 
 - Admin service
 - Referral service
-- User service
+- Identity and Access service
 
 Environments:
 
