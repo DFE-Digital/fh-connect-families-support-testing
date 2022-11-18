@@ -18,11 +18,11 @@ describe('| e2e-ManServ_002 | Manage Service - delete - dont confirm deletion',f
         //pay for service
         cy.payForService('No')
         //contact details
-        cy.contactDetails('Email','email','test@email.co.uk')
+        cy.contactDetails({Email:'email'},'abc@email.com')
         //more details
         cy.moreDetails('Test details')
         // check details
-        cy.checkDetails('TestService' + n)
+        cy.checkDetails('TestService' + n,'Health')
         // service added 
         cy.serviceAdded()
         // validate added service is present in list
