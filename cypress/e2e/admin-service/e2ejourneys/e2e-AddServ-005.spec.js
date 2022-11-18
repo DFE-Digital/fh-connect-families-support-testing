@@ -21,7 +21,7 @@ describe('| e2e-AddServ_005 | Add Service - familyhub - Online - Children - Tami
         //more details
         cy.moreDetails('Test details')
         // check details
-        cy.checkDetails('TestService 005')
+        cy.checkDetails('TestService 005','FamilyHub')
         // service added 
         cy.serviceAdded()
         // validate added service is present in list
