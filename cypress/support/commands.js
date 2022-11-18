@@ -33,14 +33,14 @@ beforeEach(() => {
   Cypress.Commands.add('selectSupport',(serviceType)=>{
     cy.contains('Select the support you offer')
     for (const [key, value] of Object.entries(serviceType)) {
-    cy.get(`input#${key}`).check(value);
+    cy.get(`[data-testid="${key}"]`).check(value);
     }
     cy.contains('Continue').click();
 })  
   // Select ServiceDeliveryType
-   Cypress.Commands.add('serviceDeliveryType',(ServiceDeliverySelection)=>{
+   Cypress.Commands.add('serviceDeliveryType',(TaxonomySelection)=>{
     cy.contains('How can families use the service?')
-     for (const [key, value] of Object.entries(ServiceDeliverySelection)) {  
+     for (const [key, value] of Object.entries(TaxonomySelection)) {  
         cy.get(`[data-testid="${key}"]`).check(value);
       }
      cy.get('.govuk-button').click()
@@ -65,10 +65,12 @@ beforeEach(() => {
     })
 
    // Who for
-   Cypress.Commands.add('whoFor',(selection)=>{
+   Cypress.Commands.add('whoFor',(selection,minAge,maxAge)=>{
     cy.contains('Can children or young people use the service?')
     if (selection === 'Yes') {
     cy.get('input#Children').check();
+    cy.get(`[data-testid="age-min"]`).select(`${minAge}`)
+    cy.get(`[data-testid="age-max"]`).select(`${maxAge}`)
   } else if (selection === 'No'){
      cy.get('input#Children-2').click();
   }
@@ -82,23 +84,49 @@ beforeEach(() => {
     cy.get("#LanguageCode0.govuk-select").select(`${selection}`);
     cy.contains('Continue').click()
    })
+   // 
+   Cypress.Commands.add('addLanguage',(selection1,selection2)=>{
+    cy.contains('Which language is the service offered in?')
+    cy.get("#LanguageCode0.govuk-select").select(`${selection1}`);
+    cy.contains('button', 'Add another language').click();
+      //Select A Language
+    cy.get("#LanguageCode1.govuk-select").select(`${selection2}`);
+    cy.contains('Continue').click()
+   })
 
    //pay for service
-   Cypress.Commands.add('payForService',(selection)=>{
+   Cypress.Commands.add('payForService',(selection,amount,per)=>{
     cy.contains('Does the service cost money to use?')
     if (selection === 'Yes') {
-    cy.get('input#pay-service').check();
+    cy.get('input#pay-service').check().wait(500);
+    cy.get('input#Cost').click().clear().type(`${amount}`)
+    cy.get(`[value="${per}"]`).click()
   } else if (selection === 'No'){
      cy.get('input#pay-service-2').click();
   }
     cy.get('.govuk-button').click()
    })
-   // contact details
-    Cypress.Commands.add('contactDetails',(selection,category,data)=>{
+   // multiple contact details
+    Cypress.Commands.add('multiContactDetails',(selection,category,data,selection1,category1,data1,selection2,category2,data2,selection3,category3,data3)=>{
     cy.contains('How can people contact the service?')
-     cy.get('.govuk-checkboxes').contains(`${selection}`).click();
-     cy.get(`input#contact-by-${category}`).click().clear().type(`${data}`);
+      cy.get('.govuk-checkboxes').contains(`${selection}`).click();
+      cy.get(`input#contact-by-${category}`).click().clear().type(`${data}`);
+        cy.get('.govuk-checkboxes').contains(`${selection1}`).click();
+      cy.get(`input#contact-by-${category1}`).click().clear().type(`${data1}`);
+        cy.get('.govuk-checkboxes').contains(`${selection2}`).click();
+      cy.get(`input#contact-by-${category2}`).click().clear().type(`${data2}`);
+        cy.get('.govuk-checkboxes').contains(`${selection3}`).click();
+      cy.get(`input#contact-by-${category3}`).click().clear().type(`${data3}`);
     cy.get('.govuk-button').click()
+   })
+   // contact details
+   Cypress.Commands.add('contactDetails',(ContactSelection,data)=>{
+     cy.contains('How can people contact the service?')
+    for (const [key, value] of Object.entries(ContactSelection)) {
+    cy.get(`[id="ContactSelection${key}"]`).check(value);
+    cy.get(`[id="contact-by-${value}"]`).type(`${data}`)
+    }
+    cy.contains('Continue').click();
    })
    // service description
    Cypress.Commands.add('moreDetails',(data)=>{
@@ -107,9 +135,10 @@ beforeEach(() => {
     cy.get('.govuk-button').click()
    })
    // check details
-   Cypress.Commands.add('checkDetails',(serviceName)=>{
+   Cypress.Commands.add('checkDetails',(serviceName,supportType)=>{
     cy.contains('Check the service details')
-    cy.get('div:nth-of-type(1) > .govuk-summary-list__value').contains(`${serviceName}`)
+    cy.get('.govuk-summary-list').contains(`${serviceName}`)
+    cy.get('.govuk-summary-list').contains(`${supportType}`)
     cy.contains('Confirm details').click()
    })
    // confirmation page
@@ -118,6 +147,7 @@ beforeEach(() => {
     cy.contains('Go to home page').click()
     cy.contains('Add a service')
    })
+   
 
 
 
@@ -140,6 +170,27 @@ beforeEach(() => {
     cy.contains('Manage your services')
     cy.get('.govuk-table__row').contains(`${serviceName}`).contains('Delete').click()
 });
+// delete service
+   Cypress.Commands.add('deleteService',(serviceID)=>{
+    cy.contains('Manage your services')
+    cy.get(`[data-testid="${serviceID}-delete"]`).click();
+    
+   })
+   // delete confirmation
+   Cypress.Commands.add('deleteConfirm',(selection)=>{
+    cy.contains('Deleting a service')
+     if (selection === 'Yes') {
+    cy.get('[value="Yes, I want to delete it"]').check();
+    cy.get('.govuk-button').click()
+    cy.contains('You have deleted the service')
+  } else if (selection === 'No'){
+     cy.get('[value="No, I want to keep it"]').check();
+      cy.get('.govuk-button').click()
+     cy.contains('You have not deleted the service')
+  }
+    cy.get('.govuk-button').click()
+    cy.contains('Add a service to the directory.')
+   })
 
 
 

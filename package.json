@@ -1,10 +1,11 @@
 {
   "devDependencies": {
-    "cypress": "10.11.0"
+    "cypress": "10.11.0",
+    "cypress-mochawesome-reporter": "^3.2.3"
   },
   "scripts": {
     "mocha-report": "yarn cypress run --spec \"cypress/e2e/**/test-e2e.spec.js\"",
-    "adminservicetests":"yarn cypress run --spec \"cypress/e2e/admin-service/**/*.spec.js\"",
+    "adminservicetests": "yarn cypress run --spec \"cypress/e2e/admin-service/**/*.spec.js\"",
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
     "pretests": "yarn run clean:reports",
     "scripts": "yarn cypress run",
@@ -17,6 +18,7 @@
     "open:admin-dev": "CYPRESS_BASE_URL=https://s181d01-ca-fh-sd-admin-ui-dev.calmstone-6ca2c9be.westeurope.azurecontainerapps.io/ npx cypress open",
     "open:admin-test": "CYPRESS_BASE_URL=https://s181t01-ca-fh-sd-admin-ui-main.jollydesert-70f88c85.westeurope.azurecontainerapps.io/ npx cypress open",
     "open:referral-dev": "CYPRESS_BASE_URL=https://s181d01-ca-fh-referral-ui-dev.calmstone-6ca2c9be.westeurope.azurecontainerapps.io/ npx cypress open",
-    "open:referral-test": "CYPRESS_BASE_URL=https://s181t01-ca-fh-referral-ui-main.jollydesert-70f88c85.westeurope.azurecontainerapps.io/ npx cypress open"
+    "open:referral-test": "CYPRESS_BASE_URL=https://s181t01-ca-fh-referral-ui-main.jollydesert-70f88c85.westeurope.azurecontainerapps.io/ npx cypress open",
+    "open:local": "CYPRESS_BASE_URL=https://localhost:7216/ npx cypress open"
   }
 }

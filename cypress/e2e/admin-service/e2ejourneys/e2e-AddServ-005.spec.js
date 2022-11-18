@@ -1,32 +1,31 @@
-describe.skip('| e2e-AddServ_005 | Add Service - Org - Online/inperson - NotforChildren - English - Not Paid - emailContact |',function(){
-    it('Org - Online/inperson - address - NotforChildren - English - Not Paid - emailContact  ',function(){
+describe('| e2e-AddServ_005 | Add Service - familyhub - Online - Children - Tamil/English - Paid/Hour - Email |',function(){
+    it('familyhub - Online - address - Children - English - Paid/Hour - TextMessage  ',function(){
         cy.visit('/OrganisationAdmin/Welcome')
         // select add service
         cy.welcomePage('add')
         // give service name
-        cy.addService('TestService 003')
+        cy.addService('TestService 005')
         // select required service(s)
-        cy.selectSupport({children:'bccagegroup:37',organisation:'bccsource:Organisation'});
-        // cy.selectSupport('organisation','children')
+        cy.selectSupport({familyhub:'d242700a-b2ad-42fe-8848-61534002156c'})
         //type of service
-        cy.serviceDeliveryType({online:'2', inperson:'1'})
-        // add address
-        cy.addAddress()
+        cy.serviceDeliveryType({online:'2'})
         // who is it for ?
-        cy.whoFor('No')
+        cy.whoFor('Yes','1','2')
         // what language 
-        cy.whatLanguage('English')
+        cy.addLanguage('Tamil','English')
         //pay for service
-        cy.payForService('No')
+        cy.payForService('Yes','20.00','Hour')
         //contact details
-        cy.contactDetails('Email','email','test@email.co.uk')
+         cy.contactDetails({Email:'email'},'abc@email.com')
+        
         //more details
         cy.moreDetails('Test details')
         // check details
-        cy.checkDetails('TestService002')
+        cy.checkDetails('TestService 005')
         // service added 
         cy.serviceAdded()
         // validate added service is present in list
-        cy.ViewServices('TestService002')
+        cy.ViewServices('TestService 005')
     })
+
 })

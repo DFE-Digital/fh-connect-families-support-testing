@@ -1,5 +1,5 @@
-describe('| e2e-ManServ_001 | Manage Service - delete - confirm deletion',function(){
-    it('Journey - delete - confirm deletion ',function(){
+describe('| e2e-ManServ_002 | Manage Service - delete - dont confirm deletion',function(){
+    it('Journey - delete - dont confirm deletion  ',function(){
         cy.visit('/OrganisationAdmin/Welcome')
         const num = Date.now();
         const n = num.toString();
@@ -30,8 +30,8 @@ describe('| e2e-ManServ_001 | Manage Service - delete - confirm deletion',functi
         // manage service 
       // cy.ViewServices('TestService' + n)
        cy.deleteService('testservice' + n)
-       // confirm deletion 
-       cy.deleteConfirm('Yes')
+        // confirm deletion 
+       cy.deleteConfirm('No')
         
     })
 })

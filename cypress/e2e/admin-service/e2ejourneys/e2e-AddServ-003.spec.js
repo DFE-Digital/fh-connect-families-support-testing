@@ -1,13 +1,12 @@
-describe('| e2e-AddServ_003 | Add Service - Org - Online/inperson - NotforChildren - Telugu - Not Paid - emailContact |',function(){
-    it('Org - Online/inperson - address - NotforChildren - Telugu - Not Paid - emailContact  ',function(){
+describe('| e2e-AddServ_003 | Add Service - familysupport - Online/inperson - Children - Telugu - Not Paid - WebsiteContact |',function(){
+    it('familysupport - Online/inperson - address - Children - Telugu - Not Paid - emailContact  ',function(){
         cy.visit('/OrganisationAdmin/Welcome')
         // select add service
         cy.welcomePage('add')
         // give service name
         cy.addService('TestService 003')
         // select required service(s)
-        cy.selectSupport({children:'bccagegroup:37',organisation:'bccsource:Organisation'});
-        // cy.selectSupport('organisation','children')
+        cy.selectSupport({familysupport:'94f0ba86-d5fb-4fac-a1ee-f12ba4ef3012'})
         //type of service
         cy.serviceDeliveryType({online:'2', inperson:'1'})
         // add address
@@ -15,17 +14,17 @@ describe('| e2e-AddServ_003 | Add Service - Org - Online/inperson - NotforChildr
         //OfferAtFamiliesPlace
         cy.OfferAtFamiliesPlace('Yes')
         // who is it for ?
-        cy.whoFor('No')
+        cy.whoFor('Yes','1','2')
         // what language 
         cy.whatLanguage('Telugu')
         //pay for service
         cy.payForService('No')
         //contact details
-        cy.contactDetails('Email','email','test@email.co.uk')
+         cy.contactDetails({Website:'website'},'www.gov.uk')
         //more details
         cy.moreDetails('Test details')
         // check details
-        cy.checkDetails('TestService 003')
+        cy.checkDetails('TestService 003',"Family support")
         // service added 
         cy.serviceAdded()
         // validate added service is present in list
