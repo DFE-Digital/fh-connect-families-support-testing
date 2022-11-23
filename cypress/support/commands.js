@@ -191,6 +191,29 @@ beforeEach(() => {
     cy.get('.govuk-button').click()
     cy.contains('Add a service to the directory.')
    })
+// edit service
+Cypress.Commands.add('editService',(serviceID)=>{
+  cy.contains('Manage your services')
+  cy.get(`[data-testid="${serviceID}-view"]`).click();
+  // cy.get('.govuk-fieldset__heading').contains(`${serviceID}`)
+})
+// save and proceed
+Cypress.Commands.add('saveDetails',()=>{
+  cy.get('[data-testid="button-save"]').click()
+  cy.contains('You have saved these details')
+  cy.contains('Any changes will show in the directory straight away.')
+  cy.get('[data-testid="homepage-button"]').click()
+  cy.contains('Add a service to the directory.')
+})
+// delete test data service 
+Cypress.Commands.add('deleteTestData',(serviceId)=>{
+  cy.visit('/OrganisationAdmin/Welcome')
+  cy.get('[data-testid="manage-services"]').click()
+  cy.get(`[data-testid="${serviceId}-delete"]`).click();
+  cy.get('[value="Yes, I want to delete it"]').check();
+  cy.get('.govuk-button').click()
+
+})
 
 
 

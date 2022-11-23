@@ -1,7 +1,8 @@
 describe('| mobile-e2ejourney-AdminServ.spec | Manage Service - Create and delete - confirm deletion',function(){
-     let device = ['iphone-x','ipad-mini','samsung-s10']
+     let device = ['iphone-x','ipad-mini','samsung-s10','samsung-note9']
         for(let i=0;i<device.length;i++){
     it(`${device[i]} Journey - delete - confirm deletion`,function(){
+        cy.viewport(`${device[i]}`)
         cy.visit('/OrganisationAdmin/Welcome')
         const num = Date.now();
         const n = num.toString();

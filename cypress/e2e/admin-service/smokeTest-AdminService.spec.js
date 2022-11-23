@@ -10,7 +10,11 @@ describe('| smokeTest-AdminService.spec | Manage Service - Create and delete - c
         // select required service(s)
         cy.selectSupport({supportwithparenting:'005b3184-6ffb-414a-a1e3-6d5674dc0e63',health:'32712b43-e4f7-484f-97d7-beb3bb463133'})
         //type of service
-        cy.serviceDeliveryType({online:'2', telephone:'3'})
+        cy.serviceDeliveryType({online:'2', telephone:'3', inperson:'1'})
+        // add address
+        cy.addAddress()
+        //OfferAtFamiliesPlace
+        cy.OfferAtFamiliesPlace('Yes')
         // who is it for ?
         cy.whoFor('No')
         // what language 

@@ -1,10 +1,12 @@
 describe('| e2e-AddServ_009 | Add Service - familyhub - Online/telephone - Children - Hebrew/English - Paid - telephoneContact |',function(){
+    const num = Date.now();
+    const n = num.toString();
     it('familyhub - Online/telephone - Children - Hebrew/English - Paid - emailContact  ',function(){
         cy.visit('/OrganisationAdmin/Welcome')
         // select add service
         cy.welcomePage('add')
         // give service name
-        cy.addService('TestService 009')
+        cy.addService('TestService' + n)
         // select required service(s)
         cy.selectSupport({familyhub:'d242700a-b2ad-42fe-8848-61534002156c'})
         //type of service
@@ -20,10 +22,12 @@ describe('| e2e-AddServ_009 | Add Service - familyhub - Online/telephone - Child
         //more details
         cy.moreDetails('Test details')
         // check details
-        cy.checkDetails('TestService 009','FamilyHub')
+        cy.checkDetails('TestService' + n,'FamilyHub')
         // service added 
         cy.serviceAdded()
         // validate added service is present in list
-        cy.ViewServices('TestService 009')
+        cy.ViewServices('TestService' + n)
+         // delete test data
+       cy.deleteTestData('testservice' + n)
     })
 })
