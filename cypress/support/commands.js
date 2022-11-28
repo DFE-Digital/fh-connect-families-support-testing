@@ -28,6 +28,22 @@ beforeEach(() => {
     cy.get("form[method='post'] > .govuk-button").click()
     cy.wait(500)
   })
+  Cypress.Commands.add('serviceType1',(serviceType)=>{
+    cy.contains('What support does the service offer?')
+    for (const [key, value] of Object.entries(serviceType)) {
+    cy.get(`[data-testid="${key}"]`).check(value);
+    }
+})
+ Cypress.Commands.add('serviceType2',(serviceType)=>{
+    cy.contains('What support does the service offer?')
+    for (const [key, value] of Object.entries(serviceType)) {
+    cy.get(`[data-testid="${key}"]`).check(value);
+    }
+    cy.contains('Continue').click();
+})
+
+
+
  // Select support services
  //organisation - bccsource:Organisation ,support - bccprimaryservicetype:38,children - bccagegroup:37,longtermhealthconditions- bccusergroup:56,testconditions - bccusergroupTestDelete:56
   Cypress.Commands.add('selectSupport',(serviceType)=>{

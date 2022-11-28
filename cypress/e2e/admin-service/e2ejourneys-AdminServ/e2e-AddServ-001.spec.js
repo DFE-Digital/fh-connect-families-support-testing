@@ -8,7 +8,8 @@ describe('| e2e-AddServ_001 | Add Service - familyhub/supportwithparenting/healt
         // give service name
         cy.addService('TestService' + n)
         // select required service(s)
-        cy.selectSupport({familyhub:'d242700a-b2ad-42fe-8848-61534002156c',supportwithparenting:'005b3184-6ffb-414a-a1e3-6d5674dc0e63',health:'32712b43-e4f7-484f-97d7-beb3bb463133'})
+        cy.serviceType1({health:'32712b43-e4f7-484f-97d7-beb3bb463133',familysupport:'94f0ba86-d5fb-4fac-a1ee-f12ba4ef3012'})
+        cy.serviceType2({hearingandsight:'11696b1f-209a-47b1-9ef5-c588a14d43c6',supportwithparenting:'005b3184-6ffb-414a-a1e3-6d5674dc0e63'})
         //type of service
         cy.serviceDeliveryType({online:'2', telephone:'3'})
         // who is it for ?
@@ -22,7 +23,7 @@ describe('| e2e-AddServ_001 | Add Service - familyhub/supportwithparenting/healt
         //more details
         cy.moreDetails('Test details')
         // check details
-        cy.checkDetails('TestService' + n,'FamilyHub')
+        cy.checkDetails('TestService' + n,'Hearing and sight')
         // service added 
         cy.serviceAdded()
         // validate added service is present in list
