@@ -1,13 +1,12 @@
 {
   "devDependencies": {
-    "cypress": "10.11.0",
+    "cypress": "11.2.0",
     "cypress-mochawesome-reporter": "^3.2.3"
   },
   "scripts": {
     "mocha-report": "yarn cypress run --spec \"cypress/e2e/**/test-e2e.spec.js\"",
     "adminservicetests": "yarn cypress run --spec \"cypress/e2e/admin-service/**/*.spec.js\",CYPRESS_BASE_URL=https://s181d01-as-fh-sd-admin-ui-dev.azurewebsites.net/",
     "referralservicetests": "yarn cypress run --spec \"cypress/e2e/referral-service/**/*.spec.js\",CYPRESS_BASE_URL=https://s181d01-as-fh-referral-ui-dev.azurewebsites.net/",
-
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
     "pretests": "yarn run clean:reports",
     "scripts": "yarn cypress run",
