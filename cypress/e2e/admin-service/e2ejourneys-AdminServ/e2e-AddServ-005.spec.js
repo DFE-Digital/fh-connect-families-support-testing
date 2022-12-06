@@ -1,14 +1,21 @@
-describe('| e2e-AddServ_005 | Add Service - familyhub - Online - Children - Tamil/English - Paid/Hour - Email |',function(){
+describe('| e2e-AddServ_005 | Add Service - transport - Online - Children - Tamil/English - Paid/Hour - Email |',function(){
     const num = Date.now();
     const n = num.toString();
-    it('familyhub - Online - address - Children - English - Paid/Hour - TextMessage  ',function(){
-        cy.visit('/OrganisationAdmin/Welcome')
+    it('London Borough of Redbridge - transport - Online - address - Children - English - Paid/Hour - TextMessage  ',function(){
+         cy.visit('/')
+        // start page 
+        cy.startPage()
+        //sign in page
+        cy.signInPage()
+        // choose organisation
+        cy.chooseOrganisation('London Borough of Redbridge')
         // select add service
-        cy.welcomePage('add')
+        cy.welcomePage('add','London Borough of Redbridge')
         // give service name
         cy.addService('TestService' + n)
         // select required service(s)
-        cy.selectSupport({familyhub:'d242700a-b2ad-42fe-8848-61534002156c'})
+        cy.serviceType1({transport:'be261f9e-f024-46f8-8b5b-58251f25388d'})
+        cy.serviceType2({communitytransport:'93a29b1e-acd9-4abf-9f30-07dce3378558'})
         //type of service
         cy.serviceDeliveryType({online:'2'})
         // who is it for ?
@@ -23,7 +30,7 @@ describe('| e2e-AddServ_005 | Add Service - familyhub - Online - Children - Tami
         //more details
         cy.moreDetails('Test details')
         // check details
-        cy.checkDetails('TestService' + n,'FamilyHub')
+        cy.checkDetails('TestService' + n,'Community transport')
         // service added 
         cy.serviceAdded()
         // validate added service is present in list

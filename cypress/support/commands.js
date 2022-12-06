@@ -11,10 +11,28 @@ beforeEach(() => {
             return false
         })
     });
+  // start page - admin-ui
+  Cypress.Commands.add('startPage',()=>{
+    cy.contains('Add a service to the local support directory')
+    cy.get('.govuk-button--start').click()
+  })
+  // Sign in page
+  Cypress.Commands.add('signInPage',()=>{
+    cy.contains('Sign in to your account')
+    cy.get('.govuk-button').click()
+  })
+  // Choose Organisation
+  Cypress.Commands.add('chooseOrganisation',(selection)=>{
+    cy.contains('Which type of organisation')
+    cy.get("select#SelectedOrganisation").select(`${selection}`)
+    cy.get('.govuk-button').click()
+
+  })
   // Welcome page - landing
-  Cypress.Commands.add('welcomePage',(serviceType)=>{
+  Cypress.Commands.add('welcomePage',(serviceType,councilName)=>{
     cy.contains('Add a service')
     cy.contains('Manage your services')
+    cy.contains(`${councilName}`)
     if (serviceType === 'add') {
     cy.get('div:nth-of-type(1) > .govuk-heading-m > a').click();
   } else if (serviceType === 'manage'){
@@ -223,8 +241,8 @@ Cypress.Commands.add('saveDetails',()=>{
 })
 // delete test data service 
 Cypress.Commands.add('deleteTestData',(serviceId)=>{
-  cy.visit('/OrganisationAdmin/Welcome')
-  cy.get('[data-testid="manage-services"]').click()
+  // cy.visit('/OrganisationAdmin/Welcome')
+  // cy.get('[data-testid="manage-services"]').click()
   cy.get(`[data-testid="${serviceId}-delete"]`).click();
   cy.get('[value="Yes, I want to delete it"]').check();
   cy.get('.govuk-button').click()

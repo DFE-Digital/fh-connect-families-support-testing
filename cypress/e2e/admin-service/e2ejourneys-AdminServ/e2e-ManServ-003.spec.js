@@ -1,10 +1,16 @@
-describe('| e2e-ManServ_003 | Manage Service - edit - No changes made',function(){
-    it('Journey - Manage Service - edit - No changes made',function(){
-        cy.visit('/OrganisationAdmin/Welcome')
+describe('| e2e-ManServ_003 | Manage Service - view - No changes made',function(){
+    it('Salford - Journey - Manage Service - edit - No changes made',function(){
+         cy.visit('/')
+        // start page 
+        cy.startPage()
+        //sign in page
+        cy.signInPage()
+        // choose organisation
+        cy.chooseOrganisation('Salford')
         const num = Date.now();
         const n = num.toString();
         // select add service
-        cy.welcomePage('add')
+        cy.welcomePage('add','Salford')
         // give service name
         cy.addService('TestService' + n)
         // select required service(s)

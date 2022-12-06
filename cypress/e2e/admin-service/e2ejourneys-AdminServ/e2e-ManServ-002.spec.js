@@ -1,10 +1,16 @@
 describe('| e2e-ManServ_002 | Manage Service - delete - dont confirm deletion',function(){
-    it('Journey - delete - dont confirm deletion  ',function(){
-        cy.visit('/OrganisationAdmin/Welcome')
+    it('Bristol County Council - Journey - delete - dont confirm deletion  ',function(){
+         cy.visit('/')
+        // start page 
+        cy.startPage()
+        //sign in page
+        cy.signInPage()
+        // choose organisation
+        cy.chooseOrganisation('Bristol County Council')
         const num = Date.now();
         const n = num.toString();
         // select add service
-        cy.welcomePage('add')
+        cy.welcomePage('add','Bristol County Council')
         // give service name
         cy.addService('TestService' + n)
         // select required service(s)
@@ -23,7 +29,7 @@ describe('| e2e-ManServ_002 | Manage Service - delete - dont confirm deletion',f
         //more details
         cy.moreDetails('Test details')
         // check details
-        cy.checkDetails('TestService' + n,'Health')
+        cy.checkDetails('TestService' + n,'Hearing and sight')
         // service added 
         cy.serviceAdded()
         // validate added service is present in list

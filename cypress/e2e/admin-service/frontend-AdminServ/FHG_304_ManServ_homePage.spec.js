@@ -1,6 +1,12 @@
 describe.skip('|FHG_304_ManageService_homePage|',function(){
     it('AC 1,2 - Page content + select options + back button',function(){
-        cy.visit('/OrganisationAdmin/Welcome');
+         cy.visit('/')
+        // start page 
+        cy.startPage()
+        //sign in page
+        cy.signInPage()
+        // choose organisation
+        cy.chooseOrganisation('Bristol County Council');
         //Assert page has all the text and fields visible
         cy.contains('Bristol City Council');
         cy.contains('Add a service');

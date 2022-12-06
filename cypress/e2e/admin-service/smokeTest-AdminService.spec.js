@@ -1,6 +1,12 @@
 describe('| smokeTest-AdminService.spec | Manage Service - Create and delete - confirm deletion',function(){
     it('Journey - delete - confirm deletion ',function(){
-        cy.visit('/OrganisationAdmin/Welcome')
+         cy.visit('/')
+        // start page 
+        cy.startPage()
+        //sign in page
+        cy.signInPage()
+        // choose organisation
+        cy.chooseOrganisation('Bristol County Council')
         const num = Date.now();
         const n = num.toString();
         // select add service
@@ -15,7 +21,7 @@ describe('| smokeTest-AdminService.spec | Manage Service - Create and delete - c
         // add address
         cy.addAddress()
         //OfferAtFamiliesPlace
-        cy.OfferAtFamiliesPlace('Yes')
+        // cy.OfferAtFamiliesPlace('Yes')
         // who is it for ?
         cy.whoFor('No')
         // what language 
