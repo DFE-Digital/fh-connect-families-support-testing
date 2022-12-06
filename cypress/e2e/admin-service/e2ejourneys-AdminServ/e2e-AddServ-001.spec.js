@@ -1,10 +1,17 @@
-describe('| e2e-AddServ_001 | Add Service - familyhub/supportwithparenting/health - Online - NotforChildren - English - Not Paid - emailContact |',function(){
-    it('familyhub/supportwithparenting/health - Online - NotforChildren - English - Not Paid - emailContact  ',function(){
-        cy.visit('/OrganisationAdmin/Welcome')
+describe('| e2e-AddServ_001 | Add Service - familyhub/health - Online/telephone - NotforChildren - English - Not Paid - emailContact |',function(){
+    it('Bristol County Council - familyhub/health - Online/telephone - NotforChildren - English - Not Paid - emailContact  ',function(){
+
+        cy.visit('/')
+        // start page 
+        cy.startPage()
+        //sign in page
+        cy.signInPage()
+        // choose organisation
+        cy.chooseOrganisation('Bristol County Council')
         const num = Date.now();
         const n = num.toString();
         // select add service
-        cy.welcomePage('add')
+        cy.welcomePage('add','Bristol County Council')
         // give service name
         cy.addService('TestService' + n)
         // select required service(s)

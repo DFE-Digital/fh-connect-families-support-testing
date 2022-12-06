@@ -3,7 +3,13 @@ describe('| mobile-e2ejourney-AdminServ.spec | Manage Service - Create and delet
         for(let i=0;i<device.length;i++){
     it(`${device[i]} Journey - delete - confirm deletion`,function(){
         cy.viewport(`${device[i]}`)
-        cy.visit('/OrganisationAdmin/Welcome')
+         cy.visit('/')
+        // start page 
+        cy.startPage()
+        //sign in page
+        cy.signInPage()
+        // choose organisation
+        cy.chooseOrganisation('Bristol County Council')
         const num = Date.now();
         const n = num.toString();
         // select add service
