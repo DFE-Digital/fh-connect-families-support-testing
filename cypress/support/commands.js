@@ -183,15 +183,6 @@ beforeEach(() => {
    })
    
 
-
-
-
-
-  
-
-  
-
-
   //******* manage services ******
 
 //view services
@@ -231,6 +222,7 @@ Cypress.Commands.add('editService',(serviceID)=>{
   cy.get(`[data-testid="${serviceID}-view"]`).click();
   // cy.get('.govuk-fieldset__heading').contains(`${serviceID}`)
 })
+
 // save and proceed
 Cypress.Commands.add('saveDetails',()=>{
   cy.get('[data-testid="button-save"]').click()
@@ -247,6 +239,44 @@ Cypress.Commands.add('deleteTestData',(serviceId)=>{
   cy.get('[value="Yes, I want to delete it"]').check();
   cy.get('.govuk-button').click()
 
+})
+// make changes on confirm page
+Cypress.Commands.add('editTitle',(serviceId)=>{
+  cy.contains(`${serviceId}`)
+  cy.get('div:nth-of-type(1) > .govuk-summary-list__actions > .govuk-link').click()
+})
+Cypress.Commands.add('checkDetailsEdit',(serviceId)=>{
+  cy.contains(`${serviceId}`)
+  cy.contains('Save details').click()
+  cy.contains('Go to home page').click()
+})
+Cypress.Commands.add('typeOfServiceEdit',(serviceId)=>{
+  cy.contains(`${serviceId}`)
+  cy.get('div:nth-of-type(2) > .govuk-summary-list__actions > .govuk-link').click()
+})
+Cypress.Commands.add('serviceDeliveryTypeEdit',(serviceId)=>{
+  cy.contains(`${serviceId}`)
+  cy.get('div:nth-of-type(3) > .govuk-summary-list__actions > .govuk-link').click()
+})
+Cypress.Commands.add('whoForEdit',(serviceId)=>{
+  cy.contains(`${serviceId}`)
+  cy.get('div:nth-of-type(4) > .govuk-summary-list__actions > .govuk-link').click()
+})
+Cypress.Commands.add('whatLanguageEdit',(serviceId)=>{
+  cy.contains(`${serviceId}`)
+  cy.get('div:nth-of-type(5) > .govuk-summary-list__actions > .govuk-link').click()
+})
+Cypress.Commands.add('payForServiceEdit',(serviceId)=>{
+  cy.contains(`${serviceId}`)
+  cy.get('div:nth-of-type(6) > .govuk-summary-list__actions > .govuk-link').click()
+})
+Cypress.Commands.add('contactDetailsEdit',(serviceId)=>{
+  cy.contains(`${serviceId}`)
+  cy.get('div:nth-of-type(7) > .govuk-summary-list__actions > .govuk-link').click()
+})
+Cypress.Commands.add('moreDetailsEdit',(serviceId)=>{
+  cy.contains(`${serviceId}`)
+  cy.get('div:nth-of-type(8) > .govuk-summary-list__actions > .govuk-link').click()
 })
 
 
