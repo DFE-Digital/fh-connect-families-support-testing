@@ -8,9 +8,9 @@ describe('| e2e-AddServ_009 | Add Service - transport - Online/telephone - Child
         //sign in page
         cy.signInPage()
         // choose organisation
-        cy.chooseOrganisation('Tower Hamlets')
+        cy.chooseOrganisation('Tower Hamlets Council')
         // select add service
-        cy.welcomePage('add','Tower Hamlets')
+        cy.welcomePage('add','Tower Hamlets Council')
         // give service name
         cy.addService('TestService' + n)
         // select required service(s)

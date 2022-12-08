@@ -1,16 +1,16 @@
-describe('| e2e-ManServ_002 | Manage Service - delete - dont confirm deletion',function(){
-    it('Delete - dont confirm deletion - Bristol County Council - Journey -   ',function(){
+describe('| e2e-ManServ_005 | Manage Service - view - Change title ',function(){
+    it('Change type of service - Salford City Council - Journey - Manage Service - edit - Change type of service',function(){
          cy.visit('/')
         // start page 
         cy.startPage()
         //sign in page
         cy.signInPage()
         // choose organisation
-        cy.chooseOrganisation('Bristol County Council')
+        cy.chooseOrganisation('Salford City Council')
         const num = Date.now();
         const n = num.toString();
         // select add service
-        cy.welcomePage('add','Bristol County Council')
+        cy.welcomePage('add','Salford City Council')
         // give service name
         cy.addService('TestService' + n)
         // select required service(s)
@@ -33,12 +33,29 @@ describe('| e2e-ManServ_002 | Manage Service - delete - dont confirm deletion',f
         // service added 
         cy.serviceAdded()
         // validate added service is present in list
-        cy.ViewServices('TestService' + n)
+        cy.ViewServices('TestService' + n,)
         // manage service 
-      // cy.ViewServices('TestService' + n)
+       cy.editService('testservice' + n)
+      
+        // edit type of service
+        cy.typeOfServiceEdit('TestService' + n)
+         // select required service(s)
+        cy.serviceType1({transport:'be261f9e-f024-46f8-8b5b-58251f25388d'})
+        cy.serviceType2({communitytransport:'93a29b1e-acd9-4abf-9f30-07dce3378558'})
+         // check details
+        cy.checkDetailsEdit('TestService' + n,'Community transport')
+      // manage service 
+        cy.ViewServices('TestService' + n)
        cy.deleteService('testservice' + n)
-        // confirm deletion 
-       cy.deleteConfirm('No')
+       // confirm deletion 
+       cy.deleteConfirm('Yes')
+
+      // manage service 
+        cy.ViewServices('TestService' + n)
+       cy.deleteService('testservice' + n)
+       // confirm deletion 
+       cy.deleteConfirm('Yes')
+      
         
     })
 })

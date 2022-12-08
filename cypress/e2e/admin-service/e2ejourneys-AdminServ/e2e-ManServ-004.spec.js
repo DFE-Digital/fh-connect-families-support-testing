@@ -1,16 +1,16 @@
-describe('| e2e-ManServ_002 | Manage Service - delete - dont confirm deletion',function(){
-    it('Delete - dont confirm deletion - Bristol County Council - Journey -   ',function(){
+describe('| e2e-ManServ_004 | Manage Service - view - Change title ',function(){
+    it('Change title - Salford City Council - Journey - Manage Service - edit - Change title',function(){
          cy.visit('/')
         // start page 
         cy.startPage()
         //sign in page
         cy.signInPage()
         // choose organisation
-        cy.chooseOrganisation('Bristol County Council')
+        cy.chooseOrganisation('Salford City Council')
         const num = Date.now();
         const n = num.toString();
         // select add service
-        cy.welcomePage('add','Bristol County Council')
+        cy.welcomePage('add','Salford City Council')
         // give service name
         cy.addService('TestService' + n)
         // select required service(s)
@@ -33,12 +33,26 @@ describe('| e2e-ManServ_002 | Manage Service - delete - dont confirm deletion',f
         // service added 
         cy.serviceAdded()
         // validate added service is present in list
-        cy.ViewServices('TestService' + n)
+        cy.ViewServices('TestService' + n,)
         // manage service 
       // cy.ViewServices('TestService' + n)
-       cy.deleteService('testservice' + n)
-        // confirm deletion 
-       cy.deleteConfirm('No')
+       cy.editService('testservice' + n)
+      //  // save without making any changes
+      //  cy.saveDetails()
+      //  // validate added service is present in list
+      //   cy.ViewServices('TestService' + n,)
+      //   // edit service name
+        cy.editTitle('TestService' + n)
+        // rename service title
+        cy.addService('TestService new ' + n)
+        // check details
+        cy.checkDetailsEdit('TestService new ' + n)
+      // manage service 
+        cy.ViewServices('TestService new ' + n)
+       cy.deleteService('testservicenew' + n)
+       // confirm deletion 
+       cy.deleteConfirm('Yes')
+      
         
     })
 })

@@ -8,9 +8,9 @@ describe('| e2e-AddServ_002 | Add Service - health/familysupport - Online - Notf
         //sign in page
         cy.signInPage()
         // choose organisation
-        cy.chooseOrganisation('Salford')
+        cy.chooseOrganisation('Salford City Council')
         // select add service
-        cy.welcomePage('add','Salford')
+        cy.welcomePage('add','Salford City Council')
         // give service name
         cy.addService('TestService' + n)
         // select required service(s)

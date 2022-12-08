@@ -1,5 +1,5 @@
 describe('| e2e-ManServ_001 | Manage Service - delete - confirm deletion',function(){
-    it('Bristol County Council - Journey - delete - confirm deletion ',function(){
+    it('Delete - confirm deletion - Bristol County Council - Journey - delete - confirm deletion ',function(){
         cy.visit('/')
         // start page 
         cy.startPage()
