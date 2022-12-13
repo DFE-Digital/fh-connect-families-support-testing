@@ -1,14 +1,14 @@
-name: "| IS admin-service Regression Pack | CIP dev |"
+name: "| Dev - admin-service Regression Pack | CIP dev |"
 
 on:
   workflow_dispatch:
 
 jobs:
   cypress-run:
-    environment: Information-Sharing  CIP dev
+    environment: information sharing - admin-ui
     env:
       CYPRESS_BASE_URL: "https://s181d01-as-fh-sd-admin-ui-dev.azurewebsites.net/"
-    name: " 🛎️ RegressionTests - Information Sharing - Azure Dev Environment "
+    name: " 🛎️ RegressionTests - IS - Admin UI - Azure Dev Environment "
     runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
@@ -39,9 +39,9 @@ jobs:
         run: |
           cd reports_repo
           DATE=$(date +%d-%m-%Y)
-          [ -e docs/fx/$DATE ] && rm -rf docs/fx/$DATE
-          cp -a ../cypress/reports  docs/fx/$DATE
-          pushd docs/fx/$DATE
+          [ -e docs/adminui/$DATE ] && rm -rf docs/adminui/$DATE
+          cp -a ../cypress/reports/html  docs/fx/$DATE
+          pushd docs/adminui/$DATE
           rm -rf assets
           rm -rf screenshots
           ln -s ../../assets/
@@ -53,6 +53,12 @@ jobs:
           git config --local user.email "DFE-Digital+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git commit -m "report for $(date +%d-%m-%Y)" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: reports
+          directory: reports_repo
 
 
      
