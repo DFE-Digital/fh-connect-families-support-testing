@@ -49,12 +49,6 @@ describe('| e2e-ManServ_011 | Manage Service - view - Change more Details ',func
        cy.deleteService('testservice' + n)
        // confirm deletion 
        cy.deleteConfirm('Yes')
-
-      // manage service 
-        cy.ViewServices('TestService' + n)
-       cy.deleteService('testservice' + n)
-       // confirm deletion 
-       cy.deleteConfirm('Yes')
       
         
     })

@@ -49,13 +49,6 @@ describe('| e2e-ManServ_010 | Manage Service - view - Change ContactDetails ',fu
        cy.deleteService('testservice' + n)
        // confirm deletion 
        cy.deleteConfirm('Yes')
-
-      // manage service 
-        cy.ViewServices('TestService' + n)
-       cy.deleteService('testservice' + n)
-       // confirm deletion 
-       cy.deleteConfirm('Yes')
-      
         
     })
 })

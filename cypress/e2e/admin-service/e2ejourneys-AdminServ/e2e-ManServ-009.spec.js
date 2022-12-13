@@ -50,12 +50,6 @@ describe('| e2e-ManServ_009 | Manage Service - view - Change cost ',function(){
        // confirm deletion 
        cy.deleteConfirm('Yes')
 
-      // manage service 
-        cy.ViewServices('TestService' + n)
-       cy.deleteService('testservice' + n)
-       // confirm deletion 
-       cy.deleteConfirm('Yes')
-      
         
     })
 })

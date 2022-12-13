@@ -4,7 +4,7 @@ describe('| e2e-RefServ-001 | Referral Service - valid post code - no results pa
        // landing page
         cy.refServLanding()
        //sign on page 
-       cy.signOnPage()
+       //cy.signOnPage()
        // search by post code page
        cy.searchbypostcode('ig26fa')
        // search results page

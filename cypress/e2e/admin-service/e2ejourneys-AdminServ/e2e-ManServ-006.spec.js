@@ -52,12 +52,6 @@ describe('| e2e-ManServ_006 | Manage Service - view - Change ServiceDeliveryType
        // confirm deletion 
        cy.deleteConfirm('Yes')
 
-      // manage service 
-        cy.ViewServices('TestService' + n)
-       cy.deleteService('testservice' + n)
-       // confirm deletion 
-       cy.deleteConfirm('Yes')
-      
         
     })
 })
