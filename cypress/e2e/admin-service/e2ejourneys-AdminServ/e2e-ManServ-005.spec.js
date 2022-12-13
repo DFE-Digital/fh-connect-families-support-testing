@@ -50,12 +50,6 @@ describe('| e2e-ManServ_005 | Manage Service - view - Change title ',function(){
        // confirm deletion 
        cy.deleteConfirm('Yes')
 
-      // manage service 
-        cy.ViewServices('TestService' + n)
-       cy.deleteService('testservice' + n)
-       // confirm deletion 
-       cy.deleteConfirm('Yes')
-      
         
     })
 })

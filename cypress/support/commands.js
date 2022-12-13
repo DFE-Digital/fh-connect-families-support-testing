@@ -59,6 +59,15 @@ beforeEach(() => {
     }
     cy.contains('Continue').click();
 })
+// dfe branding
+Cypress.Commands.add('dfeBrandingAdminUi',()=>{
+  cy.get('.govuk-header__container').contains('Department for Education')
+  cy.get('.govuk-header__container').contains('Connect families to support')
+  cy.should('have.attr', 'href', '/');
+
+  
+
+})
 
 
 

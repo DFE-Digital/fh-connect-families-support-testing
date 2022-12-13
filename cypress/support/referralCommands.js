@@ -1,7 +1,7 @@
  // referral Service - landing page
  Cypress.Commands.add('refServLanding',()=>{
     cy.contains('Connect families to voluntary and community services')
-    cy.get('[data-testid="button-start"]').click();
+    cy.get('.govuk-button.govuk-button--start').click();
   })
 // sign in page
 Cypress.Commands.add('signOnPage',()=>{
@@ -10,13 +10,14 @@ Cypress.Commands.add('signOnPage',()=>{
 })
 // search by post code 
 Cypress.Commands.add('searchbypostcode', (postcode) => {
-    cy.get('[data-testid="radio-postcode"]').click();
-    cy.get('[data-testid="postcode-value"]').type(postcode);
+   
+    cy.get('input#Postcode').click().type(postcode);
     cy.get('[data-testid="button-search"]').click();
+    cy.contains('Services, groups and activities in this area')
 })
 // search results page
 Cypress.Commands.add('searchResults',(postcode)=>{
-    cy.contains(`Showing results for ${postcode}`)
+    cy.contains(`search results for: ${postcode}`)
 })
 // filter commands
 Cypress.Commands.add('ageFilter',(selection)=>{

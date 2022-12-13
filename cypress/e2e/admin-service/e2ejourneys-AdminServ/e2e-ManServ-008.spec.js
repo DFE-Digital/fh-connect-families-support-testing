@@ -50,12 +50,6 @@ describe('| e2e-ManServ_008 | Manage Service - view - Change language ',function
        // confirm deletion 
        cy.deleteConfirm('Yes')
 
-      // manage service 
-        cy.ViewServices('TestService' + n)
-       cy.deleteService('testservice' + n)
-       // confirm deletion 
-       cy.deleteConfirm('Yes')
-      
         
     })
 })

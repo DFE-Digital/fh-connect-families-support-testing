@@ -4,7 +4,7 @@ describe('| e2e-RefServ-003 | Referral Service - Valid post code + Filters deliv
        // landing page
         cy.refServLanding()
        //sign on page 
-       cy.signOnPage()
+       //cy.signOnPage()
        // search by post code page
        cy.searchbypostcode('BS20SP')
        // search results page
