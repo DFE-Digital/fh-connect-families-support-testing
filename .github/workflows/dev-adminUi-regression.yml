@@ -23,7 +23,7 @@ jobs:
           quiet: true
           browser: chrome
           headless: true
-          spec: "cypress/e2e/**/*.spec.js"
+          spec: "cypress/e2e/admin-service/**/*.spec.js"
       - uses: actions/upload-artifact@v2
         with:
           name: report
@@ -40,7 +40,7 @@ jobs:
           cd reports_repo
           DATE=$(date +%d-%m-%Y)
           [ -e docs/adminui/$DATE ] && rm -rf docs/adminui/$DATE
-          cp -a ../cypress/reports/html  docs/fx/$DATE
+          cp -a ../cypress/reports/html  docs/adminui/$DATE
           pushd docs/adminui/$DATE
           rm -rf assets
           rm -rf screenshots
