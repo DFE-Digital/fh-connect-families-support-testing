@@ -6,9 +6,9 @@ describe('| e2e-RefServ-002 | Referral Service - Valid post code + Filters age |
        //sign on page 
        //cy.signOnPage()
        // search by post code page
-       cy.searchbypostcode('BS20SP')
+       cy.searchbypostcode('ig1 4bb')
        // search results page
-       cy.searchResults('BS20SP')
+       cy.searchResults('ig1 4bb')
        // filter age
        cy.ageFilter('2')
        cy.contains('2 services found')

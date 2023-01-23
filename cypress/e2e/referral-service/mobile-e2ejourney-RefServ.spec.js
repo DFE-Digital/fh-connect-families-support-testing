@@ -12,9 +12,9 @@ describe('| mobile-e2ejourney-RefServ | Referral Service - Valid post code + Fil
        //sign on page 
        //cy.signOnPage()
        // search by post code page
-       cy.searchbypostcode('BS20SP')
+       cy.searchbypostcode('ig1 4bb')
        // search results page
-       cy.searchResults('BS20SP')
+       cy.searchResults('ig1 4bb')
        // filter cost
        cy.costFilter('paid')
        //clear filters

@@ -1,6 +1,6 @@
  // referral Service - landing page
  Cypress.Commands.add('refServLanding',()=>{
-    cy.contains('Connect families to voluntary and community services')
+    cy.contains('Connect families to support')
     cy.get('.govuk-button.govuk-button--start').click();
   })
 // sign in page
@@ -28,15 +28,18 @@ Cypress.Commands.add('ageFilter',(selection)=>{
 Cypress.Commands.add('costFilter',(serviceType)=>{
     if (serviceType === 'paid') {
     cy.get('[data-testid="checkbox-paid"]').click();
-    cy.get('[data-testid="testservice-paid-0to13yrs"]').should("exist");
+    cy.get('.search-results').contains('£').should('exist')
+    cy.get('.search-results').contains('Free').should('not.exist')
   } else if (serviceType === 'free'){
     cy.get('[data-testid="checkbox-free"]').click();
-    cy.get('[data-testid="testservice-free-10to15yrs"]').should("exist");
+    cy.get('.search-results').contains('£').should('not.exist')
+    cy.get('.search-results').contains('Free').should('exist')
+   
   }else if (serviceType === 'both'){
     cy.get('[data-testid="checkbox-paid"]').click();
     cy.get('[data-testid="checkbox-free"]').click();
-    cy.get('[data-testid="testservice-free-10to15yrs"]').should("exist");
-    cy.get('[data-testid="testservice-paid-0to13yrs"]').should("exist");
+    cy.get('.search-results').contains('£').should('exist')
+    cy.get('.search-results').contains('Free').should('exist')
   }
 })
 // clear filters
@@ -57,10 +60,11 @@ Cypress.Commands.add('deliveryType',(deliverySelection)=>{
     }
     cy.get('[data-testid="button-apply-filters"]').click();
 })
-// location 
-Cypress.Commands.add('locationSelection',()=>{
-    cy.get('[data-testid="checkbox-location"]').check();
+// activities 
+Cypress.Commands.add('activitiesSelection',(activities)=>{
+    cy.get(`[data-testid="${activities}"]`).check();
     cy.get('[data-testid="button-apply-filters"]').click();
+    
 })
 // language
 Cypress.Commands.add('languageSelection',(selection)=>{
