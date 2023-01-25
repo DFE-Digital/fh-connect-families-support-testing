@@ -1,12 +1,12 @@
-describe('| e2e-RefServ-003 | Referral Service - Valid post code + Filters delivery method |',function(){
+describe('| e2e-RefService009-deliveryMethod.spec | Referral Service - Valid post code + Filters delivery method |',function(){
     it('Referral Service - Valid post code + Filters - delivery method  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
         cy.refServLanding()
        // search by post code page
-        cy.searchbypostcode('ig1 4bb')
+        cy.searchbypostcode('bs2 0sp')
        // search results page
-        cy.searchResults('ig1 4bb')
+        cy.searchResults('bs2 0sp')
        // filter delivery method - all
         cy.deliveryType({inperson:'1',online:'2',telephone:'3'})
         cy.get('.govuk-grid-column-two-thirds').contains('In Person')

@@ -1,4 +1,4 @@
-describe('| e2e-RefServ-001 | Referral Service - Filters language |',function(){
+describe('| e2e-RefServ-010 | Referral Service - Filters language |',function(){
     it('Referral Service - Valid post code + Filters - language  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
@@ -6,11 +6,11 @@ describe('| e2e-RefServ-001 | Referral Service - Filters language |',function(){
        //sign on page 
        //cy.signOnPage()
        // search by post code page
-       cy.searchbypostcode('ig1 4bb')
+       cy.searchbypostcode('bs2 0sp')
        // search results page
-       cy.searchResults('ig1 4bb')
+       cy.searchResults('bs2 0sp')
        // filter language
-       let languages = ['english','french','hindi','afrikaans']
+       let languages = ['English','French','Hindi','Afrikaans']
        for (let i=0; i< languages.length; i++){
 
        cy.languageSelection(`${languages[i]}`)
