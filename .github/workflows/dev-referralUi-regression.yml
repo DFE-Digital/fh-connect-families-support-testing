@@ -1,7 +1,10 @@
 name: "| Dev - referral-service Regression Pack | CIP dev |"
 
 on:
+  schedule:
+    - cron: "30 07 * * *"
   workflow_dispatch:
+
 
 jobs:
   cypress-run:
