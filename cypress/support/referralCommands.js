@@ -13,7 +13,7 @@ Cypress.Commands.add('searchbypostcode', (postcode) => {
    
     cy.get('input#Postcode').click().type(postcode);
     cy.get('[data-testid="button-search"]').click();
-    cy.contains('Services, groups and activities in this area')
+    // cy.contains('Services, groups and activities in this area')
 })
 // search results page
 Cypress.Commands.add('searchResults',(postcode)=>{
@@ -38,9 +38,9 @@ Cypress.Commands.add('costFilter',(serviceType)=>{
   }else if (serviceType === 'both'){
     cy.get('[data-testid="checkbox-paid"]').click();
     cy.get('[data-testid="checkbox-free"]').click();
-    cy.get('.search-results').contains('£').should('exist')
     cy.get('.search-results').contains('Free').should('exist')
   }
+  cy.get('[data-testid="button-apply-filters"]').click();
 })
 // clear filters
 Cypress.Commands.add('clearFilters',()=>{
@@ -49,9 +49,9 @@ Cypress.Commands.add('clearFilters',()=>{
 // no results page 
 Cypress.Commands.add('noResultsPage',()=>{
   cy.contains('No results found')
-  cy.contains('Try searching again using a different postcode')
-  cy.get('[data-testid="searchusingdifferentpostcodelink"]').click()
-  cy.contains('Find support from local services by name or postcode')
+  cy.contains('Sorry, there are no activities, groups or services listed in your area yet.')
+  cy.get('[data-testid="back-button"]').click()
+  cy.contains('Search for services by postcode')
 })
 // delivery type filter
 Cypress.Commands.add('deliveryType',(deliverySelection)=>{

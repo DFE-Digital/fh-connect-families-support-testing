@@ -1,15 +1,15 @@
-describe('| e2e-RefServ-001 | Referral Service - cost filters|',function(){
-    it('filters - valid post code - cost  ',function(){
+describe('| e2e-RefServ-007 | Referral Service - cost filters|',function(){
+    it('filters - filter - cost  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
         cy.refServLanding()
        //sign on page 
        //cy.signOnPage()
        // search by post code page
-       cy.searchbypostcode('ig1 4bb')
+       cy.searchbypostcode('bs2 0sp')
        // search results page
-       cy.searchResults('ig1 4bb')
-       let costfilters = ['both','free','paid']
+       cy.searchResults('bs2 0sp')
+       let costfilters = ['free','paid','both']
        for (let i=0;i<costfilters.length;i++)
        {// filter cost
        cy.costFilter(`${costfilters[i]}`)

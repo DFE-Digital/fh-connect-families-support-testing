@@ -1,4 +1,4 @@
-describe('| e2e-RefServ-002 | Referral Service - Valid post code + Filters age |',function(){
+describe('| e2e-RefServ-008 | Referral Service - Valid post code + Filters age |',function(){
     it('Referral Service - Valid post code + Filters - age  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
@@ -6,9 +6,9 @@ describe('| e2e-RefServ-002 | Referral Service - Valid post code + Filters age |
        //sign on page 
        //cy.signOnPage()
        // search by post code page
-       cy.searchbypostcode('ig1 4bb')
+       cy.searchbypostcode('bs2 0sp')
        // search results page
-       cy.searchResults('ig1 4bb')
+       cy.searchResults('bs2 0sp')
        // filter age
        cy.ageFilter('2')
        cy.contains('2 services found')

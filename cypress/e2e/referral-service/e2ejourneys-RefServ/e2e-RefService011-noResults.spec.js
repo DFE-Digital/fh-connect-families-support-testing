@@ -1,4 +1,4 @@
-describe('| e2e-RefServ-001 | Referral Service - valid post code - no results page |',function(){
+describe('| e2e-RefService011-noResults.spec | Referral Service - valid post code - no results page |',function(){
     it('Referral Service - valid post code - no results page ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
@@ -6,7 +6,7 @@ describe('| e2e-RefServ-001 | Referral Service - valid post code - no results pa
        //sign on page 
        //cy.signOnPage()
        // search by post code page
-       cy.searchbypostcode('ig26fa')
+       cy.searchbypostcode('ig2 6fa')
        // search results page
        cy.noResultsPage()
     })
