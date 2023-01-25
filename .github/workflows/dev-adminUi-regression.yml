@@ -1,7 +1,10 @@
 name: "| Dev - admin-service Regression Pack | CIP dev |"
 
 on:
+  schedule:
+    - cron: "30 06 * * *"
   workflow_dispatch:
+
 
 jobs:
   cypress-run:
