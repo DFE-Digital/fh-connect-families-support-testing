@@ -1,20 +1,14 @@
-describe('| mobile-e2ejourney-RefServ | Referral Service - Valid post code + Filters cost |',function(){
-    let device = ['iphone-x','ipad-mini','samsung-s10']
-        for(let i=0;i<device.length;i++){
-    it(`${device[i]} - Referral Service - Valid post code + Filters - cost`,function(){
-        
-        cy.viewport(`${device[i]}`);
-       
+describe('| smokeTest-RefServ | Referral Service - Valid post code + Filters cost |',function(){
+    it('Referral Service - Valid post code + Filters - cost  ',function(){
         cy.visit('/', {failOnStatusCode: false})
-       
        // landing page
         cy.refServLanding()
        //sign on page 
        //cy.signOnPage()
        // search by post code page
-       cy.searchbypostcode('ig1 4bb')
+       cy.searchbypostcode('bs2 0sp')
        // search results page
-       cy.searchResults('ig1 4bb')
+       cy.searchResults('bs2 0sp')
        // filter cost
        cy.costFilter('paid')
        //clear filters
@@ -25,7 +19,5 @@ describe('| mobile-e2ejourney-RefServ | Referral Service - Valid post code + Fil
        cy.clearFilters()
        // filter all
        cy.costFilter('both')
-        
     })
-}
 })

@@ -28,23 +28,33 @@ Cypress.Commands.add('ageFilter',(selection)=>{
 Cypress.Commands.add('costFilter',(serviceType)=>{
     if (serviceType === 'paid') {
     cy.get('[data-testid="checkbox-paid"]').click();
+    cy.get('[data-testid="button-apply-filters"]').click();
     cy.get('.search-results').contains('£').should('exist')
     cy.get('.search-results').contains('Free').should('not.exist')
   } else if (serviceType === 'free'){
     cy.get('[data-testid="checkbox-free"]').click();
+    cy.get('[data-testid="button-apply-filters"]').click();
     cy.get('.search-results').contains('£').should('not.exist')
     cy.get('.search-results').contains('Free').should('exist')
    
   }else if (serviceType === 'both'){
     cy.get('[data-testid="checkbox-paid"]').click();
     cy.get('[data-testid="checkbox-free"]').click();
+    cy.get('[data-testid="button-apply-filters"]').click();
     cy.get('.search-results').contains('Free').should('exist')
   }
-  cy.get('[data-testid="button-apply-filters"]').click();
+  
 })
 // clear filters
 Cypress.Commands.add('clearFilters',()=>{
     cy.contains('Clear filters').click()
+})
+//show hide filters mobile
+Cypress.Commands.add('showHideFiltersMob',()=>{
+  cy.get('[data-testid="show-filters-button"]').click()
+})
+Cypress.Commands.add('returnToResults',()=>{
+  cy.get('[data-testid="return-to-results-link"]').click()
 })
 // no results page 
 Cypress.Commands.add('noResultsPage',()=>{
@@ -71,3 +81,10 @@ Cypress.Commands.add('languageSelection',(selection)=>{
   cy.get('[data-testid="select-language"]').select(selection);
     cy.get('[data-testid="button-apply-filters"]').click();
 })
+// mobile filter 
+Cypress.Commands.add('mobOpenCloseFilters',()=>{
+  cy.get('[data-testid="show-filters-button"]').should('be.visible')
+  cy.get('[data-testid="show-filters-button"]').click()
+  cy.get('[data-testid="button-apply-filters"]').should('be.visible')
+    
+    })
