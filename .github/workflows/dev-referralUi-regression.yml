@@ -26,7 +26,7 @@ jobs:
           quiet: true
           browser: chrome
           headless: true
-          spec: "cypress/e2e/referral-service/**/*.spec.js"
+          spec: "cypress/e2e/01-referral-service/**/*.spec.js"
       - uses: actions/upload-artifact@v2
         with:
           name: report
