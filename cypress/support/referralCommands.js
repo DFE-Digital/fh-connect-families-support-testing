@@ -88,3 +88,64 @@ Cypress.Commands.add('mobOpenCloseFilters',()=>{
   cy.get('[data-testid="button-apply-filters"]').should('be.visible')
     
     })
+Cypress.Commands.add('accessibilityPage',()=>{
+  cy.contains('Accessibility Statement')
+  cy.contains('How accessible this website is')
+  cy.contains('Feedback and contact information')
+  cy.contains('Reporting accessibility problems with this website')
+  cy.contains('Enforcement procedure')
+  cy.contains("Technical information about this website’s accessibility")
+  cy.contains('Compliance status')
+  cy.contains("What we\’re doing to improve accessibility")
+  cy.contains('Preparation of this accessibility statement')
+  // back link
+  cy.get('.govuk-back-link').click()
+  cy.contains('Connect families to support');
+
+})
+Cypress.Commands.add('cookiesPageContent',()=>{
+    // cy.contains("This service puts small files (known as 'cookies') onto your computer. These cookies are used to:");
+    // cy.contains('Change your cookie settings')
+    // cy.contains('Do you want to accept analytics cookies?')
+   // back link
+  cy.get('.govuk-back-link').click()
+  cy.contains('Connect families to support');
+
+  })
+  // feedback page
+  Cypress.Commands.add('feedbackPage',()=>{
+    cy.contains("The purpose of this survey is to get your feedback on the ‘Connect Families to Support' website.")
+    // back link
+  cy.get('.govuk-back-link').click()
+  cy.contains('Connect families to support');
+  })
+  // terms and conditions page
+  Cypress.Commands.add('termsandconditionsPage',()=>{
+    cy.contains('Terms and conditions')
+    cy.contains('Who we are')
+    cy.contains('Connect families to support is managed by the Department for Education. The Department for Education will be referred to as ‘we’ from now on.')
+    cy.contains('Using Connect families to support')
+    cy.contains('Linking to Connect families to support')
+    // back link
+    cy.get('.govuk-back-link').click()
+    cy.contains('Connect families to support');
+  })
+  // contact us page 
+Cypress.Commands.add('contactUsPage',()=>{
+  cy.contains('Contact us')
+  cy.contains('Email')
+  cy.contains("connect-support-for-your-family.service@education.gov.uk")
+  cy.contains("We aim to respond within 5 working days.")
+  // back link
+   cy.get('.govuk-back-link').click()
+  cy.contains('Connect families to support');
+  })
+  // feedback link
+    Cypress.Commands.add('feedbackLink',()=>{
+      cy.get('.govuk-phase-banner__text').contains('This is a new service – your feedback will help us to improve it.')
+      cy.get('.govuk-phase-banner__text > a').should("have.attr", "href").and("include", "https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_eKgvRcn8vp4QtTM");
+    })
+  // feedback footer link
+  Cypress.Commands.add('feedbackFooterLink',()=>{
+    cy.get('[data-testid="feedback-link"]').should("have.attr", "href").and("include", "https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_eKgvRcn8vp4QtTM");
+  })
