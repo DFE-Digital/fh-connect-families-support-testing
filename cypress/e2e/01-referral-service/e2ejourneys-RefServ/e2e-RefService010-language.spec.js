@@ -10,7 +10,7 @@ describe('| e2e-RefServ-010 | Referral Service - Filters language |',function(){
        // search results page
        cy.searchResults('bs2 0sp')
        // filter language
-       let languages = ['English','French','Hindi','Afrikaans']
+       let languages = ['English','French','Somali','Afrikaans']
        for (let i=0; i< languages.length; i++){
 
        cy.languageSelection(`${languages[i]}`)
