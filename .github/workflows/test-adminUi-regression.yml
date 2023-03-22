@@ -1,4 +1,4 @@
-name: "| Dev - admin-service Regression Pack | CIP dev |"
+name: "| Test - admin-service Regression Pack | Test |"
 
 on:
   schedule:
@@ -10,7 +10,7 @@ jobs:
   cypress-run:
     environment: information sharing - admin-ui
     env:
-      CYPRESS_BASE_URL: "https://s181d01-as-fh-sd-admin-ui-dev.azurewebsites.net/"
+      CYPRESS_BASE_URL: "https://test.manage-family-support-services-and-accounts.education.gov.uk/"
     name: " 🛎️ RegressionTests - IS - Admin UI - Azure Dev Environment "
     runs-on: ubuntu-22.04
     strategy:
