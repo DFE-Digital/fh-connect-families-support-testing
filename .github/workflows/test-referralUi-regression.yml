@@ -1,4 +1,4 @@
-name: "| Dev - referral-service Regression Pack | CIP dev |"
+name: "| Test - referral-service Regression Pack | Test |"
 
 on:
   schedule:
@@ -10,7 +10,7 @@ jobs:
   cypress-run:
     environment: information sharing - referral-ui
     env:
-      CYPRESS_BASE_URL: "https://s181d01-as-fh-referral-ui-dev.azurewebsites.net/"
+      CYPRESS_BASE_URL: "https://test.connect-families-to-support.education.gov.uk/"
     name: " 🛎️ RegressionTests - IS - referral UI - Azure Dev Environment "
     runs-on: ubuntu-22.04
     strategy:
