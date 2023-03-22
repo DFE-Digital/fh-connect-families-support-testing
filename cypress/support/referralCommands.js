@@ -141,7 +141,7 @@ Cypress.Commands.add('contactUsPage',()=>{
   cy.contains('Connect families to support');
   })
   // feedback link
-    Cypress.Commands.add('feedbackLink',()=>{
+    Cypress.Commands.add('feedbackLinkBanner',()=>{
       cy.get('.govuk-phase-banner__text').contains('This is a new service – your feedback will help us to improve it.')
       cy.get('.govuk-phase-banner__text > a').should("have.attr", "href").and("include", "https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_eKgvRcn8vp4QtTM");
     })
