@@ -3,7 +3,7 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   reporter: "cypress-mochawesome-reporter",
   e2e: {
-       'baseUrl': 'https://s181d01-as-fh-sd-admin-ui-dev.azurewebsites.net/',
+       'baseUrl': 'https://test.manage-family-support-services-and-accounts.education.gov.uk/',
 
     'specPattern': ['**/*.spec.js', '**/*.feature','**/*.cy'],
     setupNodeEvents(on, config) {
