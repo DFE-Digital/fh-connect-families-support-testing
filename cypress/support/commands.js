@@ -336,6 +336,18 @@ Cypress.Commands.add('checkSafeGuardingPageContinueButton', (expectedContinueLin
 	})
 })
 
+//-----------------------Consent page---------------------------
+Cypress.Commands.add('checkErrorText', (expectedErrorHeading, expectedErrorText) => {
+    cy.get('#error-summary-title').invoke('text').then((text) => {
+		expect(text.trim()).to.equal(expectedErrorHeading);
+	})
+	cy.get('.govuk-error-summary__body').invoke('text').then((text) => {
+		expect(text.trim()).to.equal(expectedErrorText);
+	})
+    cy.get('.govuk-error-message').invoke('text').then((text) => {
+		expect(text.replace('Error:','').trim()).to.equal(expectedErrorText);
+	})
+})
 
 // custom command to overwrite baseUrl if we are using localhost etc
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
