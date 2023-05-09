@@ -288,7 +288,53 @@ Cypress.Commands.add('moreDetailsEdit',(serviceId)=>{
   cy.get('div:nth-of-type(8) > .govuk-summary-list__actions > .govuk-link').click()
 })
 
+//-------------------Common page commands ----------------------
+Cypress.Commands.add('checkPageHeading', (locator, expectedHeading) => {
+    cy.get(locator).invoke('text').then((text) => {
+		const trimmedText = text.trim();
+		expect(trimmedText).to.equal(expectedHeading);
+	})
+})
 
+Cypress.Commands.add('checkLinkHref', (nhsLink) => {
+    cy.get('#nhs-safeguarding').invoke('attr', 'href').then((href) => {
+		expect(href).to.equal(nhsLink);
+	})
+})
+
+Cypress.Commands.add('clickBackLink', ()=> {
+    cy.get('.govuk-back-link').click();
+})
+
+Cypress.Commands.add('getTextOfElements', (locator, actualList, expectedList) => {
+    cy.get(locator).each(($element) => {
+		const text = $element.text();
+		actualList.push(text);
+		}).then(() => {
+		expect(actualList).to.deep.equal(expectedList);
+		})
+})
+
+Cypress.Commands.add('getRadioButtons', (locator, actualRadioButtons, expectedRadioButtons)=> {
+    cy.get('.govuk-radios__label').each(($el) => {
+		actualRadioButtons.push($el.text().trim())
+		}).then(()=>{
+		expect(actualRadioButtons).to.deep.equal(expectedRadioButtons)
+	})
+})
+
+//------------------NHS safeguarding page----------------------
+Cypress.Commands.add('checkSafeGuardingPagePanelText', (expectedPanelText) => {
+    cy.get('.interrupt-panel p').should('have.text',expectedPanelText)
+})
+
+Cypress.Commands.add('checkSafeGuardingPageContinueButton', (expectedContinueLink) => {
+    cy.get('.app-button--inverted').invoke('attr', 'href').then((href) => {
+		expect(href).to.contain(expectedContinueLink);
+		cy.get('.app-button--inverted').click();
+		cy.url().should('include',expectedContinueLink);
+	})
+})
 
 
 // custom command to overwrite baseUrl if we are using localhost etc
