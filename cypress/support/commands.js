@@ -323,6 +323,18 @@ Cypress.Commands.add('getRadioButtons', (locator, actualRadioButtons, expectedRa
 	})
 })
 
+Cypress.Commands.add('checkTextOf', (locator, expectedText)=> {
+    cy.get(locator).invoke('text').then((text)=> {
+        expect(text.trim()).to.equal(expectedText);
+    })
+})
+
+Cypress.Commands.add('checkValueOfTextBox', (locator, expectedText)=> {
+    cy.get(locator).invoke('attr', 'value').then((value)=> {
+        expect(value).to.equal(expectedText);
+    })
+})
+
 //------------------NHS safeguarding page----------------------
 Cypress.Commands.add('checkSafeGuardingPagePanelText', (expectedPanelText) => {
     cy.get('.interrupt-panel p').should('have.text',expectedPanelText)
@@ -338,7 +350,7 @@ Cypress.Commands.add('checkSafeGuardingPageContinueButton', (expectedContinueLin
 
 //-----------------------Consent page---------------------------
 Cypress.Commands.add('checkErrorText', (expectedErrorHeading, expectedErrorText) => {
-    cy.get('#error-summary-title').invoke('text').then((text) => {
+    cy.get('.govuk-error-summary__title').invoke('text').then((text) => {
 		expect(text.trim()).to.equal(expectedErrorHeading);
 	})
 	cy.get('.govuk-error-summary__body').invoke('text').then((text) => {
