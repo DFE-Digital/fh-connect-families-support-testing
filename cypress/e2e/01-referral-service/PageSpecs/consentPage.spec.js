@@ -62,7 +62,7 @@ describe('Consent page - FHG-2850', ()=> {
 		cy.checkErrorText(errorHeading, errorMessage);
 	})
 
-	it('AC5 - clickin on back link should display safeguarding page', () => {
+	it('AC5 - clicking on back link should display safeguarding page', () => {
 		const expectedSafeguardingPageHeading = 'Do not use this service to report safeguarding concerns';
 
 		//Click on back link
