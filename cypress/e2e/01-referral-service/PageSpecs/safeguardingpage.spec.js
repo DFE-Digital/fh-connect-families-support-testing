@@ -12,14 +12,16 @@ describe('safeguarding page - FHG-2848', ()=> {
 
 	it('AC1, AC2 - should have the correct content', ()=> {
 		const expectedHeading = 'Do not use this service to report safeguarding concerns';
-		const expectedPanelText = 'Use the NHS safeguarding app for guidance on reporting safeguarding concerns.';
-		const expectedNhsLink = 'https://nhssafeguarding.app/?nocache=0.23461449202295054';
-		const expectedContinueLink = "/ProfessionalReferral/Consent?serviceId=354&serviceName=Young%20Bristol%0AYouth%20and%20Play%20Services,%20including%20School%20Holiday%20and%20Outdoor%20Activities";
+		const expectedPanelText = 'Use the NHS safeguarding app (opens in new tab) for guidance on reporting safeguarding concerns.';
+		const expectedNhsLink = 'https://nhssafeguarding.app';
+		const expectedContinueLink = "/ProfessionalReferral/Consent?serviceId=354";
 
 		//Verify the content on the safeguarding page
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
 		cy.checkSafeGuardingPagePanelText(expectedPanelText);
-		cy.checkLinkHref(expectedNhsLink);
+		cy.checkLinkHref('#nhs-safeguarding',expectedNhsLink);
+		//verify nhs link target attribute to determine if it opens in a new tab
+		cy.get('#nhs-safeguarding').should('have.attr', 'target', '_blank');
 		cy.checkSafeGuardingPageContinueButton(expectedContinueLink);
 	})
 
@@ -30,6 +32,5 @@ describe('safeguarding page - FHG-2848', ()=> {
 		cy.clickBackLink();
 		//verify page heading
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
-		
 	})
 })
