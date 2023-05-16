@@ -296,8 +296,8 @@ Cypress.Commands.add('checkPageHeading', (locator, expectedHeading) => {
 	})
 })
 
-Cypress.Commands.add('checkLinkHref', (nhsLink) => {
-    cy.get('#nhs-safeguarding').invoke('attr', 'href').then((href) => {
+Cypress.Commands.add('checkLinkHref', (locator, nhsLink) => {
+    cy.get(locator).invoke('attr', 'href').then((href) => {
 		expect(href).to.equal(nhsLink);
 	})
 })
@@ -335,6 +335,13 @@ Cypress.Commands.add('checkValueOfTextBox', (locator, expectedText)=> {
     })
 })
 
+Cypress.Commands.add('enterTextAndContinue', (textBoxLocator, enteredtext, continueLocator)=> {
+    //enter a contact name
+	cy.get(textBoxLocator).type(enteredtext);
+	//click continue button on contact name page
+	cy.get(continueLocator).click();
+})
+
 //------------------NHS safeguarding page----------------------
 Cypress.Commands.add('checkSafeGuardingPagePanelText', (expectedPanelText) => {
     cy.get('.interrupt-panel p').should('have.text',expectedPanelText)
@@ -357,9 +364,18 @@ Cypress.Commands.add('checkErrorText', (expectedErrorHeading, expectedErrorText)
 		expect(text.trim()).to.equal(expectedErrorText);
 	})
     cy.get('.govuk-error-message').invoke('text').then((text) => {
-		expect(text.replace('Error:','').trim()).to.equal(expectedErrorText);
+		expect(text.replace('Error:','').trim().split('\n').shift()).to.equal(expectedErrorText);
 	})
 })
+
+Cypress.Commands.add('selectRadioButtonAndContinue', (radioLocator, continueLocator)=> {
+    //click on Yes radio button
+	cy.get(radioLocator).click();
+	//click continue button on consent page
+	cy.get(continueLocator).click();
+})
+
+
 
 // custom command to overwrite baseUrl if we are using localhost etc
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {

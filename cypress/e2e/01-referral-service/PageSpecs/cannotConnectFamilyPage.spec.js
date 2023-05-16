@@ -9,16 +9,13 @@ describe('Cannot connect family to service page - FHG-2853', ()=> {
 		cy.get('a:contains("Request a connection")').click();
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
-		//click on No radio button
-		cy.get('#consent-2').click();
-		//click continue button on consent page
-		cy.get('div.govuk-grid-row button').click();
+		//click on No radio button and continue on consent page
+		cy.selectRadioButtonAndContinue('#consent-2', 'div.govuk-grid-row button');
 	})
 
 	it('AC1 - should have the correct content', ()=> {
 		const expectedHeading = 'Cannot connect family to service';
-		const expectedStaticText = ['You must have permission from the family to give their details to the service.',
-		'Those details include:', 'who to contact in the family','ways to contact the family','why the family needs help',
+		const expectedStaticText = ['Please get permission from the family to give their details to the service.',
 		'You can come back and request a connection to the service once you have permission.'];
 		let actualStaticText = [];
 

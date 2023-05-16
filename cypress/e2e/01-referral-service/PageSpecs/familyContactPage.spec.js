@@ -9,10 +9,8 @@ describe('Family contact page - FHG-2858', ()=> {
 		cy.get('a:contains("Request a connection")').click();
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
-		//click on Yes radio button
-		cy.get('#consent').click();
-		//click continue button on consent page
-		cy.get('div.govuk-grid-row button').click();
+		//click on Yes radio button and continue on consent page
+		cy.selectRadioButtonAndContinue('#consent', 'div.govuk-grid-row button');
 	})
 
 	it('should have the correct content', ()=> {
@@ -32,10 +30,8 @@ describe('Family contact page - FHG-2858', ()=> {
 		const expectedPageHeading = 'Reason for the connection request';
 		const enteredContactName = 'James bond';
 
-		//enter a contact name
-		cy.get('.govuk-input').type(enteredContactName);
-		//click continue button on family contact page
-		cy.get('div.govuk-grid-row button').click();
+		//enter a contact name and continue on family contact page
+		cy.enterTextAndContinue('.govuk-input', enteredContactName, 'div.govuk-grid-row button');
 		//check page heading on reason for request for support page
 		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
 		//click on back link
@@ -59,9 +55,7 @@ describe('Family contact page - FHG-2858', ()=> {
 		const enteredContactName = "Test   -_ (  Test) 167 %$!\"£^&*;:@',.<>#~}{[]|¬" ;
 
 		//enter a contact name
-		cy.get('.govuk-input').type(enteredContactName);
-		//click continue button on family contact page
-		cy.get('div.govuk-grid-row button').click();
+		cy.enterTextAndContinue('.govuk-input', enteredContactName, 'div.govuk-grid-row button');
 		//check page heading on reason for request for support page
 		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
 		//click on back link

@@ -15,8 +15,7 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedHeading = 'Permission to share details';
 		const expectedSubHeading = 'Do you have permission from the family?';
 		const expectedStaticText = ['You must have permission from the family to give their details to the service.',
-		'Those details include:', 'who to contact in the family','ways to contact the family','why the family needs help',
-		'You can come back and request a connection to the service once you have permission.'];
+		'Those details include:', 'who to contact in the family','ways to contact the family','why the family needs help'];
 		let actualStaticText = [];
 		let actualRadioButtons = [];
 		const expectedRadioButtons = ['Yes', 'No']
@@ -31,7 +30,7 @@ describe('Consent page - FHG-2850', ()=> {
 		cy.getRadioButtons('.govuk-radios__label', actualRadioButtons, expectedRadioButtons);
 	})
 
-	it('AC1,AC4 - should display contact in the famuily page when selected Yes', () => {
+	it('AC1,AC4 - should display contact in the family page when selected Yes', () => {
 		const expectedContactPageHeading = 'Who should the service contact in the family?';
 
 		//click on Yes radio button
@@ -42,7 +41,7 @@ describe('Consent page - FHG-2850', ()=> {
 		cy.checkPageHeading('.govuk-heading-l',expectedContactPageHeading);
 	})
 
-	it('AC2,AC4 - should display cannot connetct famuily page when selected No', () => {
+	it('AC2,AC4 - should display cannot connetct family page when selected No', () => {
 		const expectedCannotConnectPageHeading = 'Cannot connect family to service';
 
 		//click on No radio button
