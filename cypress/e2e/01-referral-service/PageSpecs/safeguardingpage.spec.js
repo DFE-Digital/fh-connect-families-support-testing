@@ -1,7 +1,7 @@
 
 describe('safeguarding page - FHG-2848', ()=> {
 	beforeEach(()=> {
-		cy.visit('https://test.connect-families-to-support.education.gov.uk');
+		cy.visit('/');
 		cy.refServLanding();
 		cy.searchbypostcode('bs14 8at');
 		//Select the first result on search results page
