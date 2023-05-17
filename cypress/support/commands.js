@@ -315,8 +315,8 @@ Cypress.Commands.add('getTextOfElements', (locator, actualList, expectedList) =>
 		})
 })
 
-Cypress.Commands.add('getRadioButtons', (locator, actualRadioButtons, expectedRadioButtons)=> {
-    cy.get('.govuk-radios__label').each(($el) => {
+Cypress.Commands.add('getRadioButtonsAndCheckboxes', (locator, actualRadioButtons, expectedRadioButtons)=> {
+    cy.get(locator).each(($el) => {
 		actualRadioButtons.push($el.text().trim())
 		}).then(()=>{
 		expect(actualRadioButtons).to.deep.equal(expectedRadioButtons)
@@ -375,7 +375,43 @@ Cypress.Commands.add('selectRadioButtonAndContinue', (radioLocator, continueLoca
 	cy.get(continueLocator).click();
 })
 
+//-----------------------reason for connection request page --------------------------
+Cypress.Commands.add('reasonForConnectionRequestPage', ()=> {
+    //Enter text in the reason text area
+	cy.get('#reason').type('Test connection request');
+	//click continue button on reason for connection page
+	cy.get('div.govuk-grid-row button').click();
+})
 
+//----------------------how can the service contact page -----------------------------
+Cypress.Commands.add('selectAllCheckboxes', ()=> {
+    // Select all checkboxes
+    cy.get('.govuk-checkboxes__input').check();
+})
+
+Cypress.Commands.add('checkTextOfAllCheckedCheckboxes', (actualCheckedText, expectedCheckedText)=> {
+    // Get label text of all checked checkboxes
+    cy.get('.govuk-checkboxes__input')
+    .filter(':checked')
+    .each(($checkbox) => {
+    // Get the associated label element and extract its text content
+        const labelText = $checkbox.next('.govuk-label').text();
+        actualCheckedText.push(labelText.trim());
+    }).then(()=> {
+      expect(actualCheckedText).to.deep.equal(expectedCheckedText);
+  });
+})
+
+Cypress.Commands.add('selectCheckBoxes', (label)=> {
+    cy.contains('label', label)
+    .parent()
+    .find('input')
+    .check();
+})
+
+Cypress.Commands.add('uncheckSelectedCheckboxes', ()=> {
+    cy.get('.govuk-checkboxes__input:checked').uncheck();
+})
 
 // custom command to overwrite baseUrl if we are using localhost etc
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {

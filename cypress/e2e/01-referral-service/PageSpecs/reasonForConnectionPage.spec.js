@@ -1,7 +1,7 @@
 describe('Reason for connection request page - FHG-2860', ()=> {
 	let enteredContactName = 'James Bond';
 	beforeEach(()=> {
-		cy.visit('https://dev.connect-families-to-support.education.gov.uk');
+		cy.visit('https://test.connect-families-to-support.education.gov.uk');
 		cy.refServLanding();
 		cy.searchbypostcode('bs14 8at');
 		//Select the first result on search results page
