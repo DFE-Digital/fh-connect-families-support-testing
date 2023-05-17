@@ -1,6 +1,6 @@
 describe('Consent page - FHG-2850', ()=> {
 	beforeEach(()=> {
-		cy.visit('https://dev.connect-families-to-support.education.gov.uk');
+		cy.visit('/');
 		cy.refServLanding();
 		cy.searchbypostcode('bs14 8at');
 		//Select the first result on search results page
@@ -27,7 +27,7 @@ describe('Consent page - FHG-2850', ()=> {
 		//check radio buttons heading
 		cy.checkPageHeading('.govuk-fieldset__heading', expectedSubHeading);
 		//check radio buttons text
-		cy.getRadioButtons('.govuk-radios__label', actualRadioButtons, expectedRadioButtons);
+		cy.getRadioButtonsAndCheckboxes('.govuk-radios__label', actualRadioButtons, expectedRadioButtons);
 	})
 
 	it('AC1,AC4 - should display contact in the family page when selected Yes', () => {

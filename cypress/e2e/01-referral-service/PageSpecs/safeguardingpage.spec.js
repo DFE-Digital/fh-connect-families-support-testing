@@ -1,7 +1,7 @@
 
 describe('safeguarding page - FHG-2848', ()=> {
 	beforeEach(()=> {
-		cy.visit('https://dev.connect-families-to-support.education.gov.uk');
+		cy.visit('/');
 		cy.refServLanding();
 		cy.searchbypostcode('bs14 8at');
 		//Select the first result on search results page
@@ -14,7 +14,7 @@ describe('safeguarding page - FHG-2848', ()=> {
 		const expectedHeading = 'Do not use this service to report safeguarding concerns';
 		const expectedPanelText = 'Use the NHS safeguarding app (opens in new tab) for guidance on reporting safeguarding concerns.';
 		const expectedNhsLink = 'https://nhssafeguarding.app';
-		const expectedContinueLink = "/ProfessionalReferral/Consent?serviceId=354";
+		const expectedContinueLink = "/ProfessionalReferral/Consent?serviceId=277";
 
 		//Verify the content on the safeguarding page
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
