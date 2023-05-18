@@ -43,11 +43,17 @@ describe('Family contact page - FHG-2858', ()=> {
 	it('AC2 - should display error message when clicked on continue with no name entered', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Enter a full name';
+		const expectedPageHeading = 'Reason for the connection request';
+		const enteredContactName = 'James bond';
 	
 		//click continue button on family contact page
 		cy.get('div.govuk-grid-row button').click();
 		//check error banner
 		cy.checkErrorText(errorHeading, errorMessage);
+		//enter a contact name and continue on family contact page
+		cy.enterTextAndContinue('.govuk-input', enteredContactName, 'div.govuk-grid-row button');
+		//check page heading on reason for request for support page
+		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
 	})
 
 	it('AC3 - text box should accept additional spaces, hyphens, dashes, brackets, special characters, numbers and symbols', ()=> {

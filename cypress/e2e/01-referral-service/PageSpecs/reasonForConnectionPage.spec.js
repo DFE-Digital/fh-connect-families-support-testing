@@ -64,6 +64,7 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 		const expectedHintText = 'You have 25 characters too many';
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Reason for the connection request must be 500 characters or less';
+		const expectedHeading = 'How can the service contact James Bond?';
 
 		//Enter text in the reason text area
 		cy.get('#reason').type(enteredText);
@@ -75,6 +76,12 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 		cy.checkErrorText(errorHeading, errorMessage);
 		//check hint text for character count after error message
 		cy.checkTextOf('.govuk-character-count__message:not(.govuk-visually-hidden)', expectedHintText);
+		//Enter text in the reason text area
+		cy.get('#reason').clear().type('Test connection request');
+		//click continue button on reason for connection page
+		cy.get('div.govuk-grid-row button').click();
+		//check page heading
+		cy.checkPageHeading('.govuk-fieldset__heading', expectedHeading);
 	})
 
 	it('AC4 - display error message on submitting a blank text box', ()=> {

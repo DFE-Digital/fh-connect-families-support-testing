@@ -40,11 +40,17 @@ describe('What is the email address page - FHG-2866', ()=> {
 	it('AC2 - should display error message when no email is entered', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Enter an email address in the correct format, like name@example.com';
+		const nextPageHeading = 'How can the service engage with this family?';
+		const enteredEmailAddress = 'test@abc.com';
 	
 		//click continue button 
 		cy.get('div.govuk-grid-row button').click();
 		//check error banner
 		cy.checkErrorText(errorHeading, errorMessage);
+		//enter a valid email address and continue 
+		cy.enterTextAndContinue('.govuk-input', enteredEmailAddress, 'div.govuk-grid-row button');
+		//check next page heading
+		cy.checkPageHeading('.govuk-heading-l', nextPageHeading)
 	})
 
 	it('AC3 - should display error message when an invalid email is entered', ()=> {

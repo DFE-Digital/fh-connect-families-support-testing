@@ -99,10 +99,17 @@ describe('How can the service contact family member page - FHG-2862', ()=> {
 	it('AC8 - should display error message when no checkbox is selected', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Select a contact method';
+		const nextPageHeading = 'What is the email address for James Bond?';
 	
 		//click continue button on family contact page
 		cy.get('div.govuk-grid-row button').click();
 		//check error banner
 		cy.checkErrorText(errorHeading, errorMessage);	
+		//select checkbox
+		cy.selectCheckBoxes('Email');
+		//click continue button
+		cy.get('div.govuk-grid-row button').click();
+		//check next page heading
+		cy.checkPageHeading('h1', nextPageHeading);
 	})
 })

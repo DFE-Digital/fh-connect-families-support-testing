@@ -52,13 +52,21 @@ describe('Consent page - FHG-2850', ()=> {
 		cy.checkPageHeading('.govuk-heading-l',expectedCannotConnectPageHeading);
 	})
 
-	it('AC3 - should display error message when no button is selected', ()=> {
+	it('AC3 - should continue the journey after error message is displayed', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Select whether you have permission from the family to share details.';
+		const expectedContactPageHeading = 'Who should the service contact in the family?';
+
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//Check error banner
 		cy.checkErrorText(errorHeading, errorMessage);
+		//click on Yes radio button
+		cy.get('#consent').click();
+		//click continue button on consent page
+		cy.get('div.govuk-grid-row button').click();
+		//check contact in the family page heading
+		cy.checkPageHeading('.govuk-heading-l',expectedContactPageHeading)
 	})
 
 	it('AC5 - clicking on back link should display safeguarding page', () => {
