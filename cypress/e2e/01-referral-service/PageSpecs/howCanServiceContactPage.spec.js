@@ -96,7 +96,7 @@ describe('How can the service contact family member page - FHG-2862', ()=> {
 		});
 	})
 
-	it.only('AC8 - should display error message when no checkbox is selected', ()=> {
+	it('AC8 - should display error message when no checkbox is selected', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Select a contact method';
 		const nextPageHeading = 'What is the email address for James Bond?';

@@ -52,7 +52,7 @@ describe('Consent page - FHG-2850', ()=> {
 		cy.checkPageHeading('.govuk-heading-l',expectedCannotConnectPageHeading);
 	})
 
-	it.only('AC3 - should continue the journey after error message is displayed', ()=> {
+	it('AC3 - should continue the journey after error message is displayed', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Select whether you have permission from the family to share details.';
 		const expectedContactPageHeading = 'Who should the service contact in the family?';

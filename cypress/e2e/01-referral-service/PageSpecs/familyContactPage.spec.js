@@ -40,7 +40,7 @@ describe('Family contact page - FHG-2858', ()=> {
 		cy.checkValueOfTextBox('.govuk-input', enteredContactName);
 	})
 
-	it.only('AC2 - should display error message when clicked on continue with no name entered', ()=> {
+	it('AC2 - should display error message when clicked on continue with no name entered', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Enter a full name';
 		const expectedPageHeading = 'Reason for the connection request';
