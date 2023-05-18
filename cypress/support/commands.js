@@ -337,7 +337,7 @@ Cypress.Commands.add('checkValueOfTextBox', (locator, expectedText)=> {
 
 Cypress.Commands.add('enterTextAndContinue', (textBoxLocator, enteredtext, continueLocator)=> {
     //enter a contact name
-	cy.get(textBoxLocator).type(enteredtext);
+	cy.get(textBoxLocator).clear().type(enteredtext);
 	//click continue button on contact name page
 	cy.get(continueLocator).click();
 })

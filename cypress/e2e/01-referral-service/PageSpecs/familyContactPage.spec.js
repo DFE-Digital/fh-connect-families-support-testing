@@ -69,7 +69,7 @@ describe('Family contact page - FHG-2858', ()=> {
 
 		//Click on back link
 		cy.clickBackLink();
-		//verify safeguarding page heading
+		//verify page heading
 		cy.checkPageHeading('.govuk-heading-l', expectedConsentPageHeading);
 	})
 })
