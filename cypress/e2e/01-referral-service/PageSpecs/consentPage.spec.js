@@ -66,7 +66,7 @@ describe('Consent page - FHG-2850', ()=> {
 
 		//Click on back link
 		cy.clickBackLink();
-		//verify safeguarding page heading
+		//verify page heading
 		cy.checkPageHeading('.govuk-heading-l', expectedSafeguardingPageHeading);
 	})
 })
