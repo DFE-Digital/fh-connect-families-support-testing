@@ -1,4 +1,4 @@
-describe('What is the email address page - FHG-2866', ()=> {
+describe('telephone number page - FHG-2868', ()=> {
 	beforeEach(()=> {
 		cy.visit('/');
 		cy.refServLanding();
@@ -16,15 +16,15 @@ describe('What is the email address page - FHG-2866', ()=> {
 		//enter reason and continue on reason for connection request page
 		cy.reasonForConnectionRequestPage();
 		//select email address checkbox
-		cy.selectCheckBoxes('Email');
+		cy.selectCheckBoxes('Telephone');
 		//click continue button
 		cy.get('div.govuk-grid-row button').click();
 	})
 
-	it('AC1 - verify content and navigation to next page', ()=> {
-		const pageHeading = 'What is the email address for James Bond?';
-		const expectedLabel = 'Email address';
-		const enteredEmailAddress = 'test@abc.com';
+	it('AC1, AC2, AC3 - verify content and navigation to next page', ()=> {
+		const pageHeading = 'What telephone number should the service use to call James Bond?';
+		const expectedLabel = 'UK telephone number';
+		const enteredTelephoneNumber = '+]4((4)]- 808- 157-(0192)';
 		const nextPageHeading = 'How can the service engage with this family?';
 
 		//check email address page heading
@@ -32,40 +32,40 @@ describe('What is the email address page - FHG-2866', ()=> {
 		//check label text
 		cy.checkTextOf('.govuk-label', expectedLabel);
 		//enter a valid email address and continue 
-		cy.enterTextAndContinue('.govuk-input', enteredEmailAddress, 'div.govuk-grid-row button');
+		cy.enterTextAndContinue('.govuk-input', enteredTelephoneNumber, 'div.govuk-grid-row button');
 		//check next page heading
 		cy.checkPageHeading('.govuk-heading-l', nextPageHeading);
 	})
 
-	it('AC2 - should display error message when no email is entered', ()=> {
+	it('AC4 - should display error message when no telephone is entered', ()=> {
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'Enter an email address in the correct format, like name@example.com';
+		const errorMessage = 'Enter a UK telephone number';
 		const nextPageHeading = 'How can the service engage with this family?';
-		const enteredEmailAddress = 'test@abc.com';
+		const enteredTelephoneNumber = '01656 861 384 ext. 12345';
 	
 		//click continue button 
 		cy.get('div.govuk-grid-row button').click();
 		//check error banner
 		cy.checkErrorText(errorHeading, errorMessage);
-		//enter a valid email address and continue 
-		cy.enterTextAndContinue('.govuk-input', enteredEmailAddress, 'div.govuk-grid-row button');
+		//enter a valid telephone number and continue 
+		cy.enterTextAndContinue('.govuk-input', enteredTelephoneNumber, 'div.govuk-grid-row button');
 		//check next page heading
 		cy.checkPageHeading('.govuk-heading-l', nextPageHeading)
 	})
 
-	it('AC3 - should display error message when an invalid email is entered', ()=> {
+	it('AC5 - should display error message when an invalid telephone number is entered', ()=> {
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'Enter an email address in the correct format, like name@example.com';
-		const invalidEmails = ['test@', 'test123', '@abc.com'];
-		invalidEmails.forEach((invalidEmail) => {
-			//enter an invalid email address and continue 
-			cy.enterTextAndContinue('.govuk-input', invalidEmail, 'div.govuk-grid-row button');
+		const errorMessage = 'Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192';
+		const invalidNumbers = ['+1 212-555-1234', '0746260ign1234', '+448081570192$', 'try hostel:01656861389, Friends house:01656861389'];
+		invalidNumbers.forEach((invalidNumber) => {
+			//enter an invalid telephone number and continue 
+			cy.enterTextAndContinue('.govuk-input', invalidNumber, 'div.govuk-grid-row button');
 			//check error banner
 			cy.checkErrorText(errorHeading, errorMessage);
 		});
 	})
 
-	it('AC4 - should navigate contact methods page using back link', ()=> {
+	it('AC6 - should navigate contact methods page using back link', ()=> {
 		const expectedPageHeading = 'How can the service contact James Bond?';
 
 		//Click on back link
