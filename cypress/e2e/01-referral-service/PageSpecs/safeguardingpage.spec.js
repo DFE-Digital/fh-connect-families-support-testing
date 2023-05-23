@@ -8,6 +8,8 @@ describe('safeguarding page - FHG-2848', ()=> {
 		cy.get('ul.search-results>li:nth-child(1) a').click();
 		//Click on Request a connection button
 		cy.get('a:contains("Request a connection")').click();
+		//stub-login
+		cy.stubLogin()
 	})
 
 	it('AC1, AC2 - should have the correct content', ()=> {

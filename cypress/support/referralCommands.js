@@ -17,7 +17,7 @@ Cypress.Commands.add('searchbypostcode', (postcode) => {
 })
 // search results page
 Cypress.Commands.add('searchResults',(postcode)=>{
-    cy.contains(`search results for: ${postcode}`)
+    cy.contains(`Showing results for: ${postcode}`)
 })
 // filter commands
 Cypress.Commands.add('ageFilter',(selection)=>{
@@ -148,4 +148,8 @@ Cypress.Commands.add('contactUsPage',()=>{
   // feedback footer link
   Cypress.Commands.add('feedbackFooterLink',()=>{
     cy.get('[data-testid="feedback-link"]').should("have.attr", "href").and("include", "https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_eKgvRcn8vp4QtTM");
+  })
+ // stub login
+  Cypress.Commands.add('stubLogin',()=>{
+    cy.get('[href="/account/stub/roleSelected?user=dfeAdmin.user@stub.com&redirect=ProfessionalReferral/Safeguarding?serviceId=277"] > button').click()
   })

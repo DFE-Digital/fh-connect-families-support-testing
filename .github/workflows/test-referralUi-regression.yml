@@ -11,7 +11,7 @@ jobs:
     environment: information sharing - referral-ui
     env:
       CYPRESS_BASE_URL: "https://test.connect-families-to-support.education.gov.uk/"
-    name: " 🛎️ RegressionTests - IS - referral UI - Azure Dev Environment "
+    name: " 🛎️ RegressionTests - IS - referral UI - Test Environment "
     runs-on: ubuntu-22.04
     strategy:
       fail-fast: false

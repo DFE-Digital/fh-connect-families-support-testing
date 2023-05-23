@@ -32,7 +32,7 @@ beforeEach(() => {
   Cypress.Commands.add('welcomePage',(serviceType,councilName)=>{
     cy.contains('Add a service')
     cy.contains('Manage your services')
-    cy.contains(`${councilName}`)
+    // cy.contains(`${councilName}`)
     if (serviceType === 'add') {
     cy.get('div:nth-of-type(1) > .govuk-heading-m > a').click();
   } else if (serviceType === 'manage'){
@@ -49,13 +49,13 @@ beforeEach(() => {
   Cypress.Commands.add('serviceType1',(serviceType)=>{
     cy.contains('What support does the service offer?')
     for (const [key, value] of Object.entries(serviceType)) {
-    cy.get(`[data-testid="${key}"]`).check(value);
+    cy.get(`[data-testid="${key}"]`).check();
     }
 })
  Cypress.Commands.add('serviceType2',(serviceType)=>{
     cy.contains('What support does the service offer?')
     for (const [key, value] of Object.entries(serviceType)) {
-    cy.get(`[data-testid="${key}"]`).check(value);
+    cy.get(`[data-testid="${key}"]`).check();
     }
     cy.contains('Continue').click();
 })

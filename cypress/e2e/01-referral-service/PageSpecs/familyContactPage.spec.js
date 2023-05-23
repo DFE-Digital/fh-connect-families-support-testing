@@ -7,6 +7,8 @@ describe('Family contact page - FHG-2858', ()=> {
 		cy.get('ul.search-results>li:nth-child(1) a').click();
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
+		//stub-login
+		cy.stubLogin()
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on consent page
@@ -58,7 +60,7 @@ describe('Family contact page - FHG-2858', ()=> {
 
 	it('AC3 - text box should accept additional spaces, hyphens, dashes, brackets, special characters, numbers and symbols', ()=> {
 		const expectedPageHeading = 'Reason for the connection request';
-		const enteredContactName = "Test   -_ (  Test) 167 %$!\"£^&*;:@',.<>#~}{[]|¬" ;
+		const enteredContactName = "Test   -_ (  Test) 167 %$!\"ï¿½^&*;:@',.<>#~}{[]|ï¿½" ;
 
 		//enter a contact name
 		cy.enterTextAndContinue('.govuk-input', enteredContactName, 'div.govuk-grid-row button');
