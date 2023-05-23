@@ -17,7 +17,7 @@
     "test": "yarn run scripts || npm run posttest",
     "tests": "yarn run pretests && (npm run alltests || npm run posttests)",
     "open:admin-dev": "CYPRESS_BASE_URL=https://s181d01-as-fh-sd-admin-ui-dev.azurewebsites.net/ npx cypress open",
-    "open:admin-test": "CYPRESS_BASE_URL=https://s181t01-as-fh-sd-admin-ui-main.azurewebsites.net/ npx cypress open",
+    "open:admin-test": "CYPRESS_BASE_URL=https://test.manage-family-support-services-and-accounts.education.gov.uk/ npx cypress open",
     "open:referral-dev": "CYPRESS_BASE_URL=https://s181d01-as-fh-referral-ui-dev.azurewebsites.net/ npx cypress open",
     "open:referral-test": "CYPRESS_BASE_URL=https://test.connect-families-to-support.education.gov.uk/ npx cypress open",
     "open:referral-prod": "CYPRESS_BASE_URL=https://connect-families-to-support.education.gov.uk// npx cypress open",
