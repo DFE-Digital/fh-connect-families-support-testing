@@ -90,7 +90,7 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 	it('AC4 - display error message on submitting a blank text box', ()=> {
 		const expectedHintText = 'You have 500 characters remaining';
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'Enter reason for the connection request';
+		const errorMessage = 'Enter a reason for the connection request';
 
 		//click continue button on reason for connection page
 		cy.get('div.govuk-grid-row button').click();

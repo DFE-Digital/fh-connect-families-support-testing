@@ -17,7 +17,7 @@ Cypress.Commands.add('searchbypostcode', (postcode) => {
 })
 // search results page
 Cypress.Commands.add('searchResults',(postcode)=>{
-    cy.contains(`search results for: ${postcode}`)
+    cy.contains(`Showing results for: ${postcode}`)
 })
 // filter commands
 Cypress.Commands.add('ageFilter',(selection)=>{

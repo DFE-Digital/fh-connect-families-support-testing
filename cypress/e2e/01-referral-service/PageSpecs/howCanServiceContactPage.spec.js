@@ -7,6 +7,8 @@ describe('How can the service contact family member page - FHG-2862', ()=> {
 		cy.get('ul.search-results>li:nth-child(1) a').click();
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
+		//stub-login
+		cy.stubLogin()
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on consent page
