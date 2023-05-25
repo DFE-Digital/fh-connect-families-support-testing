@@ -151,5 +151,5 @@ Cypress.Commands.add('contactUsPage',()=>{
   })
  // stub login
   Cypress.Commands.add('stubLogin',()=>{
-    cy.get('[href="/account/stub/roleSelected?user=dfeAdmin.user@stub.com&redirect=ProfessionalReferral/Safeguarding?serviceId=277"] > button').click()
+    cy.contains('button', 'dfeAdmin.user@stub.com').click();
   })

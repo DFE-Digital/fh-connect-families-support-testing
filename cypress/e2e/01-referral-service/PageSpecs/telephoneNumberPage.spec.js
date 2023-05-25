@@ -17,7 +17,7 @@ describe('telephone number page - FHG-2868', ()=> {
 		cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
 		//enter reason and continue on reason for connection request page
 		cy.reasonForConnectionRequestPage();
-		//select email address checkbox
+		//select telephone checkbox
 		cy.selectCheckBoxes('Telephone');
 		//click continue button
 		cy.get('div.govuk-grid-row button').click();
