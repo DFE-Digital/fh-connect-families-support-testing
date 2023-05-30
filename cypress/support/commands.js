@@ -342,6 +342,11 @@ Cypress.Commands.add('enterTextAndContinue', (textBoxLocator, enteredtext, conti
 	cy.get(continueLocator).click();
 })
 
+Cypress.Commands.add('enterText', (textBoxLocator, enteredtext)=> {
+    //enter a contact name
+	cy.get(textBoxLocator).clear().type(enteredtext);
+})
+
 //------------------NHS safeguarding page----------------------
 Cypress.Commands.add('checkSafeGuardingPagePanelText', (expectedPanelText) => {
     cy.get('.interrupt-panel p').should('have.text',expectedPanelText)
@@ -353,6 +358,25 @@ Cypress.Commands.add('checkSafeGuardingPageContinueButton', (expectedContinueLin
 		cy.get('.app-button--inverted').click();
 		cy.url().should('include',expectedContinueLink);
 	})
+})
+
+//-------------------------Address page------------------------------------
+Cypress.Commands.add('checkErrorBannerAndMessages', (expectedErrorHeading, expectedErrorText, actualErrorBannerText, actualMessages) => {
+    cy.get('.govuk-error-summary__title').invoke('text').then((text) => {
+		expect(text.trim()).to.equal(expectedErrorHeading);
+	})
+	cy.get('.govuk-error-summary__body li').each(($el) => {
+		actualErrorBannerText.push($el.text().trim())
+		}).then(()=>{
+		expect(actualErrorBannerText).to.deep.equal(expectedErrorText)
+	})
+
+    cy.get('.govuk-error-message').each(($el) => {
+		actualMessages.push($el.text().replace('Error:','').trim().split('\n').shift())
+		}).then(()=>{
+		expect(actualMessages).to.deep.equal(expectedErrorText)
+	})
+    console.log(actualMessages)
 })
 
 //-----------------------Consent page---------------------------

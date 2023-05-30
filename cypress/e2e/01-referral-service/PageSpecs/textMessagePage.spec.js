@@ -17,7 +17,7 @@ describe('text message page - FHG-2876', ()=> {
 		cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
 		//enter reason and continue on reason for connection request page
 		cy.reasonForConnectionRequestPage();
-		//select email address checkbox
+		//select text message checkbox
 		cy.selectCheckBoxes('Text message');
 		//click continue button
 		cy.get('div.govuk-grid-row button').click();
@@ -29,7 +29,7 @@ describe('text message page - FHG-2876', ()=> {
 		const enteredTelephoneNumber = '+]4((4)]- 808- 157-(0192)';
 		const nextPageHeading = 'How can the service engage with this family?';
 
-		//check email address page heading
+		//check page heading
 		cy.checkPageHeading('h1', pageHeading);
 		//check label text
 		cy.checkTextOf('.govuk-label', expectedLabel);
