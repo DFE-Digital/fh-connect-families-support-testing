@@ -407,6 +407,18 @@ Cypress.Commands.add('reasonForConnectionRequestPage', ()=> {
 	cy.get('div.govuk-grid-row button').click();
 })
 
+//---------------------- confirmation page --------------------------------------
+Cypress.Commands.add('checkPanelText', (expectedHeading)=> {
+    //check heading
+    cy.get('.govuk-panel--confirmation h1').invoke('text').then((text)=> {
+        expect(text.trim()).to.equal(expectedHeading);
+    })
+    cy.get('.govuk-panel--confirmation > .govuk-panel__body').invoke('text')
+    .then((text)=> {
+        expect(text.trim()).to.include('Request number')
+    })
+})
+
 //----------------------how can the service contact page -----------------------------
 Cypress.Commands.add('selectAllCheckboxes', ()=> {
     // Select all checkboxes
