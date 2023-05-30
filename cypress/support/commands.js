@@ -446,14 +446,9 @@ Cypress.Commands.add('checkRequestDetails', (expectedContent)=> {
         const value = $row.find('dd.govuk-summary-list__value').text().trim();
         expect(value).to.equal(expectedContent[key]);
 
-        const linkText = $row.find('.govuk-summary-list__actions a')
-        .not('.govuk-visually-hidden')
-        .contents() // Get all contents (including text and elements)
-        .filter(()=> {  return this.nodeType === 3; // Filter only text nodes
-        }).text().trim();
-
-        expect(linkText).to.equal('Change');
-    });
+        cy.get($row).find('a:not(.govuk-visually-hidden)')
+            .should('contain', 'Change');
+    })
 })
 
 Cypress.Commands.add('clickOnChangeLinkFor', (key)=> {
