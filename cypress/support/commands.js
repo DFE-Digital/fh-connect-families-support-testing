@@ -437,6 +437,30 @@ Cypress.Commands.add('uncheckSelectedCheckboxes', ()=> {
     cy.get('.govuk-checkboxes__input:checked').uncheck();
 })
 
+//----------------------------Check details page ------------------------
+Cypress.Commands.add('checkRequestDetails', (expectedContent)=> {
+// Iterate over the elements with class "govuk-summary-list__row"
+    cy.get('div.govuk-summary-list__row').each(($row) => {
+        // Extract the key and value from each row
+        const key = $row.find('dt.govuk-summary-list__key').text().trim();
+        const value = $row.find('dd.govuk-summary-list__value').text().trim();
+        expect(value).to.equal(expectedContent[key]);
+
+        cy.get($row).find('a:not(.govuk-visually-hidden)')
+            .should('contain', 'Change');
+    })
+})
+
+Cypress.Commands.add('clickOnChangeLinkFor', (key)=> {
+    cy.get('.govuk-summary-list__row')
+    .filter((index, element) => {
+        const keyElement = Cypress.$(element).find('.govuk-summary-list__key');
+        return keyElement.text().trim() === key;
+    })
+    .find('a')
+    .click();
+})
+
 // custom command to overwrite baseUrl if we are using localhost etc
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   const space = Cypress.env('SPACE');
