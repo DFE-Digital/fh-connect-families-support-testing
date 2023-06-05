@@ -151,5 +151,5 @@ Cypress.Commands.add('contactUsPage',()=>{
   })
  // stub login
   Cypress.Commands.add('stubLogin',()=>{
-    cy.contains('button', 'dfeAdmin.user@stub.com').click();
+    cy.contains('button', 'joe.professional@stub.com').click();
   })
