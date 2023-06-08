@@ -24,7 +24,7 @@ describe('safeguarding page - FHG-2848', ()=> {
 		cy.checkLinkHref('#nhs-safeguarding',expectedNhsLink);
 		//verify nhs link target attribute to determine if it opens in a new tab
 		cy.get('#nhs-safeguarding').should('have.attr', 'target', '_blank');
-		cy.checkSafeGuardingPageContinueButton(expectedContinueLink);
+		cy.checkSafeGuardingPageContinueButton();
 	})
 
 	it('AC3 - back link should take to service details page', ()=> {

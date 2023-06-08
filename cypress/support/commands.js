@@ -352,11 +352,11 @@ Cypress.Commands.add('checkSafeGuardingPagePanelText', (expectedPanelText) => {
     cy.get('.interrupt-panel p').should('have.text',expectedPanelText)
 })
 
-Cypress.Commands.add('checkSafeGuardingPageContinueButton', (expectedContinueLink) => {
-    cy.get('.app-button--inverted').invoke('attr', 'href').then((href) => {
-		expect(href).to.contain(expectedContinueLink);
+Cypress.Commands.add('checkSafeGuardingPageContinueButton', () => {
+    cy.get('.app-button--inverted').invoke('text').then((text) => {
+		expect(text.trim()).to.equal('Continue');
 		cy.get('.app-button--inverted').click();
-		cy.url().should('include',expectedContinueLink);
+		cy.url().should('include','/ProfessionalReferral/Consent?ServiceId=277');
 	})
 })
 
