@@ -8,7 +8,7 @@ describe('Cannot connect family to service page - FHG-2853', ()=> {
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin()
+		cy.stubLogin('joe.professional@stub.com');
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
 		//click on No radio button and continue on consent page

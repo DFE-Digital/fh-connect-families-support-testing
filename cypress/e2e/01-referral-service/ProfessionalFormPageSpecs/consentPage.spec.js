@@ -9,7 +9,7 @@ describe('Consent page - FHG-2850', ()=> {
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin()
+		cy.stubLogin('joe.professional@stub.com');
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
 	})
@@ -57,7 +57,7 @@ describe('Consent page - FHG-2850', ()=> {
 
 	it('AC3 - should continue the journey after error message is displayed', ()=> {
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'Select whether you have permission from the family to share details.';
+		const errorMessage = 'Select whether you have permission from the family to share details';
 		const expectedContactPageHeading = 'Who should the service contact in the family?';
 
 		//click continue button on consent page

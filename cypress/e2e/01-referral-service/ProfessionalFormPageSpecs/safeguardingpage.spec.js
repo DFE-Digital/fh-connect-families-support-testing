@@ -9,7 +9,7 @@ describe('safeguarding page - FHG-2848', ()=> {
 		//Click on Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin()
+		cy.stubLogin('joe.professional@stub.com');
 	})
 
 	it('AC1, AC2 - should have the correct content', ()=> {

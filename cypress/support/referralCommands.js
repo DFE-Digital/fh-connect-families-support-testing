@@ -150,6 +150,6 @@ Cypress.Commands.add('contactUsPage',()=>{
     cy.get('[data-testid="feedback-link"]').should("have.attr", "href").and("include", "https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_eKgvRcn8vp4QtTM");
   })
  // stub login
-  Cypress.Commands.add('stubLogin',()=>{
-    cy.contains('button', 'joe.professional@stub.com').click();
+  Cypress.Commands.add('stubLogin',(user)=>{
+    cy.contains('button', user).click();
   })
