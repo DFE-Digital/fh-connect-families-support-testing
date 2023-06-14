@@ -308,7 +308,7 @@ Cypress.Commands.add('clickBackLink', ()=> {
 
 Cypress.Commands.add('getTextOfElements', (locator, actualList, expectedList) => {
     cy.get(locator).each(($element) => {
-		const text = $element.text();
+		const text = $element.text().trim();
 		actualList.push(text);
 		}).then(() => {
 		expect(actualList).to.deep.equal(expectedList);
@@ -417,6 +417,17 @@ Cypress.Commands.add('checkPanelText', (expectedHeading)=> {
     .then((text)=> {
         expect(text.trim()).to.include('Request number')
     })
+})
+
+//---------------------------- VCS dashboard - Received requests page ---------------------------
+Cypress.Commands.add('checkSortOrder', (value, sortOrder)=> {
+    cy.get('th.govuk-table__header').eq(value).invoke('attr', 'aria-sort').then((ariasort) => {
+    expect(ariasort).to.equal(sortOrder);
+	});
+})
+
+Cypress.Commands.add('checkPaginationSelection', (value)=> {
+    cy.contains('li.govuk-pagination__item a', value).should('have.attr', 'aria-current', '"page"');
 })
 
 //----------------------how can the service contact page -----------------------------

@@ -1,4 +1,5 @@
-describe('How can the service engage with the family - FHG-2880', ()=> {
+describe('Reason for connection request page - FHG-2860', ()=> {
+	let enteredContactName = 'James Bond';
 	beforeEach(()=> {
 		cy.visit('/');
 		cy.refServLanding();
@@ -8,39 +9,31 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin()
+		cy.stubLogin('joe.professional@stub.com');
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on consent page
 		cy.selectRadioButtonAndContinue('#consent', 'div.govuk-grid-row button');
+		
 		//enter a contact name and continue on family contact name page
-		cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
-		//enter reason and continue 
-		cy.reasonForConnectionRequestPage();
-		//select email address checkbox
-		cy.selectCheckBoxes('Email');
-		//click continue button
-		cy.get('div.govuk-grid-row button').click();
-		//enter a valid email address and continue 
-		cy.enterTextAndContinue('.govuk-input', 'a@test.com', 'div.govuk-grid-row button');
+		cy.enterTextAndContinue('.govuk-input', enteredContactName, 'div.govuk-grid-row button');
 	})
 
-	it('AC6 - should have the correct content', ()=> {
-		const expectedPageHeading = 'How can the service engage with this family?';
-		const expectedStaticText = ['Let the service know the best way to engage with the family, such as:',
-		'best time and day to contact', 
-		'preferred method for contact',
-		'communication needs such as an interpreter or textphone',
-		'if they would prefer to receive messages via WhatsApp'];
+	it('AC7 - should have the correct content', ()=> {
+		const expectedPageHeading = 'Reason for the connection request';
+		const expectedStaticText = ['Use this to give the service details about the family, for example:',
+		'why the family needs help', 
+		'other organisations currently working with the family',
+		'if any family members have mental health conditions or special educational needs or disabilities',
+		'important things to note such as domestic abuse'];
 
 		const expectedLabel = 'What do you want to tell the service?';
 		const expectedHintText = 'You have 500 characters remaining';
-		const previousPageHeading = 'What is the email address for James Bond?'
 		let actualStaticText = [];
 
-		//check page heading 
+		//check page heading on reason for request for support page
 		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
-		//check static text 
+		//check static text on the reason for request for support page
 		cy.getTextOfElements('main#main-content p, main#main-content li', actualStaticText, expectedStaticText);
 		//check heading label on the form
 		cy.checkTextOf('.govuk-label', expectedLabel);
@@ -48,41 +41,39 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 		cy.checkTextOf('.govuk-hint:not(.govuk-visually-hidden)', expectedHintText);
 		//click on back link
 		cy.clickBackLink();
-		//check previous page heading
-		cy.checkPageHeading('.govuk-heading-l', previousPageHeading)
-		//check saved email in the text box
-		cy.checkValueOfTextBox('.govuk-input', 'a@test.com');
+		//check saved contact name in the text box
+		cy.checkValueOfTextBox('.govuk-input', enteredContactName);
 	})
 
-	it('AC1, AC5 - should navigate to check details page', ()=> {
-		const expectedHeading = 'Check the details you entered before requesting a connection';
+	it('AC1, AC6 - should navigate to How can the service contact page', ()=> {
+		const expectedHeading = 'How can the service contact James Bond?';
 		const initialHintText = 'You have 500 characters remaining';
-		const finalHintText = 'You have 464 characters remaining';
+		const finalHintText = 'You have 477 characters remaining';
 
 		//check hint text for character count with blank text box
 		cy.checkTextOf('.govuk-hint:not(.govuk-visually-hidden)', initialHintText);
 		//Enter text in the reason text area
-		cy.get('#reason').type('Test service engage with this family');
+		cy.get('#reason').type('Test connection request');
 		//check hint text for character count after entering the text
 		cy.checkTextOf('.govuk-hint:not(.govuk-visually-hidden)', finalHintText);
-		//click continue button 
+		//click continue button on reason for connection page
 		cy.get('div.govuk-grid-row button').click();
 		//check page heading
-		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
+		cy.checkPageHeading('.govuk-fieldset__heading', expectedHeading);
 	})
 
 	it('AC2, AC3 - display error message and exceeded character count', ()=> {
 		const enteredText =	'Test connection request. '.repeat(21);
 		const expectedHintText = 'You have 25 characters too many';
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'How the service can engage with the family must be 500 characters or less';
-		const expectedHeading = 'Check the details you entered before requesting a connection';
+		const errorMessage = 'Reason for the connection request must be 500 characters or less';
+		const expectedHeading = 'How can the service contact James Bond?';
 
 		//Enter text in the reason text area
 		cy.get('#reason').type(enteredText);
 		//check hint text for character count
 		cy.checkTextOf('.govuk-character-count__message:not(.govuk-visually-hidden)', expectedHintText);
-		//click continue button 
+		//click continue button on reason for connection page
 		cy.get('div.govuk-grid-row button').click();
 		//check error banner
 		cy.checkErrorText(errorHeading, errorMessage);
@@ -90,22 +81,36 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 		cy.checkTextOf('.govuk-character-count__message:not(.govuk-visually-hidden)', expectedHintText);
 		//Enter text in the reason text area
 		cy.get('#reason').clear().type('Test connection request');
-		//click continue button 
+		//click continue button on reason for connection page
 		cy.get('div.govuk-grid-row button').click();
 		//check page heading
-		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
+		cy.checkPageHeading('.govuk-fieldset__heading', expectedHeading);
 	})
 
 	it('AC4 - display error message on submitting a blank text box', ()=> {
 		const expectedHintText = 'You have 500 characters remaining';
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'Enter how best to engage with this family';
+		const errorMessage = 'Enter a reason for the connection request';
 
-		//click continue button 
+		//click continue button on reason for connection page
 		cy.get('div.govuk-grid-row button').click();
 		//check error banner
 		cy.checkErrorText(errorHeading, errorMessage);
 		//check hint text for character count after error message
 		cy.checkTextOf('.govuk-hint:not(.govuk-visually-hidden)', expectedHintText);
 	})
+
+	it('AC5 - should display family contact page on clicking back link', ()=> {
+		const expectedPageHeading = 'Who should the service contact in the family?';
+		
+		//Enter text in the reason text area
+		cy.get('#reason').type('Test Test');
+		//click on back link
+		cy.clickBackLink();
+		//check saved contact name in the text box
+		cy.checkValueOfTextBox('.govuk-input', enteredContactName);
+		//check page heading
+		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
+	})
+
 })
