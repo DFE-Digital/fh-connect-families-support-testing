@@ -12,6 +12,7 @@ cypress/screenshots
 cypress/videos
 cypress/reports
 
+
 # from config, compiled .js files
 packages/config/src/*.js
 

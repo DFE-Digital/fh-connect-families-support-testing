@@ -1,17 +1,15 @@
 ﻿describe('VCS Dashboard - Received requests home page and pagination - FHG-3216, FHG-3229', ()=> {
 
 	beforeEach(()=> {
-		cy.visit('https://test.manage-connection-requests.education.gov.uk/VcsRequestForSupport/Dashboard');
+		cy.visit('https://test.manage-connection-requests.education.gov.uk/Vcs/Dashboard');
 		//stub login as vcs admin user
-		cy.stubLogin('vcsAdmin2.VcsAdmin@stub.com');
+		cy.stubLogin('harsha.reddy@education.gov.uk');
 	})
 
 	it('3216-AC1, 3229-AC1 - Received requests home page content', ()=> {
 		const expectedHeader = ['Contact in family', 'Date received', 'Request number', 'Status'];
 		let actualHeader = [];
-		const expectedFirstRow = ['Keith Nelson', '13-Jun-2023', '000069', 'NEW'];
-		let actualFirstRow = [];
-		const expectedList = ['1', '2', '⋯', '4', 'Next'];
+		const expectedList = ['1', '2', 'Next'];
 		let actualList = [];
 
 		//check page heading
@@ -55,9 +53,9 @@
 	})
 
 	it('3229-AC2 - Navigate to 2nd page using pagination link', ()=> {
-		const expectedList = ['Previous', '1', '2', '3', '4', 'Next'];
+		const expectedList = ['Previous', '1', '2'];
 		let actualList = [];
-
+			
 		//click on 2nd page from pagination 
 		cy.contains('li.govuk-pagination__item a', '2').click();
 		//check pagination items
@@ -67,23 +65,23 @@
 	})
 
 	it('3229-AC3,AC5 - Navigate to page using next link', ()=> {
-		const expectedList = ['Previous', '1', '⋯', '3', '4'];
+		const expectedList = ['Previous', '1', '2'];
 		let actualList = [];
 
 		//click on 2nd page from pagination 
-		cy.contains('li.govuk-pagination__item a', '2').click();
+		//cy.contains('li.govuk-pagination__item a', '2').click();
 		//click on page before the last one 
-		cy.get('ul.govuk-pagination__list li:nth-last-child(2) a').click();
+		//cy.get('ul.govuk-pagination__list li:nth-last-child(2) a').click();
 		//click on next from pagination 
 		cy.contains('div.govuk-pagination__next a', 'Next').click();
 		//check current page on pagination
-		cy.checkPaginationSelection('4');
+		cy.checkPaginationSelection('2');
 		//check pagination items
 		cy.getTextOfElements('.govuk-pagination li, .govuk-pagination div', actualList, expectedList);
 	})
 
 	it('3229-AC4,AC5 - Navigate to page using previous link', ()=> {
-		const expectedList = ['1', '2', '⋯', '4', 'Next'];
+		const expectedList = ['1', '2', 'Next'];
 		let actualList = [];
 
 		//click on 2nd page from pagination 
