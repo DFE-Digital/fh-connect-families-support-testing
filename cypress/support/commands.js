@@ -430,6 +430,20 @@ Cypress.Commands.add('checkPaginationSelection', (value)=> {
     cy.contains('li.govuk-pagination__item a', value).should('have.attr', 'aria-current', '"page"');
 })
 
+//-----------------------------VCS dashboard - request details page ----------------------------
+Cypress.Commands.add('checkTableText', (index, actualRowsText, expectedRowsText) => {
+    cy.get('.govuk-summary-list').eq(index).within(() => {
+        cy.get('.govuk-summary-list__row').each((row) => {
+            const key = row.find('.govuk-summary-list__key').text().trim();
+            const value = row.find('.govuk-summary-list__value').text().trim();
+
+            actualRowsText[key] = value;
+        });
+    }).then(() => {
+        expect(actualRowsText).to.deep.equal(expectedRowsText);
+    });
+})
+
 //----------------------how can the service contact page -----------------------------
 Cypress.Commands.add('selectAllCheckboxes', ()=> {
     // Select all checkboxes
