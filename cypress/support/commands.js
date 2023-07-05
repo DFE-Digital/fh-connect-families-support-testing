@@ -324,7 +324,7 @@ Cypress.Commands.add('getRadioButtonsAndCheckboxes', (locator, actualRadioButton
 })
 
 Cypress.Commands.add('checkTextOf', (locator, expectedText)=> {
-    cy.get(locator).invoke('text').then((text)=> {
+    cy.get(locator).should('be.visible').invoke('text').then((text)=> {
         expect(text.trim()).to.equal(expectedText);
     })
 })
