@@ -4,9 +4,7 @@ This repository is responsible for validating / testing various applications on 
 
 Applications:
 
-- Admin service
 - Referral service
-- Identity and Access service
 
 Environments:
 
@@ -31,8 +29,6 @@ yarn install
 Run interactive cypress UI
 
 ```shell
-yarn run open:open:admin-dev
-yarn run open:open:admin-test
 yarn run open:open:referral-dev
 yarn run open:open:referral-test
 ```
