@@ -3,16 +3,20 @@
 
 This repository is responsible for validating / testing various applications on family-hubs/Connect families to support - referral service 
 
-Applications:
+### Applications:
 
 - Referral service
 
-Environments:
+### Environments:
 
 - development - develop branch
 - test - main branch
 
+### Regression 
 Regression suites for each of these environments are configured using github actions
+
+![alt text](https://github.com/DFE-Digital/fh-connect-families-support-testing/actions/workflows/test-referralUi-regression.yml/badge.svg)
+
 
 ### Prerequisites
 
