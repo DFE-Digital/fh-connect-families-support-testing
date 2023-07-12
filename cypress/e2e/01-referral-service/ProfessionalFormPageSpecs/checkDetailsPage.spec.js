@@ -1,4 +1,4 @@
-describe('Check the details page - FHG-2884', ()=> {
+describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 	beforeEach(()=> {
 		const enteredAddress = new Map([
 			['AddressLine1', '1 Test Street'],
@@ -14,11 +14,13 @@ describe('Check the details page - FHG-2884', ()=> {
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin('VcsDualRole@example.com');
+		cy.stubLogin('LaDualRole@example.com');
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
+		//click on Yes radio button and continue on privacy statement page
+		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
 		//enter a contact name and continue on family contact name page
 		cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
 		//enter reason and continue 
@@ -43,6 +45,10 @@ describe('Check the details page - FHG-2884', ()=> {
 		cy.get('#reason').type('Test service engage with this family');
 		//click continue button
 		cy.get('div.govuk-grid-row button').click();
+		//click on Telephone and email radio button
+		cy.get('#telephone-and-email').click();
+		//enter a telephone number and continue
+		cy.enterTextAndContinue('.govuk-input', '01132 347 902', 'div.govuk-grid-row button');
 	})
 
 	it('AC1,AC2 - verify content and connection submit button on check details page', ()=> {
@@ -50,6 +56,7 @@ describe('Check the details page - FHG-2884', ()=> {
 		const expectedSubHeading = 'Now request a connection';
 		const nextPageHeading = 'Connection request sent';
 		const expectedContent = {
+			'Shared privacy statement': 'Yes',
 			'Permission to share details': 'Yes',
 			'Name of contact': 'James Bond',
 			'Reason for request for support': 'Test connection request',
@@ -58,13 +65,14 @@ describe('Check the details page - FHG-2884', ()=> {
 			'Telephone': '0113 234 5678',
 			'Text': '07800980765',
 			'Address': '1 Test StreetBristolBS1 2AD',
-			'How to engage with the family': 'Test service engage with this family'
+			'How to engage with the family': 'Test service engage with this family',
+			'How the service can contact you': 'Email: LaDualRole@example.com\n                        Telephone: 01132 347 902'
 			};
 
 		//check page heading
 		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
 		//check sub heading
-		cy.get('#main-content > .govuk-grid-row > .govuk-grid-column-two-thirds > .govuk-heading-m').should('have.text', 'Now request a connection');		
+		cy.get('#main-content > .govuk-grid-row > .govuk-grid-column-two-thirds > .govuk-heading-m').should('have.text', expectedSubHeading);		
 		//check details
 		cy.checkRequestDetails(expectedContent);
 		//check Confirm details button
@@ -82,7 +90,23 @@ describe('Check the details page - FHG-2884', ()=> {
 		//check page heading
 		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
 		//click on Yes radio button
-		cy.get('#consent').click();
+		cy.get('#consent-yes').click();
+		//click continue button on consent page
+		cy.get('div.govuk-grid-row button').click();
+		//check the page heading
+		cy.checkPageHeading('.govuk-heading-l', nextPageHeading);
+	})
+
+	it('FHG-3670-AC2 - select change link to amend Shared privacy statement details', () => {
+		const expectedPageHeading = 'Share our privacy statement';
+		const nextPageHeading = 'Check the details you entered before requesting a connection';
+
+		//Click on change link
+		cy.clickOnChangeLinkFor('Shared privacy statement');
+		//check page heading
+		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
+		//click on Yes radio button
+		cy.get('#shared-privacy-yes').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check the page heading
@@ -132,6 +156,13 @@ describe('Check the details page - FHG-2884', ()=> {
 				expectedPageHeading: 'How can the service engage with this family?',
 				element: '#reason',
 				enteredText: 'Test how service engages with family'
+			},
+			//FHG-3670 AC1 - check professional contact details
+			{
+				changeLinkText: 'How the service can contact you',
+				expectedPageHeading: 'How can the service contact you for more details about this request?',
+				element: '#contact-by-phone',
+				enteredText: '01132 347 903'
 			}
 		]
 		const nextPageHeading = 'Check the details you entered before requesting a connection';
@@ -195,12 +226,12 @@ describe('Check the details page - FHG-2884', ()=> {
 		cy.checkPageHeading('.govuk-heading-l', nextPageHeading);
 	})
 
-	it('AC5 - check back link navigation', ()=> {
-		const previousPageHeading = 'How can the service engage with this family?';
+	it.only('AC5 - check back link navigation', ()=> {
+		const previousPageHeading = 'How can the service contact you for more details about this request?';
 
 		//click on back link
 		cy.clickBackLink();
 		//check previous page heading
-		cy.checkPageHeading('.govuk-heading-l', previousPageHeading)
+		cy.checkPageHeading('h1', previousPageHeading)
 	})
 })
