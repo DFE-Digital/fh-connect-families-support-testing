@@ -8,11 +8,13 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin('VcsDualRole@example.com');
+		cy.stubLogin('LaDualRole@example.com');
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
+		//click on Yes radio button and continue on privacy statement page
+		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
 		//enter a contact name and continue on family contact name page
 		cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
 		//enter reason and continue 
@@ -55,7 +57,7 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 	})
 
 	it('AC1, AC5 - should navigate to check details page', ()=> {
-		const expectedHeading = 'Check the details you entered before requesting a connection';
+		const expectedHeading = 'How can the service contact you for more details about this request?';
 		const initialHintText = 'You have 500 characters remaining';
 		const finalHintText = 'You have 464 characters remaining';
 
@@ -68,7 +70,7 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 		//click continue button 
 		cy.get('div.govuk-grid-row button').click();
 		//check page heading
-		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
+		cy.checkPageHeading('h1', expectedHeading);
 	})
 
 	it('AC2, AC3 - display error message and exceeded character count', ()=> {
@@ -76,7 +78,7 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 		const expectedHintText = 'You have 25 characters too many';
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'How the service can engage with the family must be 500 characters or less';
-		const expectedHeading = 'Check the details you entered before requesting a connection';
+		const expectedHeading = 'How can the service contact you for more details about this request?';
 
 		//Enter text in the reason text area
 		cy.get('#reason').type(enteredText);
@@ -93,7 +95,7 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 		//click continue button 
 		cy.get('div.govuk-grid-row button').click();
 		//check page heading
-		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
+		cy.checkPageHeading('h1', expectedHeading);
 	})
 
 	it('AC4 - display error message on submitting a blank text box', ()=> {

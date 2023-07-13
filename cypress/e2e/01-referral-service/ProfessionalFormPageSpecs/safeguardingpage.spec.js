@@ -9,14 +9,14 @@ describe('safeguarding page - FHG-2848', ()=> {
 		//Click on Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin('VcsDualRole@example.com');
+		cy.stubLogin('LaDualRole@example.com');
 	})
 
 	it('AC1, AC2 - should have the correct content', ()=> {
 		const expectedHeading = 'Do not use this service to report safeguarding concerns';
 		const expectedPanelText = 'Use the NHS safeguarding app (opens in new tab) for guidance on reporting safeguarding concerns.';
 		const expectedNhsLink = 'https://nhssafeguarding.app';
-		const expectedContinueLink = "/ProfessionalReferral/Consent?serviceId=277";
+		const expectedContinueLink = "/ProfessionalReferral/SharePrivacy?ServiceId=277";
 
 		//Verify the content on the safeguarding page
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
