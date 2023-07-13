@@ -8,11 +8,13 @@ describe('Letter/address page - FHG-2878', ()=> {
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin('VcsDualRole@example.com');
+		cy.stubLogin('LaDualRole@example.com');
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
+		//click on Yes radio button and continue on privacy statement page
+		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
 		//enter a contact name and continue on family contact name page
 		cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
 		//enter reason and continue on reason for connection request page

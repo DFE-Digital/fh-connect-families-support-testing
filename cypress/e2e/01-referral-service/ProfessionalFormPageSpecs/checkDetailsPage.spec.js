@@ -226,7 +226,7 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 		cy.checkPageHeading('.govuk-heading-l', nextPageHeading);
 	})
 
-	it.only('AC5 - check back link navigation', ()=> {
+	it('AC5 - check back link navigation', ()=> {
 		const previousPageHeading = 'How can the service contact you for more details about this request?';
 
 		//click on back link

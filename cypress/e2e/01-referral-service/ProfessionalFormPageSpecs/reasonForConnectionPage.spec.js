@@ -9,11 +9,13 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin('VcsDualRole@example.com');
+		cy.stubLogin('LaDualRole@example.com');
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
+		//click on Yes radio button and continue on privacy statement page
+		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
 		
 		//enter a contact name and continue on family contact name page
 		cy.enterTextAndContinue('.govuk-input', enteredContactName, 'div.govuk-grid-row button');
@@ -25,11 +27,13 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 		'why the family needs help', 
 		'other organisations currently working with the family',
 		'if any family members have mental health conditions or special educational needs or disabilities',
-		'important things to note such as domestic abuse'];
+		'important things to note such as domestic abuse or difficulty paying for food or bills',
+		'Please give enough information for the service to review this request. The service may need to contact you for more information or to do their own assessment.'];
 
 		const expectedLabel = 'What do you want to tell the service?';
 		const expectedHintText = 'You have 500 characters remaining';
 		let actualStaticText = [];
+		const expectedWarningText = 'Warning\n        You should only share the name of the contact who has given permission. Do not share the names or details of others in the family.';
 
 		//check page heading on reason for request for support page
 		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
@@ -39,6 +43,8 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 		cy.checkTextOf('.govuk-label', expectedLabel);
 		//check hint text
 		cy.checkTextOf('.govuk-hint:not(.govuk-visually-hidden)', expectedHintText);
+		//check warning text
+		cy.checkTextOf('.govuk-warning-text__text', expectedWarningText);
 		//click on back link
 		cy.clickBackLink();
 		//check saved contact name in the text box

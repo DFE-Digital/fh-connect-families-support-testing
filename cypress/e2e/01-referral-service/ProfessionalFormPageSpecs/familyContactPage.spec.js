@@ -8,11 +8,13 @@ describe('Family contact page - FHG-2858', ()=> {
 		//Click Request a connection button
 		cy.get('a:contains("Request a connection")').click();
 		//stub-login
-		cy.stubLogin('VcsDualRole@example.com');
+		cy.stubLogin('LaDualRole@example.com');
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
+		//click on Yes radio button and continue on privacy statement page
+		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
 	})
 
 	it('should have the correct content', ()=> {
