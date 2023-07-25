@@ -33,7 +33,7 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 		'best time and day to contact', 
 		'preferred method for contact',
 		'communication needs such as an interpreter or textphone',
-		'if they would prefer to receive messages via WhatsApp'];
+		'any restrictions on how they can send and receive calls or texts'];
 
 		const expectedLabel = 'What do you want to tell the service?';
 		const expectedHintText = 'You have 500 characters remaining';
