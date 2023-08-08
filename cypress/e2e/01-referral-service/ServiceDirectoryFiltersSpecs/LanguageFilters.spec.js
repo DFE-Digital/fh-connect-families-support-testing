@@ -14,7 +14,7 @@ describe('| e2e-RefServ-010 | Referral Service - Filters language |',function(){
        for (let i=0; i< languages.length; i++){
 
        cy.languageSelection(`${languages[i]}`)
-       cy.get('.govuk-grid-column-two-thirds').contains(`${languages[i]}`)
+       cy.get('button[name="removeSelectedLanguage"]').should('be.visible').invoke('text').should('contain', `${languages[i]}`);
        //clear filters
        cy.clearFilters()
     }

@@ -6,7 +6,7 @@ describe('| e2e-RefService011-noResults.spec | Referral Service - valid post cod
        //sign on page 
        //cy.signOnPage()
        // search by post code page
-       cy.searchbypostcode('ig2 6fa')
+       cy.searchbypostcode('ls6 1qa')
        // search results page
        cy.noResultsPage()
     })

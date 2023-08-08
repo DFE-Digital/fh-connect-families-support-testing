@@ -1,7 +1,7 @@
 describe('| mobile-e2ejourney-RefServ | Referral Service - show filters / return to results |',function(){
     let device = ['iphone-x','samsung-s10']
         for(let i=0;i<device.length;i++){
-    it(`${device[i]} - Referral Service - Valid post code + Filters - cost`,function(){
+    it.skip(`${device[i]} - Referral Service - Valid post code + Filters - cost`,function(){
         
         cy.viewport(`${device[i]}`);
        

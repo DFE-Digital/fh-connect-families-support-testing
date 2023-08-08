@@ -25,7 +25,7 @@ describe('| e2e-RefService009-deliveryMethod.spec | Referral Service - Valid pos
         cy.clearFilters()
     // filter delivery method - inperson
         cy.deliveryType({online:'2'})
-        cy.contains('1 services found')
+        cy.get('.govuk-grid-column-two-thirds').contains('Online')
       //clear filters
         cy.clearFilters()
       

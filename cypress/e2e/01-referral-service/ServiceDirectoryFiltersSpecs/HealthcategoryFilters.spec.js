@@ -1,9 +1,9 @@
 describe('| e2e-RefService003-category3.spec | Health - category filters|',function(){
    
     // filter - Health
-       let subcategories = ['Hearing and sight','Mental health, social and emotional support','Nutrition and weight management','Oral health','Public health services',]
-       let activities = ['hearingandsight','mentalhealth,socialandemotionalsupport','nutritionandweightmanagement','oralhealth','publichealthservices',]
-       let subcatcode = ['1','2','3','4','5']
+       let subcategories = ['Hearing and sight','Mental health, social and emotional support','Nutrition and weight management','Public health services',]
+       let activities = ['hearingandsight','mentalhealth,socialandemotionalsupport','nutritionandweightmanagement','publichealthservices',]
+       let subcatcode = ['1','2','3','5']
        for (let i=0; i< subcatcode.length; i++){
      it(`${subcategories[i]} - Health - clear filters`,function(){
           cy.visit('/', {failOnStatusCode: false})

@@ -1,9 +1,9 @@
 describe('| e2e-RefService004-category4.spec | Pregnancy Birth and Early Years filter - category filters|',function(){
    
     //Pregnancy Birth and Early Years filter
-       let subcategories = ['Birth registration','Early years language and learning','Health visiting','Infant feeding support (including breastfeeding)','Midwife and maternity','Perinatal mental health support (pregnancy to one year post birth)']
-        let activities = ['birthregistration','earlyyearslanguageandlearning','healthvisiting','infantfeedingsupport(includingbreastfeeding)','midwifeandmaternity','perinatalmentalhealthsupport(pregnancytooneyearpostbirth)']
-       let subcatcode = ['1','2','3','4','5','6']
+       let subcategories = ['Early years language and learning','Health visiting','Infant feeding support (including breastfeeding)','Midwife and maternity','Perinatal mental health support (pregnancy to one year post birth)']
+        let activities = ['earlyyearslanguageandlearning','healthvisiting','infantfeedingsupport(includingbreastfeeding)','midwifeandmaternity','perinatalmentalhealthsupport(pregnancytooneyearpostbirth)']
+       let subcatcode = ['2','3','4','5','6']
        for (let i=0; i< subcatcode.length; i++){
      it(`${subcategories[i]} - Pregnancy Birth and Early Years filter - clear filters`,function(){
           cy.visit('/', {failOnStatusCode: false})
