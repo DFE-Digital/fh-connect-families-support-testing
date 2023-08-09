@@ -1,4 +1,4 @@
-describe('| e2e-RefService011-noResults.spec | Referral Service - valid post code - no results page |',function(){
+describe('valid post code - no results page',function(){
     it('Referral Service - valid post code - no results page ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page

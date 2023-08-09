@@ -1,4 +1,4 @@
-describe('| e2e-RefService005-category5.spec | Special educational needs and disabilities (SEND) - category filters|',function(){
+describe('Special educational needs and disabilities (SEND) - category filters',function(){
    
     // Special educational needs and disabilities (SEND)
        let subcategories = ['Autistic Spectrum Disorder (ASD)','Breaks and respite','Early years support','Hearing impairment','Multi-sensory impairment','Other difficulties or disabilities','Physical disabilities','Social, emotional and mental health support','Speech, language and communication needs','Visual impairment','Learning difficulties and disabilities']

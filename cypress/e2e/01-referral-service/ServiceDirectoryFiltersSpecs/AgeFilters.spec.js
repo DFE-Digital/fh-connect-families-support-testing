@@ -1,4 +1,4 @@
-describe('| e2e-RefServ-008 | Referral Service - age filters |',function(){
+describe('Age filters',function(){
   // age filter
        let subcategories = ['0 to 12 months','1 year old','2 years old','3 years old','4 years old','5 years old','6 years old','7 years old','8 years old','9 years old','10 years old','11 years old','12 years old','13 years old','14 years old','15 years old','16 years old','17 years old','18 years old','19 years old','20 years old','21 years old','22 years old','23 years old','24 years old','25 years old']
        let allAges = ['0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 18','0 to 25+','0 to 25+','0 to 25+','0 to 25+','0 to 25+','0 to 25+','0 to 25+','0 to 25+','0 to 25+','0 to 25+','0 to 25+']

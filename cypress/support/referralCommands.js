@@ -134,7 +134,7 @@ Cypress.Commands.add('cookiesPageContent',()=>{
 Cypress.Commands.add('contactUsPage',()=>{
   cy.contains('Contact us')
   cy.contains('Email')
-  cy.contains("connect-support-for-your-family.service@education.gov.uk")
+  cy.contains("connect-family-support.service@education.gov.uk")
   cy.contains("We aim to respond within 5 working days.")
   // back link
    cy.get('.govuk-back-link').click()
@@ -142,12 +142,12 @@ Cypress.Commands.add('contactUsPage',()=>{
   })
   // feedback link
     Cypress.Commands.add('feedbackLinkBanner',()=>{
-      cy.get('.govuk-phase-banner__text').contains('This is a new service – your feedback will help us to improve it.')
-      cy.get('.govuk-phase-banner__text > a').should("have.attr", "href").and("include", "https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_eKgvRcn8vp4QtTM");
+      cy.get('.govuk-phase-banner__text').contains('This is a new service, your feedback will help us improve it.')
+        cy.get('.govuk-phase-banner__text > a').should("have.attr", "href").and("include", "https://dferesearch.fra1.qualtrics.com/jfe/form/SV_3911VGJ6TMfm8h8");
     })
   // feedback footer link
-  Cypress.Commands.add('feedbackFooterLink',()=>{
-    cy.get('[data-testid="feedback-link"]').should("have.attr", "href").and("include", "https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_eKgvRcn8vp4QtTM");
+    Cypress.Commands.add('feedbackFooterLink', () => {
+      cy.get('.govuk-footer__inline-list > :nth-child(4) > .govuk-footer__link').should("have.attr", "href").and("include", "https://dferesearch.fra1.qualtrics.com/jfe/form/SV_3911VGJ6TMfm8h8");
   })
  // stub login
   Cypress.Commands.add('stubLogin',(user)=>{

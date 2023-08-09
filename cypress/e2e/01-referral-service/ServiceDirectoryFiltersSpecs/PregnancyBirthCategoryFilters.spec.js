@@ -1,4 +1,4 @@
-describe('| e2e-RefService004-category4.spec | Pregnancy Birth and Early Years filter - category filters|',function(){
+describe('Pregnancy Birth and Early Years filter - category filters',function(){
    
     //Pregnancy Birth and Early Years filter
        let subcategories = ['Early years language and learning','Health visiting','Infant feeding support (including breastfeeding)','Midwife and maternity','Perinatal mental health support (pregnancy to one year post birth)']

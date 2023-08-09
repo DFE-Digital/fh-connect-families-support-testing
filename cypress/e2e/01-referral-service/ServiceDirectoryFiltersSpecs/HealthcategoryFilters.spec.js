@@ -1,4 +1,4 @@
-describe('| e2e-RefService003-category3.spec | Health - category filters|',function(){
+describe('Health - category filters',function(){
    
     // filter - Health
        let subcategories = ['Hearing and sight','Mental health, social and emotional support','Nutrition and weight management','Public health services',]

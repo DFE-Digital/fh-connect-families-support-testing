@@ -1,4 +1,4 @@
-describe('| e2e-RefService001-category1.spec | Activities, clubs and groups - category filters|',function(){
+describe('Activities, clubs and groups - category filters',function(){
    
     // activities filter - Activities, clubs and groups
        let subcategories = ['Activities','Before and after school clubs','Holiday clubs and schemes','Music, arts and dance','Parent, baby and toddler groups','Pre-school playgroup','Sports and recreation']

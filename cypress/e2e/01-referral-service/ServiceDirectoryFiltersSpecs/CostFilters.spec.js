@@ -1,4 +1,4 @@
-describe('| e2e-RefServ-007 | Referral Service - cost filters|',function(){
+describe('Cost filters',function(){
     it('filters - filter - cost  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page

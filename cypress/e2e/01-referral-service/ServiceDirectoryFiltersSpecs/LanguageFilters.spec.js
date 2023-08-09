@@ -1,4 +1,4 @@
-describe('| e2e-RefServ-010 | Referral Service - Filters language |',function(){
+describe('Referral Service - Filters language',function(){
     it('Referral Service - Valid post code + Filters - language  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page

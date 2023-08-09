@@ -1,4 +1,4 @@
-describe('| e2e-RefService012-detailsPage.spec | Referral Service - Service details page |',function(){
+describe('Referral Service - Service details page',function(){
     //https://dfedigital.atlassian.net/browse/FHG-2371
     it('Referral Service - service details page ',function(){
         cy.visit('/', {failOnStatusCode: false})

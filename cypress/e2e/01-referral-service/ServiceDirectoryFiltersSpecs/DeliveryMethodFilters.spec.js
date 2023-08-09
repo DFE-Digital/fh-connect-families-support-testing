@@ -1,4 +1,4 @@
-describe('| e2e-RefService009-deliveryMethod.spec | Referral Service - Valid post code + Filters delivery method |',function(){
+describe('Valid post code + Filters delivery method',function(){
     it('Referral Service - Valid post code + Filters - delivery method  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page

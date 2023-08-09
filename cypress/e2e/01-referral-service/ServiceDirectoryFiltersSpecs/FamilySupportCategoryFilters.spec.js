@@ -1,4 +1,4 @@
-describe('| e2e-RefService001-category2.spec | Family support - category filters|',function(){
+describe('Family support - category filters',function(){
    
     // filter - Family support
       let subcategories = ['Bullying and cyber bullying','Debt and welfare advice','Domestic abuse','Intensive targeted family support','Money, benefits and housing','Parenting support','Reducing parental conflict','Substance misuse (including alcohol and drug)','Targeted youth support','Youth justice services']
