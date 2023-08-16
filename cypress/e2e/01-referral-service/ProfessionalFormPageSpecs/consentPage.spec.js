@@ -6,10 +6,9 @@ describe('Consent page - FHG-2850', ()=> {
 		//Select the first result on search results page
 		cy.get('ul.search-results>li:nth-child(1) a').click();
 		
-		//Click Request a connection button
-		cy.get('a:contains("Request a connection")').click();
-		//stub-login
-		cy.stubLogin('LaDualRole@example.com');
+		//login
+		cy.login('oneloginusername', 'oneloginpassword')
+		cy.visit('https://test.connect-families-to-support.education.gov.uk/ProfessionalReferral/Safeguarding?serviceId=277')
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
 	})

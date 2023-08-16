@@ -1,15 +1,14 @@
 
 describe('safeguarding page - FHG-2848', ()=> {
 	beforeEach(()=> {
-		cy.visit('/');
+		cy.visit('https://test.connect-families-to-support.education.gov.uk');
 		cy.refServLanding();
 		cy.searchbypostcode('bs14 8at');
 		//Select the first result on search results page
 		cy.get('ul.search-results>li:nth-child(1) a').click();
-		//Click on Request a connection button
-		cy.get('a:contains("Request a connection")').click();
-		//stub-login
-		cy.stubLogin('LaDualRole@example.com');
+
+		cy.login('oneloginusername', 'oneloginpassword')
+		cy.visit('https://test.connect-families-to-support.education.gov.uk/ProfessionalReferral/Safeguarding?serviceId=277')
 	})
 
 	it('AC1, AC2 - should have the correct content', ()=> {

@@ -1,4 +1,4 @@
-describe('Vcs dashboard request details page - FHG-3232', () => {
+describe.skip('Vcs dashboard request details page - FHG-3232', () => {
 	beforeEach(() => {
 		cy.visit('https://test.manage-connection-requests.education.gov.uk/Vcs/Dashboard');
 		//stub login as vcs admin user

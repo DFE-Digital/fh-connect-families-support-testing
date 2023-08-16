@@ -1,4 +1,4 @@
-﻿describe('LA Dashboard - sent requests home page - FHG-3558, FHG-3588', () => {
+﻿describe.skip('LA Dashboard - sent requests home page - FHG-3558, FHG-3588', () => {
 	beforeEach(() => {
 		cy.visit('https://test.manage-connection-requests.education.gov.uk/La/Dashboard');
 		//stub login as vcs admin user

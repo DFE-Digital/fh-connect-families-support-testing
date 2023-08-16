@@ -11,10 +11,9 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 		cy.searchbypostcode('bs14 8at');
 		//Select the first result on search results page
 		cy.get('ul.search-results>li:nth-child(1) a').click();
-		//Click Request a connection button
-		cy.get('a:contains("Request a connection")').click();
-		//stub-login
-		cy.stubLogin('LaDualRole@example.com');
+		//login
+		cy.login('oneloginusername', 'oneloginpassword')
+		cy.visit('https://test.connect-families-to-support.education.gov.uk/ProfessionalReferral/Safeguarding?serviceId=277')
 		//Click Continue button on safeguarding page
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on privacy statement page
@@ -66,7 +65,7 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 			'Text': '07800980765',
 			'Address': '1 Test StreetBristolBS1 2AD',
 			'How to engage with the family': 'Test service engage with this family',
-			'How the service can contact you': 'Email: LaDualRole@example.com\n                        Telephone: 01132 347 902'
+			'How the service can contact you': `Email: ${Cypress.env('oneloginusername')}\n                        Telephone: 01132 347 902`
 			};
 
 		//check page heading

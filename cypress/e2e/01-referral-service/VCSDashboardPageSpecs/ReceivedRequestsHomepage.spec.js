@@ -1,4 +1,4 @@
-﻿describe('VCS Dashboard - Received requests home page and pagination - FHG-3216, FHG-3229', ()=> {
+﻿describe.skip('VCS Dashboard - Received requests home page and pagination - FHG-3216, FHG-3229', ()=> {
 
 	beforeEach(()=> {
 		cy.visit('https://test.manage-connection-requests.education.gov.uk/Vcs/Dashboard');

@@ -3,7 +3,7 @@
 
 
 // before each hook with clearing cookies + uncaught exception override
-beforeEach(() => {
+before(() => {
   cy.clearCookies();
     Cypress.on('uncaught:exception', (err, runnable) => {
             // returning false here prevents Cypress from
@@ -11,6 +11,26 @@ beforeEach(() => {
             return false
         })
     });
+
+
+Cypress.Commands.add('login', (olusername, olpassword) => {
+    cy.session([olusername, olpassword], () => {
+        
+        cy.visit(`https://${Cypress.env('username')}:${Cypress.env('password')}@signin.integration.account.gov.uk/?prompt=login`, { failOnStatusCode: false })
+        //Click on Request a connection button
+        cy.visit('https://test.connect-families-to-support.education.gov.uk/ProfessionalReferral/LocalOfferDetail?serviceid=277')
+        cy.get('a:contains("Request a connection")').click();
+        //stub-login
+        cy.get('#sign-in-button').click()
+        // login based on type of user 
+        // login email
+        cy.get('#email').type(`${Cypress.env(olusername)}`)
+        cy.get('form > .govuk-button').click()
+        // login password
+        cy.get('#password').type(`${Cypress.env(olpassword)}`)
+        cy.get('form > .govuk-button').click()
+    })
+})
   // start page - admin-ui
   Cypress.Commands.add('startPage',()=>{
     cy.contains('Add a service to the local support directory')
