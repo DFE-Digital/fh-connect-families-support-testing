@@ -2,7 +2,8 @@ describe('Referral Service - Filters language',function(){
     it('Referral Service - Valid post code + Filters - language  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
-        cy.refServLanding()
+        cy.login('oneloginusername', 'oneloginpassword');
+        cy.refServLanding();
        //sign on page 
        //cy.signOnPage()
        // search by post code page

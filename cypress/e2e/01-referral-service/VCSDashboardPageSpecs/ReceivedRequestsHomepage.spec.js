@@ -1,9 +1,19 @@
-﻿describe.skip('VCS Dashboard - Received requests home page and pagination - FHG-3216, FHG-3229', ()=> {
+﻿describe('VCS Dashboard - Received requests home page and pagination - FHG-3216, FHG-3229', ()=> {
 
 	beforeEach(()=> {
-		cy.visit('https://test.manage-connection-requests.education.gov.uk/Vcs/Dashboard');
-		//stub login as vcs admin user
-		cy.stubLogin('harsha.reddy@education.gov.uk');
+		cy.visit('/', { failOnStatusCode: false })
+		cy.login('oneloginvcsusername', 'oneloginpassword');
+	})
+
+	it.only('4210 - Login to vcs dashbaord', () => {
+		const expectedHeader = ['Contact in family', 'Date received', 'Request number', 'Status'];
+		let actualHeader = [];
+
+		cy.refServLanding();
+		//check page heading
+		cy.checkPageHeading('h1', 'My requests');
+		//check table heading
+		cy.getTextOfElements('.govuk-table__header', actualHeader, expectedHeader);
 	})
 
 	it('3216-AC1, 3229-AC1 - Received requests home page content', ()=> {
@@ -26,7 +36,8 @@
 		cy.checkPaginationSelection('1');
 	})
 
-	it('3216-AC3 - sort by contact name', ()=> {
+	it.only('3216-AC3 - sort by contact name', () => {
+		cy.refServLanding();
 		//check initial sort order on contact name
 		cy.checkSortOrder(0, 'none');
 		//click on Contact in family heading link
@@ -39,7 +50,8 @@
 		cy.checkSortOrder(0, 'descending');
 	})
 
-	it('3216-AC2,AC4 - sort by Date received', ()=> {
+	it.only('3216-AC2,AC4 - sort by Date received', () => {
+		cy.refServLanding();
 		//check initial sort order on Date received as descending
 		cy.checkSortOrder(1, 'descending');
 		//click on Date received heading link

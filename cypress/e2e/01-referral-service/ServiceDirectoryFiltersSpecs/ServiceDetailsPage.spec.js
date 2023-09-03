@@ -3,7 +3,8 @@ describe('Referral Service - Service details page',function(){
     it('Referral Service - service details page ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
-        cy.refServLanding()
+        cy.login('oneloginusername', 'oneloginpassword');
+        cy.refServLanding();
        //sign on page 
        //cy.signOnPage()
        // search by post code page

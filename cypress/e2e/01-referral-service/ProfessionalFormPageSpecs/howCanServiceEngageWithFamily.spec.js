@@ -1,14 +1,12 @@
 describe('How can the service engage with the family - FHG-2880', ()=> {
 	beforeEach(()=> {
 		cy.visit('/');
+		cy.login('oneloginusername', 'oneloginpassword');
 		cy.refServLanding();
 		cy.searchbypostcode('bs14 8at');
 		//Select the first result on search results page
 		cy.get('ul.search-results>li:nth-child(1) a').click();
-		//login
-		cy.login('oneloginusername', 'oneloginpassword')
-		cy.visit('https://test.connect-families-to-support.education.gov.uk/ProfessionalReferral/Safeguarding?serviceId=277')
-		//Click Continue button on safeguarding page
+		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on privacy statement page
 		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
