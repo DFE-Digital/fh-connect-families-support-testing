@@ -2,7 +2,8 @@ describe('Cost filters',function(){
     it('filters - filter - cost  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
-        cy.refServLanding()
+        cy.login('oneloginusername', 'oneloginpassword');
+        cy.refServLanding();
        //sign on page 
        //cy.signOnPage()
        // search by post code page

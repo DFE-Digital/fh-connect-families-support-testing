@@ -2,7 +2,8 @@ describe('Valid post code + Filters delivery method',function(){
     it('Referral Service - Valid post code + Filters - delivery method  ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
-        cy.refServLanding()
+        cy.login('oneloginusername', 'oneloginpassword');
+        cy.refServLanding();
        // search by post code page
         cy.searchbypostcode('bs2 0sp')
        // search results page

@@ -8,7 +8,8 @@ describe('Health - category filters',function(){
      it(`${subcategories[i]} - Health - clear filters`,function(){
           cy.visit('/', {failOnStatusCode: false})
        // landing page
-        cy.refServLanding()
+         cy.login('oneloginusername', 'oneloginpassword');
+         cy.refServLanding();
         cy.searchbypostcode('bs2 0sp')
         cy.activitiesSelection(`${activities[i]}`)
         cy.get('.moj-filter__selected').contains(`${subcategories[i]}`)

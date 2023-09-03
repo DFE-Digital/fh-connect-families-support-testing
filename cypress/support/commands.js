@@ -10,7 +10,11 @@ before(() => {
             // failing the test
             return false
         })
-    });
+});
+
+after(() => {
+    Cypress.session.clearAllSavedSessions();
+})
 
 
 Cypress.Commands.add('login', (olusername, olpassword) => {
@@ -18,8 +22,8 @@ Cypress.Commands.add('login', (olusername, olpassword) => {
         
         cy.visit(`https://${Cypress.env('username')}:${Cypress.env('password')}@signin.integration.account.gov.uk/?prompt=login`, { failOnStatusCode: false })
         //Click on Request a connection button
-        cy.visit('https://test.connect-families-to-support.education.gov.uk/ProfessionalReferral/LocalOfferDetail?serviceid=277')
-        cy.get('a:contains("Request a connection")').click();
+        cy.visit(`https://test.connect-families-to-support.education.gov.uk/`)
+        cy.get('.govuk-button.govuk-button--start').click();
         //stub-login
         cy.get('#sign-in-button').click()
         // login based on type of user 
@@ -30,6 +34,7 @@ Cypress.Commands.add('login', (olusername, olpassword) => {
         cy.get('#password').type(`${Cypress.env(olpassword)}`)
         cy.get('form > .govuk-button').click()
     })
+    cy.visit('/');
 })
   // start page - admin-ui
   Cypress.Commands.add('startPage',()=>{
