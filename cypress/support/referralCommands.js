@@ -142,12 +142,12 @@ Cypress.Commands.add('contactUsPage',()=>{
   })
   // feedback link
     Cypress.Commands.add('feedbackLinkBanner',()=>{
-      cy.get('.govuk-phase-banner__text').contains('This is a new service, your feedback will help us improve it.')
-        cy.get('.govuk-phase-banner__text > a').should("have.attr", "href").and("include", "https://dferesearch.fra1.qualtrics.com/jfe/form/SV_3911VGJ6TMfm8h8");
+        cy.get('.govuk-phase-banner__text').contains('Please take our feedback survey to help us improve this new website.')
+        cy.get('.govuk-phase-banner__text > a').should("have.attr", "href").and("include", "https://dferesearch.fra1.qualtrics.com/jfe/form/SV_bpWL7jFPsn2D42O");
     })
   // feedback footer link
     Cypress.Commands.add('feedbackFooterLink', () => {
-      cy.get('.govuk-footer__inline-list > :nth-child(4) > .govuk-footer__link').should("have.attr", "href").and("include", "https://dferesearch.fra1.qualtrics.com/jfe/form/SV_3911VGJ6TMfm8h8");
+        cy.get('.govuk-footer__inline-list > :nth-child(4) > .govuk-footer__link').should("have.attr", "href").and("include", "https://dferesearch.fra1.qualtrics.com/jfe/form/SV_bpWL7jFPsn2D42O");
   })
  // stub login
   Cypress.Commands.add('stubLogin',(user)=>{
