@@ -17,8 +17,8 @@ after(() => {
 })
 
 
-Cypress.Commands.add('login', (olusername, olpassword) => {
-    cy.session([olusername, olpassword], () => {
+Cypress.Commands.add('login', (olusername, olpassword, acceptTerms) => {
+    cy.session([olusername, olpassword, acceptTerms], () => {
         
         cy.visit(`https://${Cypress.env('username')}:${Cypress.env('password')}@signin.integration.account.gov.uk/?prompt=login`, { failOnStatusCode: false })
         //Click on Request a connection button
@@ -33,8 +33,11 @@ Cypress.Commands.add('login', (olusername, olpassword) => {
         // login password
         cy.get('#password').type(`${Cypress.env(olpassword)}`)
         cy.get('form > .govuk-button').click()
+        if (acceptTerms) {
+            cy.contains('Continue').click()
+        }
     })
-    cy.visit('/');
+    //cy.visit('/');
 })
   // start page - admin-ui
   Cypress.Commands.add('startPage',()=>{

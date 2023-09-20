@@ -17,6 +17,7 @@
 import './commands'
 import './referralCommands'
 import './apiCommands'
+import './adminCommands'
 import 'cypress-mochawesome-reporter/register';
 
 // Alternatively you can use CommonJS syntax:
