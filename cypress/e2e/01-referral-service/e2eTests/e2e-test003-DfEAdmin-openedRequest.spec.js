@@ -10,12 +10,12 @@ describe('| e2e-test003-MngConnect | Manage - add VCS organisation , add la pro 
     })
 
     it('Manage - (dfe admin) Add VCS organisation using spread sheet',()=>{
-		cy.visit('/')
-        cy.managelogin('oneloginusername', 'oneloginpassword')
-        cy.visit('/Welcome')
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.dfeAdminWelcomePage()
         cy.uploadSheet()  
-        cy.get('.govuk-header__product-name').click()
+        cy.get('.dfe-header__service-name').click()
         cy.manVcsLink()
         cy.get(':nth-child(4) > .govuk-pagination__link').click()
         cy.contains('Test Harsha Madhu Vcs001')
@@ -23,9 +23,9 @@ describe('| e2e-test003-MngConnect | Manage - add VCS organisation , add la pro 
     })
     
     it('Manage - (dfe admin) Add permissions to user LA Professional', () => {  
-        cy.visit('/')
-        cy.managelogin('oneloginusername', 'oneloginpassword')
-        cy.visit('/Welcome')
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.dfeAdminWelcomePage()
         cy.addPermissions()
         cy.typeOfUserPage('la')
@@ -39,9 +39,9 @@ describe('| e2e-test003-MngConnect | Manage - add VCS organisation , add la pro 
     })
     
     it('Manage - (dfe admin) Add permissions to user VCS Dual role', () => {  
-        cy.visit('/')
-        cy.managelogin('oneloginusername', 'oneloginpassword')
-        cy.visit('/Welcome')
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.addPermissions()
         cy.typeOfUserPage('vcs')
         cy.typeOfUserVCS('both')
@@ -86,7 +86,7 @@ describe('| e2e-test003-MngConnect | Manage - add VCS organisation , add la pro 
             'Test service engage with this family'];
 
         cy.visit('https://test.connect-families-to-support.education.gov.uk');
-        cy.connectlogin('oneloginLAusername', 'oneloginLApassword');
+        cy.login('oneloginLAusername', 'oneloginLApassword', true);
         cy.visit('https://test.connect-families-to-support.education.gov.uk')
         cy.refServLanding();
         cy.searchbypostcode('E1 5NA');
@@ -158,7 +158,7 @@ describe('| e2e-test003-MngConnect | Manage - add VCS organisation , add la pro 
         };
 
         cy.visit('https://test.connect-families-to-support.education.gov.uk');
-        cy.connectlogin('oneloginVCSusername', 'oneloginVCSpassword');
+        cy.login('oneloginVCSusername', 'oneloginVCSpassword', true);
         cy.visit('https://test.connect-families-to-support.education.gov.uk');
         cy.refServLanding();
         cy.contains('My requests').click();
@@ -211,7 +211,7 @@ describe('| e2e-test003-MngConnect | Manage - add VCS organisation , add la pro 
             'Test service engage with this family'];
 
         cy.visit('https://test.connect-families-to-support.education.gov.uk');
-        cy.connectlogin('oneloginLAusername', 'oneloginLApassword');
+        cy.login('oneloginLAusername', 'oneloginLApassword', false);
         cy.visit('https://test.connect-families-to-support.education.gov.uk');
         cy.refServLanding();
         cy.contains('My requests').click();
@@ -226,9 +226,9 @@ describe('| e2e-test003-MngConnect | Manage - add VCS organisation , add la pro 
     })
 
     it('Manage - ( dfe admin) - delete LA Professional user permissions',()=>{
-        cy.visit('/')
-        cy.managelogin('oneloginusername', 'oneloginpassword')
-        cy.visit('/Welcome')
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.dfeAdminWelcomePage()
          //manage permissions link
         cy.managePermissionsLink()
@@ -242,15 +242,15 @@ describe('| e2e-test003-MngConnect | Manage - add VCS organisation , add la pro 
     })
 
     it('Manage - (dfe admin) delete VCS organisation', () => {
-        cy.visit('/')
-        cy.managelogin('oneloginusername', 'oneloginpassword')
-        cy.visit('/Welcome')
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
+        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.dfeAdminWelcomePage()
         cy.manVcsLink()
         cy.get('.govuk-pagination__list li:last-child').click();
         cy.get('td.govuk-table__cell a[data-testid="delete_TestHarshaMadhuVcs001"]').click();
         cy.contains('Deleting an organisation');
-        cy.selectRadioButtonAndContinue('#removeOrg', 'button.govuk-button')
+        cy.selectRadioButtonAndContinue('#removeOrg', '#buttonConfirm')
         cy.contains('You have deleted Test Harsha Madhu Vcs001')
         cy.Signout('manage');
     })

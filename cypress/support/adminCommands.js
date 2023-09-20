@@ -1,5 +1,5 @@
-Cypress.Commands.add('managelogin', (olusername, olpassword) => {
-    cy.session([olusername, olpassword], () => {
+Cypress.Commands.add('managelogin', (olusername, olpassword, acceptTerms) => {
+    cy.session([olusername, olpassword, acceptTerms], () => {
 
         cy.visit(`https://${Cypress.env('username')}:${Cypress.env('password')}@signin.integration.account.gov.uk/?prompt=login`, { failOnStatusCode: false })
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
@@ -10,7 +10,9 @@ Cypress.Commands.add('managelogin', (olusername, olpassword) => {
         cy.get('form > .govuk-button').click()
         cy.get('#password').type(`${Cypress.env(olpassword)}`)
         cy.get('form > .govuk-button').click()
-        cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
+        if (acceptTerms) {
+            cy.contains('Continue').click()
+        }
     })
 })
 
@@ -32,6 +34,25 @@ Cypress.Commands.add('dfeAdminWelcomePage', () => {
     cy.contains('View, change or delete existing organisations.')
     cy.contains('Upload an excel spreadsheet.')
 }) 
+
+// LA Manager - Welcome page 
+Cypress.Commands.add('LAManWelcomePage', (LA) => {
+    cy.get('.govuk-grid-column-two-thirds').contains(`${LA}`)
+    cy.title().should('eq', 'Welcome - Manage family support services and accounts - GOV.UK')
+
+    cy.contains('Add permissions')
+    cy.contains('Manage permissions')
+
+    cy.contains('Activate a local authority')
+        .should('not.exist');
+    cy.contains('Add a VCS service')
+        .should('not.exist');
+    cy.contains('Manage VCS services')
+        .should('not.exist');
+
+    cy.contains('Add an organisation')
+    cy.contains('Manage organisations')
+})
 
 // Upload excel sheet 
 Cypress.Commands.add('uploadSheet', () => {

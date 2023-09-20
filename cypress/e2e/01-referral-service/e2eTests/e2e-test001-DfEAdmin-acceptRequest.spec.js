@@ -11,7 +11,7 @@ describe('| e2e-test001-MngConnect | Manage - add VCS organisation , add la and 
 
     it('Manage - (dfe admin) Add VCS organisation using spread sheet',()=>{
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
-        cy.managelogin('onelogindfeusername', 'onelogindfepassword')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.dfeAdminWelcomePage()
         cy.uploadSheet()  
@@ -24,7 +24,7 @@ describe('| e2e-test001-MngConnect | Manage - add VCS organisation , add la and 
     
     it('Manage - (dfe admin) Add permissions to user LA Professional', () => {  
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
-        cy.managelogin('onelogindfeusername', 'onelogindfepassword')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.dfeAdminWelcomePage()
         cy.addPermissions()
@@ -40,7 +40,7 @@ describe('| e2e-test001-MngConnect | Manage - add VCS organisation , add la and 
     
     it('Manage - (dfe admin) Add permissions to user VCS Professional', () => {  
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
-        cy.managelogin('onelogindfeusername', 'onelogindfepassword')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.addPermissions()
         cy.typeOfUserPage('vcs')
@@ -229,7 +229,7 @@ describe('| e2e-test001-MngConnect | Manage - add VCS organisation , add la and 
 
     it('Manage - ( dfe admin) - delete LA Professional user permissions',()=>{
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
-        cy.managelogin('onelogindfeusername', 'onelogindfepassword')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.dfeAdminWelcomePage()
          //manage permissions link
@@ -245,7 +245,7 @@ describe('| e2e-test001-MngConnect | Manage - add VCS organisation , add la and 
 
     it('Manage - (dfe admin) delete VCS organisation', () => {
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/')
-        cy.managelogin('onelogindfeusername', 'onelogindfepassword')
+        cy.managelogin('onelogindfeusername', 'onelogindfepassword', false)
         cy.visit('https://test.manage-family-support-services-and-accounts.education.gov.uk/Welcome')
         cy.dfeAdminWelcomePage()
         cy.manVcsLink()
