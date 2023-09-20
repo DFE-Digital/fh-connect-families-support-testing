@@ -38,7 +38,7 @@ jobs:
           CYPRESS_onelogindfepassword: ${{ secrets.ONELOGIN_DFE_PASSWORD }}
           CYPRESS_oneloginLAusername: ${{ secrets.ONELOGIN_LA_USERID }}
           CYPRESS_oneloginLApassword: ${{ secrets.ONELOGIN_LA_PASSWORD }}
-          CYPRESS_oneloginVCSusername: ${{ secrets.ONELOGIN_VCS_USERID }}
+          CYPRESS_oneloginVCSuser: ${{ secrets.ONELOGIN_VCS_USERID }}
           CYPRESS_oneloginVCSpassword: ${{ secrets.ONELOGIN_VCS_PASSWORD }}
           CYPRESS_lamanoneloginusername: ${{ secrets.ONELOGIN_LAMAN_USERID }}
           CYPRESS_lamanoneloginpassword: ${{ secrets.ONELOGIN_LAMAN_PASSWORD }}

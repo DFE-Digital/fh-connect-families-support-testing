@@ -73,7 +73,7 @@ describe('| e2e-test008-MngConnect | Manage - add VCS organisation , add la and 
     it('Connect Dashboard - (VCS manager) restricted access to dashboard ', () => {
 
         cy.visit('https://test.connect-families-to-support.education.gov.uk');
-        cy.login('oneloginVCSusername', 'oneloginVCSpassword', true);
+        cy.login('oneloginVCSuser', 'oneloginVCSpassword', true);
         cy.visit('https://test.connect-families-to-support.education.gov.uk');
         cy.refServLanding();
         cy.checkPageHeading('h1', 'You do not have permission to perform this action');

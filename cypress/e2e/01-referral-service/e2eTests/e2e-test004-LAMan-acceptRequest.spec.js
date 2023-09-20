@@ -172,7 +172,7 @@ describe('| e2e-test004-MngConnect | Manage - add VCS organisation , add la and 
         };
 
         cy.visit('https://test.connect-families-to-support.education.gov.uk');
-        cy.login('oneloginVCSusername', 'oneloginVCSpassword', true);
+        cy.login('oneloginVCSuser', 'oneloginVCSpassword', true);
         cy.visit('https://test.connect-families-to-support.education.gov.uk');
         cy.refServLanding();
         cy.contains('My requests').click();
