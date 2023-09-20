@@ -34,6 +34,12 @@ jobs:
           CYPRESS_oneloginpassword: ${{ secrets.ONELOGIN_PASSWORD }}
           CYPRESS_username: ${{ secrets.INTEGRATION_ID }}
           CYPRESS_password: ${{ secrets.INTEGRATION_PASSWORD }}
+          CYPRESS_onelogindfeusername: ${{ secrets.ONELOGIN_DFE_USERID }}
+          CYPRESS_onelogindfepassword: ${{ secrets.ONELOGIN_DFE_PASSWORD }}
+          CYPRESS_oneloginLAusername: ${{ secrets.ONELOGIN_LA_USERID }}
+          CYPRESS_oneloginLApassword: ${{ secrets.ONELOGIN_LA_PASSWORD }}
+          CYPRESS_oneloginVCSusername: ${{ secrets.ONELOGIN_VCS_USERID }}
+          CYPRESS_oneloginVCSpassword: ${{ secrets.ONELOGIN_VCS_PASSWORD }}
       - uses: actions/upload-artifact@v2
         with:
           name: report
