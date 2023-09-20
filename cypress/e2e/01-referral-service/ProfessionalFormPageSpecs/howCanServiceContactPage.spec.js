@@ -1,9 +1,10 @@
 describe('How can the service contact family member page - FHG-2862', ()=> {
 	beforeEach(()=> {
 		cy.visit('/');
-		cy.login('oneloginusername', 'oneloginpassword');
+		cy.login('oneloginusername', 'oneloginpassword', false);
+		cy.visit('/');
 		cy.refServLanding();
-		cy.searchbypostcode('bs14 8at');
+		cy.searchbypostcode('e1 2en');
 		//Select the first result on search results page
 		cy.get('ul.search-results>li:nth-child(1) a').click();
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();

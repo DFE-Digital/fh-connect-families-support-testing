@@ -1,10 +1,11 @@
 
 describe('safeguarding page - FHG-2848', ()=> {
 	beforeEach(()=> {
-		cy.visit('https://test.connect-families-to-support.education.gov.uk');
-		cy.login('oneloginusername', 'oneloginpassword');
+		cy.visit('/');
+		cy.login('oneloginusername', 'oneloginpassword', false);
+		cy.visit('/');
 		cy.refServLanding();
-		cy.searchbypostcode('bs14 8at');
+		cy.searchbypostcode('e1 2en');
 		//Select the first result on search results page
 		cy.get('ul.search-results>li:nth-child(1) a').click();
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
@@ -14,7 +15,7 @@ describe('safeguarding page - FHG-2848', ()=> {
 		const expectedHeading = 'Do not use this service to report safeguarding concerns';
 		const expectedPanelText = 'Use the NHS safeguarding app (opens in new tab) for guidance on reporting safeguarding concerns.';
 		const expectedNhsLink = 'https://nhssafeguarding.app';
-		const expectedContinueLink = "/ProfessionalReferral/SharePrivacy?ServiceId=277";
+		const expectedContinueLink = "/ProfessionalReferral/SharePrivacy?ServiceId=737";
 
 		//Verify the content on the safeguarding page
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
@@ -26,7 +27,7 @@ describe('safeguarding page - FHG-2848', ()=> {
 	})
 
 	it('AC3 - back link should take to service details page', ()=> {
-		const expectedHeading = 'Young Bristol\nYouth and Play Services, including School Holiday and Outdoor Activities';
+		const expectedHeading = 'Elop Mentoring';
 
 		//Click on back link
 		cy.clickBackLink();
