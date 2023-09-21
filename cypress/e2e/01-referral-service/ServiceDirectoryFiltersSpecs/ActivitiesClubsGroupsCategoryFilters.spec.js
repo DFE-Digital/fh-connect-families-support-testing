@@ -8,7 +8,8 @@ describe('Activities, clubs and groups - category filters',function(){
      it(`${subcategories[i]} - Activities, clubs and groups - clear filters`,function(){
           cy.visit('/', {failOnStatusCode: false})
        // landing page
-         cy.login('oneloginusername', 'oneloginpassword');
+         cy.login('oneloginusername', 'oneloginpassword', false);
+         cy.visit('/');
          cy.refServLanding();
         cy.searchbypostcode('bs2 0sp')
         cy.activitiesSelection(`${activities[i]}`)

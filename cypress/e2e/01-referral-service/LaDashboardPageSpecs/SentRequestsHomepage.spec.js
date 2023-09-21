@@ -1,7 +1,8 @@
 ﻿describe('LA Dashboard - sent requests home page - FHG-3558, FHG-3588', () => {
 	beforeEach(() => {
 		cy.visit('/', { failOnStatusCode: false })
-		cy.login('oneloginusername', 'oneloginpassword');
+		cy.login('oneloginusername', 'oneloginpassword', false);
+		cy.visit('/');
 		cy.refServLanding();
 		cy.get('.dfe-header__navigation-item').last().click();
 	})

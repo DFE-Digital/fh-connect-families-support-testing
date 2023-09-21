@@ -2,7 +2,8 @@ describe('valid post code - no results page',function(){
     it('Referral Service - valid post code - no results page ',function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
-        cy.login('oneloginusername', 'oneloginpassword');
+        cy.login('oneloginusername', 'oneloginpassword', false);
+        cy.visit('/');
         cy.refServLanding();
        //sign on page 
        //cy.signOnPage()

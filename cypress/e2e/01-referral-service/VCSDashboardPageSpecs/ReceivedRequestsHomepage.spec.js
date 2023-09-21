@@ -2,7 +2,8 @@
 
 	beforeEach(()=> {
 		cy.visit('/', { failOnStatusCode: false })
-		cy.login('oneloginvcsusername', 'oneloginpassword');
+		cy.login('oneloginvcsusername', 'oneloginpassword', false);
+		cy.visit('/');
 	})
 
 	it.only('4210 - Login to vcs dashbaord', () => {

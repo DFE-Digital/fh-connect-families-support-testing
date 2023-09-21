@@ -7,7 +7,8 @@ describe('Age filters',function(){
      it(`${subcategories[i]} - Children and young people - clear filters - validation ${allAges[i]}`,function(){
         cy.visit('/', {failOnStatusCode: false})
        // landing page
-         cy.login('oneloginusername', 'oneloginpassword');
+         cy.login('oneloginusername', 'oneloginpassword', false);
+         cy.visit('/');
          cy.refServLanding();
        //sign on page 
        //cy.signOnPage()

@@ -8,7 +8,8 @@ describe('Special educational needs and disabilities (SEND) - category filters',
      it(`${subcategories[i]} - Special educational needs and disabilities (SEND) - clear filters`,function(){
           cy.visit('/', {failOnStatusCode: false})
        // landing page
-         cy.login('oneloginusername', 'oneloginpassword');
+         cy.login('oneloginusername', 'oneloginpassword', false);
+         cy.visit('/');
          cy.refServLanding();
         cy.searchbypostcode('bs2 0sp')
         cy.activitiesSelection(`${activities[i]}`)

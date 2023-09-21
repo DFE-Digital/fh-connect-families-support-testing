@@ -1,7 +1,8 @@
 describe('4272 - Navigate to postcode and dashboard pages using global nav buttons', () => {
 	beforeEach(() => {
 		cy.visit('/', { failOnStatusCode: false })
-		cy.login('oneloginvcsusername', 'oneloginpassword');
+		cy.login('oneloginvcsusername', 'oneloginpassword', false);
+		cy.visit('/');
 	})
 
 	it('AC1 - search for services by postcode - click on Search for service button', () => {
