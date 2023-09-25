@@ -24,7 +24,6 @@ jobs:
         continue-on-error: true
         with:
           quiet: true
-          browser: chrome
           headless: true
           spec: "cypress/e2e/01-referral-service/**/*.spec.js"
         env:
