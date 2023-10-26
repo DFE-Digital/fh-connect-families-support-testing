@@ -21,8 +21,8 @@ Cypress.Commands.add('managelogin', (olusername, olpassword, acceptTerms) => {
 Cypress.Commands.add('dfeAdminWelcomePage', () => {
     cy.get('.govuk-grid-column-two-thirds').contains('Department for Education')
     cy.title().should('eq', 'Welcome - Manage family support services and accounts - GOV.UK')
-    cy.contains('Add account permissions to manage family support services and manage connection requests.')
-    cy.contains('View and remove account permissions to manage family support services or manage connection requests.')
+    cy.contains('Add a user account to manage support services or connection requests.')
+    cy.contains('View, edit or delete user accounts to manage support services or connection requests.')
     //cy.contains('Add a service to the directory.')
     //cy.contains('View, change or delete services shown in the directory.')
     //cy.contains('Add a family hub to the directory.')
@@ -219,7 +219,7 @@ Cypress.Commands.add('confirmationPage', (name) => {
     cy.contains('a link to the service, where they can create their password and set up two-factor authentication')
     //
     cy.contains('Go to homepage').click()
-    cy.contains('Add account permissions to manage family support services and manage connection requests.')
+    cy.contains('Add a user account to manage support services or connection requests.')
 
 })
 
