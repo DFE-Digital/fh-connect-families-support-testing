@@ -13,9 +13,9 @@ describe('Age filters',function(){
        //sign on page 
        //cy.signOnPage()
        // search by post code page
-       cy.searchbypostcode('pr1 0ls')
+         cy.searchbypostcode('bs2 0sp')
        // search results page
-       cy.searchResults('pr1 0ls')
+         cy.searchResults('bs2 0sp')
        // filter age
        cy.ageFilter(`${subcategories[i]}`)
        cy.get('#SearchAge option:selected').should('have.text', `${subcategories[i]}`)

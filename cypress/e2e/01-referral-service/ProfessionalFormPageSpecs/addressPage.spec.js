@@ -39,7 +39,7 @@ describe('Letter/address page - FHG-2878', ()=> {
 			['County', 'Bristol county'],
 			['Postcode', 'BS1- (2AD).']
 		]);
-		const nextPageHeading = 'How can the service engage with this family?';
+		const nextPageHeading = 'How can the service engage with the people who need support?';
 
 		//check address page heading
 		cy.checkPageHeading('h1', pageHeading);
@@ -59,9 +59,9 @@ describe('Letter/address page - FHG-2878', ()=> {
 
 	it('AC4 - should display error message when no address is entered', ()=> {
 		const errorHeading = 'There is a problem';
-		const errorMessages = ['You must enter an address', 'You must enter a town or city', 'You must enter a postcode'];
+		const errorMessages = ['Enter the first line of the address', 'Enter a town or city', 'Enter a postcode'];
 		let [actualBannerMessages, actualMessages] = [[], []];
-		const nextPageHeading = 'How can the service engage with this family?';
+		const nextPageHeading = 'How can the service engage with the people who need support?';
 		const enteredAddress = new Map([
 			['AddressLine1', 'Test Street 1'],
 			['TownOrCity', 'Bristol'],

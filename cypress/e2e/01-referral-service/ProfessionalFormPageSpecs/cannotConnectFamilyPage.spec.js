@@ -12,8 +12,8 @@ describe('Cannot connect family to service page - FHG-2853, FHG-3725', ()=> {
 	})
 
 	it('FHG-2853-AC1 - should have the correct content', ()=> {
-		const expectedHeading = 'Cannot connect family to service';
-		const expectedStaticText = ['Please get permission from the family to give their details to the service.',
+		const expectedHeading = 'Cannot request a connection';
+		const expectedStaticText = ['Please get permission from the people who need support to share their details.',
 		'You can come back and request a connection to the service once you have permission.'];
 		let actualStaticText = [];
 
@@ -28,8 +28,8 @@ describe('Cannot connect family to service page - FHG-2853, FHG-3725', ()=> {
 	})
 
 	it('FHG-3725-AC1 - should have the correct content', () => {
-		const expectedHeading = 'Cannot connect family to service';
-		const expectedStaticText = ['Please share our privacy statement with the family to make a request using their data.',
+		const expectedHeading = 'Cannot request a connection';
+		const expectedStaticText = ['Please share our privacy statement with the people who need support.',
 			'You can come back and request a connection to the service once you have shared the privacy statement.'];
 		let actualStaticText = [];
 

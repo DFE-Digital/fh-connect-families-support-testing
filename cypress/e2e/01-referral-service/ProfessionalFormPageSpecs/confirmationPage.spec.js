@@ -40,9 +40,9 @@ describe('Confirmation page - FHG-2882', ()=> {
 	it('AC1 - display confirmation page with correct content', ()=> {
 		const expectedHeading = 'Connection request sent';
 		const expectedSubHeading = 'What happens next';
-		const expectedText = ["You have given the family's details to the service. This request has been added to your dashboard and you will receive an email confirmation.",
-		"The service will review your request. They may contact you for more details about the family.",
-		"You will be notified by email when they accept or decline the request. You should receive a response within 5 working days."];
+		const expectedText = ["Your request has been sent to the service. You can view the details of the request (opens in new tab).",
+		"The service will review your request. They may contact you for more details.",
+		"You will be notified by email when they accept or decline the request."];
 		let actualText = [];
 
 		//check panel text

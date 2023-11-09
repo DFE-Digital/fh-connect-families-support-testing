@@ -15,7 +15,7 @@ describe('safeguarding page - FHG-2848', ()=> {
 		const expectedHeading = 'Do not use this service to report safeguarding concerns';
 		const expectedPanelText = 'Use the NHS safeguarding app (opens in new tab) for guidance on reporting safeguarding concerns.';
 		const expectedNhsLink = 'https://nhssafeguarding.app';
-		const expectedContinueLink = "/ProfessionalReferral/SharePrivacy?ServiceId=737";
+		const expectedContinueLink = "/ProfessionalReferral/SharePrivacy?ServiceId=329";
 
 		//Verify the content on the safeguarding page
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);

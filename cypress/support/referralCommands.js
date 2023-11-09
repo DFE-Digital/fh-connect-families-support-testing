@@ -89,7 +89,7 @@ Cypress.Commands.add('mobOpenCloseFilters',()=>{
     
     })
 Cypress.Commands.add('accessibilityPage',()=>{
-  cy.contains('Accessibility Statement')
+  cy.contains('Accessibility statement')
   cy.contains('How accessible this website is')
   cy.contains('Feedback and contact information')
   cy.contains('Reporting accessibility problems with this website')
@@ -122,10 +122,7 @@ Cypress.Commands.add('cookiesPageContent',()=>{
   // terms and conditions page
   Cypress.Commands.add('termsandconditionsPage',()=>{
     cy.contains('Terms and conditions')
-    cy.contains('Who we are')
-    cy.contains('Connect families to support is managed by the Department for Education. The Department for Education will be referred to as ‘we’ from now on.')
-    cy.contains('Using Connect families to support')
-    cy.contains('Linking to Connect families to support')
+    cy.contains('Welcome to Connect families to support and Manage family support services and accounts (our services). Our services are run by the Department for Education and their use is subject to these terms and conditions.')
     // back link
     cy.get('.govuk-back-link').click()
     cy.contains('Connect families to support');
@@ -133,9 +130,8 @@ Cypress.Commands.add('cookiesPageContent',()=>{
   // contact us page 
 Cypress.Commands.add('contactUsPage',()=>{
   cy.contains('Contact us')
-  cy.contains('Email')
-  cy.contains("connect-family-support.service@education.gov.uk")
-  cy.contains("We aim to respond within 5 working days.")
+  cy.contains('You can contact us by email at connect-family-support.service@education.gov.uk. We will aim to respond within 5 working days.')
+  cy.contains("You can also give us feedback using our survey.")
   // back link
    cy.get('.govuk-back-link').click()
   cy.contains('Connect families to support');

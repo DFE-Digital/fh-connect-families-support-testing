@@ -13,9 +13,9 @@ describe('Consent page - FHG-2850', ()=> {
 
 	it('should have the correct content', ()=> {
 		const expectedHeading = 'Permission to share details';
-		const expectedSubHeading = 'Do you have permission from the family?';
-		const expectedStaticText = ['You must have permission from the family to give their details to the service.',
-		'Those details include:', 'who to contact in the family','ways to contact the family','why the family needs help'];
+		const expectedSubHeading = 'Do you have permission to share their details?';
+		const expectedStaticText = ['You must get permission from the people who need support to share their details.',
+		'Those details include:', 'who to contact','ways to contact them','why they need help'];
 		let actualStaticText = [];
 		let actualRadioButtons = [];
 		const expectedRadioButtons = ['Yes', 'No']
@@ -33,7 +33,7 @@ describe('Consent page - FHG-2850', ()=> {
 	})
 
 	it('AC1,AC4 - should display contact in the family page when selected Yes', () => {
-		const expectedContactPageHeading = 'Who should the service contact in the family?';
+		const expectedContactPageHeading = 'Who should the service contact?';
 
 		//click on Yes radio button and continue on privacy statement page
 		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
@@ -46,7 +46,7 @@ describe('Consent page - FHG-2850', ()=> {
 	})
 
 	it('AC2,AC4 - should display cannot connetct family page when selected No', () => {
-		const expectedCannotConnectPageHeading = 'Cannot connect family to service';
+		const expectedCannotConnectPageHeading = 'Cannot request a connection';
 
 		//click on Yes radio button and continue on privacy statement page
 		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
@@ -60,8 +60,8 @@ describe('Consent page - FHG-2850', ()=> {
 
 	it('AC3 - should continue the journey after error message is displayed', ()=> {
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'Select whether you have permission from the family to share details';
-		const expectedContactPageHeading = 'Who should the service contact in the family?';
+		const errorMessage = 'Select whether you have permission to share details';
+		const expectedContactPageHeading = 'Who should the service contact?';
 
 		//click on Yes radio button and continue on privacy statement page
 		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');

@@ -22,7 +22,7 @@ describe('How can the service contact family member page - FHG-2862', ()=> {
 	it('AC1, AC6, AC9 - select all checkboxes and navigate back', ()=> {
 		const expectedPageHeading = 'How can the service contact James Bond?';
 		const expectedEmailPageHeading = 'What is the email address for James Bond?';
-		const expectedReasonPageHeading = 'Reason for the connection request';
+		const expectedReasonPageHeading = 'Why are you requesting a connection?';
 		const expectedHintText = 'Select all that apply.';
 		const expectedCheckboxes = ['Email', 'Telephone', 'Text message', 'Letter'];
 		

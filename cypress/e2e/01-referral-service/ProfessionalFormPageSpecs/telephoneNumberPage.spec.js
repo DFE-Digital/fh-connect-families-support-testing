@@ -27,7 +27,7 @@ describe('telephone number page - FHG-2868', ()=> {
 		const pageHeading = 'What telephone number should the service use to call James Bond?';
 		const expectedLabel = 'UK telephone number';
 		const enteredTelephoneNumber = '+]4((4)]- 808- 157-(0192)';
-		const nextPageHeading = 'How can the service engage with this family?';
+		const nextPageHeading = 'How can the service engage with the people who need support?';
 
 		//check email address page heading
 		cy.checkPageHeading('h1', pageHeading);
@@ -42,7 +42,7 @@ describe('telephone number page - FHG-2868', ()=> {
 	it('AC4 - should display error message when no telephone is entered', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Enter a UK telephone number';
-		const nextPageHeading = 'How can the service engage with this family?';
+		const nextPageHeading = 'How can the service engage with the people who need support?';
 		const enteredTelephoneNumber = '01656 861 384 ext. 12345';
 	
 		//click continue button 

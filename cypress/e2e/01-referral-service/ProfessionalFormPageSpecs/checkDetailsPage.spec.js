@@ -63,7 +63,7 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 			'Telephone': '0113 234 5678',
 			'Text': '07800980765',
 			'Address': '1 Test StreetBristolBS1 2AD',
-			'How to engage with the family': 'Test service engage with this family',
+			'How to engage': 'Test service engage with this family',
 			'How the service can contact you': `Email: ${Cypress.env('oneloginusername')}\n                        Telephone: 01132 347 902`
 			};
 
@@ -115,13 +115,13 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 		const pages = [
 			{ 
 				changeLinkText: 'Name of contact',
-				expectedPageHeading: 'Who should the service contact in the family?',
+				expectedPageHeading: 'Who should the service contact?',
 				element: '.govuk-input',
 				enteredText: 'James B'
 			},
 			{ 
 				changeLinkText: 'Reason for request for support',
-				expectedPageHeading: 'Reason for the connection request',
+				expectedPageHeading: 'Why are you requesting a connection?',
 				element: '#reason',
 				enteredText: 'Reason for requesting the support'
 			},
@@ -150,8 +150,8 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 				enteredText: '2 Test Street'
 			},
 			{ 
-				changeLinkText: 'How to engage with the family',
-				expectedPageHeading: 'How can the service engage with this family?',
+				changeLinkText: 'How to engage',
+				expectedPageHeading: 'How can the service engage with the people who need support?',
 				element: '#reason',
 				enteredText: 'Test how service engages with family'
 			},

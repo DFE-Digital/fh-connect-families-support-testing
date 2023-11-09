@@ -16,8 +16,8 @@ describe('Family contact page - FHG-2858', ()=> {
 	})
 
 	it('should have the correct content', ()=> {
-		const expectedHeading = 'Who should the service contact in the family?';
-		const expectedHintText = 'This must be a person aged 16 or over.';
+		const expectedHeading = 'Who should the service contact?';
+		const expectedHintText = 'This person must be 16 or over.';
 		const expectedLabel = 'Full name';
 
 		//check page heading
@@ -29,7 +29,7 @@ describe('Family contact page - FHG-2858', ()=> {
 	})
 
 	it('AC1 - should navigate to reason for request for support page', ()=> {
-		const expectedPageHeading = 'Reason for the connection request';
+		const expectedPageHeading = 'Why are you requesting a connection?';
 		const enteredContactName = 'James bond';
 
 		//enter a contact name and continue on family contact page
@@ -45,7 +45,7 @@ describe('Family contact page - FHG-2858', ()=> {
 	it('AC2 - should display error message when clicked on continue with no name entered', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Enter a full name';
-		const expectedPageHeading = 'Reason for the connection request';
+		const expectedPageHeading = 'Why are you requesting a connection?';
 		const enteredContactName = 'James bond';
 	
 		//click continue button on family contact page
@@ -59,7 +59,7 @@ describe('Family contact page - FHG-2858', ()=> {
 	})
 
 	it('AC3 - text box should accept additional spaces, hyphens, dashes, brackets, special characters, numbers and symbols', ()=> {
-		const expectedPageHeading = 'Reason for the connection request';
+		const expectedPageHeading = 'Why are you requesting a connection?';
 		const enteredContactName = "Test   -_ (  Test) 167 %$!\"�^&*;:@',.<>#~}{[]|�" ;
 
 		//enter a contact name

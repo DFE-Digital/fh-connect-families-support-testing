@@ -32,7 +32,7 @@ describe('How can the service contact you for more details about this request pa
 	it('AC1, AC8 - verify content and select email only button', () => {
 		const expectedPageHeading = 'How can the service contact you for more details about this request?';
 		const nextPageHeading = 'Check the details you entered before requesting a connection';
-		const previousPageHeading = 'How can the service engage with this family?';
+		const previousPageHeading = 'How can the service engage with the people who need support?';
 		const expectedHintText = 'Select one option.';
 		let actualRadioButtons = [];
 		const expectedRadioButtons = ['Email only', 'Telephone and email'];

@@ -26,14 +26,14 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 	})
 
 	it('AC6 - should have the correct content', ()=> {
-		const expectedPageHeading = 'How can the service engage with this family?';
-		const expectedStaticText = ['Let the service know the best way to engage with the family, such as:',
+		const expectedPageHeading = 'How can the service engage with the people who need support?';
+		const expectedStaticText = ['Let the service know the best way to engage with them, such as:',
 		'best time and day to contact', 
 		'preferred method for contact',
 		'communication needs such as an interpreter or textphone',
 		'any restrictions on how they can send and receive calls or texts'];
 
-		const expectedLabel = 'What do you want to tell the service?';
+		const expectedLabel = 'Enter details';
 		const expectedHintText = 'You have 500 characters remaining';
 		const previousPageHeading = 'What is the email address for James Bond?'
 		let actualStaticText = [];
@@ -99,7 +99,7 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 	it('AC4 - display error message on submitting a blank text box', ()=> {
 		const expectedHintText = 'You have 500 characters remaining';
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'Enter how best to engage with this family';
+		const errorMessage = 'Enter details about the people who need support';
 
 		//click continue button 
 		cy.get('div.govuk-grid-row button').click();

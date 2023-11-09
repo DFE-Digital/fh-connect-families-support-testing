@@ -384,7 +384,7 @@ Cypress.Commands.add('checkSafeGuardingPageContinueButton', () => {
     cy.get('.app-button--inverted').invoke('text').then((text) => {
 		expect(text.trim()).to.equal('Continue');
 		cy.get('.app-button--inverted').click();
-        cy.url().should('include','/ProfessionalReferral/SharePrivacy?ServiceId=737');
+        cy.url().should('include','/ProfessionalReferral/SharePrivacy?ServiceId=329');
 	})
 })
 

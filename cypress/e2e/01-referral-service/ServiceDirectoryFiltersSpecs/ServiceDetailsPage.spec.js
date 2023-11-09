@@ -13,6 +13,5 @@ describe('Referral Service - Service details page',function(){
        // search results page
        cy.contains('Wellspring Settlement Universal and Targeted Parenting support for parents with children under 5 years').click()
        cy.contains('Wellspring Settlement Universal and Targeted Parenting support for parents with children under 5 years')
-       cy.contains('http://www.wellspringsettlement.org.uk/')
     })
 })

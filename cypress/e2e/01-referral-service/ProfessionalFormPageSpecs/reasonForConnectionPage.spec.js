@@ -20,18 +20,18 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 	})
 
 	it('AC7 - should have the correct content', ()=> {
-		const expectedPageHeading = 'Reason for the connection request';
-		const expectedStaticText = ['Use this to give the service details about the family, for example:',
-		'why the family needs help', 
-		'other organisations currently working with the family',
-		'if any family members have mental health conditions or special educational needs or disabilities',
+		const expectedPageHeading = 'Why are you requesting a connection?';
+		const expectedStaticText = ['Use this to give the service details about the people who need support, for example:',
+		'why they need help', 
+		'other organisations currently working with them',
+		'if anyone has mental health conditions or special educational needs or disabilities',
 		'important things to note such as domestic abuse or difficulty paying for food or bills',
 		'Please give enough information for the service to review this request. The service may need to contact you for more information or to do their own assessment.'];
 
-		const expectedLabel = 'What do you want to tell the service?';
+		const expectedLabel = 'Enter details';
 		const expectedHintText = 'You have 500 characters remaining';
 		let actualStaticText = [];
-		const expectedWarningText = 'Warning\n        You should only share the name of the contact who has given permission. Do not share the names or details of others in the family.';
+		const expectedWarningText = 'Warning\n        You should only share the name of the contact who has given permission. Do not share the names or details of other people.';
 
 		//check page heading on reason for request for support page
 		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
@@ -94,7 +94,7 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 	it('AC4 - display error message on submitting a blank text box', ()=> {
 		const expectedHintText = 'You have 500 characters remaining';
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'Enter a reason for the connection request';
+		const errorMessage = 'Enter details about the people who need support';
 
 		//click continue button on reason for connection page
 		cy.get('div.govuk-grid-row button').click();
@@ -105,7 +105,7 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 	})
 
 	it('AC5 - should display family contact page on clicking back link', ()=> {
-		const expectedPageHeading = 'Who should the service contact in the family?';
+		const expectedPageHeading = 'Who should the service contact?';
 		
 		//Enter text in the reason text area
 		cy.get('#reason').type('Test Test');

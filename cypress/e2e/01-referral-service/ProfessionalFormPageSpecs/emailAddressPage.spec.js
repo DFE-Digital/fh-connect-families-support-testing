@@ -27,7 +27,7 @@ describe('What is the email address page - FHG-2866', ()=> {
 		const pageHeading = 'What is the email address for James Bond?';
 		const expectedLabel = 'Email address';
 		const enteredEmailAddress = 'test@abc.com';
-		const nextPageHeading = 'How can the service engage with this family?';
+		const nextPageHeading = 'How can the service engage with the people who need support?';
 
 		//check email address page heading
 		cy.checkPageHeading('h1', pageHeading);
@@ -42,7 +42,7 @@ describe('What is the email address page - FHG-2866', ()=> {
 	it('AC2 - should display error message when no email is entered', ()=> {
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Enter an email address in the correct format, like name@example.com';
-		const nextPageHeading = 'How can the service engage with this family?';
+		const nextPageHeading = 'How can the service engage with the people who need support?';
 		const enteredEmailAddress = 'test@abc.com';
 	
 		//click continue button 

@@ -13,9 +13,9 @@ describe('Share our privacy statement page - FHG-3671', () => {
 
 	it('AC1,AC4 - verify the content and select yes button', () => {
 		const expectedPageHeading = 'Share our privacy statement';
-		const expectedSubHeading = 'Have you shared our privacy statement with the family?';
+		const expectedSubHeading = 'Have you shared our privacy statement?';
 		let actualStaticText = [];
-		const expectedStaticText = ['You must share our privacy statement (opens in new tab) with the family before you can make a request.',
+		const expectedStaticText = ['You must share our privacy statement (opens in new tab) with the people who need support.',
 			'The privacy statement tells them more about:', 'what data we collect about them and why we need it',
 			'who is responsible for data within the service', 'how we protect, process and store their data',
 			'how long we keep their data', 'their personal data rights'];
@@ -40,7 +40,7 @@ describe('Share our privacy statement page - FHG-3671', () => {
 	})
 
 	it('AC2,AC4 - cannot connect to service page should be displayed when selected No', () => {
-		const expectedNextPageHeading = 'Cannot connect family to service';
+		const expectedNextPageHeading = 'Cannot request a connection';
 
 		//click on No radio button
 		cy.get('#shared-privacy-no').click();
@@ -52,7 +52,7 @@ describe('Share our privacy statement page - FHG-3671', () => {
 
 	it('AC3 - Should display error message when option is not selected', () => {
 		const errorHeading = 'There is a problem';
-		const errorMessage = 'Select whether you have shared our privacy statement with the family';
+		const errorMessage = 'Select whether you have shared our privacy statement';
 		const expectedNextPageHeading = 'Permission to share details';
 
 		//click continue button 
