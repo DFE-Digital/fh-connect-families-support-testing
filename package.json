@@ -1,9 +1,11 @@
 {
   "devDependencies": {
     "cypress": "^11.2.0",
-    "cypress-mochawesome-reporter": "^3.2.3"
+    "cypress-mochawesome-reporter": "^3.2.3",
+    "eslint": "^8.49.0"
   },
   "scripts": {
+    "azure-test": "npx cypress run --reporter junit --reporter-options attachments=true --reporter-options mochaFile=result-[hash].xml",
     "mocha-report": "yarn cypress run --spec \"cypress/e2e/**/test-e2e.spec.js\"",
     "adminservicetests": "yarn cypress run --spec \"cypress/e2e/admin-service/**/*.spec.js\",CYPRESS_BASE_URL=https://s181d01-as-fh-sd-admin-ui-dev.azurewebsites.net/",
     "referralservicetests": "yarn cypress run --spec \"cypress/e2e/referral-service/**/*.spec.js\",CYPRESS_BASE_URL=https://s181d01-as-fh-referral-ui-dev.azurewebsites.net/",
