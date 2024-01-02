@@ -22,7 +22,7 @@
     "open:admin-test": "CYPRESS_BASE_URL=https://test.manage-family-support-services-and-accounts.education.gov.uk/ npx cypress open",
     "open:referral-dev": "CYPRESS_BASE_URL=https://dev.connect-families-to-support.education.gov.uk/ npx cypress open",
     "open:referral-test": "CYPRESS_BASE_URL=https://test.connect-families-to-support.education.gov.uk/ npx cypress open",
-    "open:referral-prod": "CYPRESS_BASE_URL=https://connect-families-to-support.education.gov.uk// npx cypress open",
+    "open:referral-prod": "CYPRESS_BASE_URL=https://connect-families-to-support.education.gov.uk/ npx cypress open",
     "open:local": "CYPRESS_BASE_URL=https://localhost:7216/ npx cypress open"
   }
 }
