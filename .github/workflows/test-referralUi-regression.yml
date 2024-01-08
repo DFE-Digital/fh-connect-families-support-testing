@@ -18,7 +18,7 @@ jobs:
     steps:
       - run: date
       - uses: actions/checkout@v2
-      - uses: cypress-io/github-action@v4
+      - uses: cypress-io/github-action@v6
         name: cypress
         id: cypress
         continue-on-error: true
