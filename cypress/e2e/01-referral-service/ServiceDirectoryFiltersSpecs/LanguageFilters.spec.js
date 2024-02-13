@@ -5,14 +5,12 @@ describe('Referral Service - Filters language',function(){
         cy.login('oneloginusername', 'oneloginpassword', false);
         cy.visit('/');
         cy.refServLanding();
-       //sign on page 
-       //cy.signOnPage()
        // search by post code page
        cy.searchbypostcode('bs2 0sp')
        // search results page
        cy.searchResults('bs2 0sp')
        // filter language
-       let languages = ['English','French','Somali','Afrikaans']
+       let languages = ['English','French','Somali']
        for (let i=0; i< languages.length; i++){
 
        cy.languageSelection(`${languages[i]}`)

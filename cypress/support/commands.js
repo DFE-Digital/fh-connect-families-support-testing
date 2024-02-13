@@ -499,7 +499,9 @@ Cypress.Commands.add('selectCheckBoxes', (label)=> {
 })
 
 Cypress.Commands.add('uncheckSelectedCheckboxes', ()=> {
-    cy.get('.govuk-checkboxes__input:checked').uncheck();
+    cy.get('input[type="checkbox"]:checked').each(($el, index, $list) => {
+        cy.wrap($el).uncheck();
+    });
 })
 
 //----------------------------Check details page ------------------------
