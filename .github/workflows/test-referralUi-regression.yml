@@ -41,7 +41,7 @@ jobs:
           CYPRESS_oneloginVCSpassword: ${{ secrets.ONELOGIN_VCS_PASSWORD }}
           CYPRESS_lamanoneloginusername: ${{ secrets.ONELOGIN_LAMAN_USERID }}
           CYPRESS_lamanoneloginpassword: ${{ secrets.ONELOGIN_LAMAN_PASSWORD }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: report
           path: ./cypress/reports/
