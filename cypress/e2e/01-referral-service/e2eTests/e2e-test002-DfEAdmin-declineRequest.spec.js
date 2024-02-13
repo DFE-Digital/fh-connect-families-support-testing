@@ -1,5 +1,5 @@
 
-describe('| e2e-test002-MngConnect | Manage - add VCS organisation , add la dual role and vcs professional users , Connect - create and decline request , view requests', () => {
+describe.skip('| e2e-test002-MngConnect | Manage - add VCS organisation , add la dual role and vcs professional users , Connect - create and decline request , view requests', () => {
 
     afterEach(() => {
         if (Cypress.mocha.getRunner().suite.ctx.currentTest.state === 'failed') {

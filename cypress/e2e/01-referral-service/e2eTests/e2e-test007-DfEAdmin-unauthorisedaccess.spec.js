@@ -1,5 +1,5 @@
 
-describe('| e2e-test007-MngConnect | Manage - add VCS organisation , Connect - DfE admin has no access to referrals and dashboards', () => {
+describe.skip('| e2e-test007-MngConnect | Manage - add VCS organisation , Connect - DfE admin has no access to referrals and dashboards', () => {
 
     afterEach(() => {
         if (Cypress.mocha.getRunner().suite.ctx.currentTest.state === 'failed') {

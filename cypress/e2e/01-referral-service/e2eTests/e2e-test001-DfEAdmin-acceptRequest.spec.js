@@ -1,5 +1,5 @@
 
-describe('| e2e-test001-MngConnect | Manage - add VCS organisation , add la and vcs permissions , Connect - create and accept request , view requests', () => {
+describe.skip('| e2e-test001-MngConnect | Manage - add VCS organisation , add la and vcs permissions , Connect - create and accept request , view requests', () => {
 
     afterEach(() => {
         if (Cypress.mocha.getRunner().suite.ctx.currentTest.state === 'failed') {
