@@ -11,9 +11,9 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		
 		//enter a contact name and continue on family contact name page
 		cy.enterTextAndContinue('.govuk-input', enteredContactName, 'div.govuk-grid-row button');
@@ -50,7 +50,7 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 	})
 
 	it('AC1, AC6 - should navigate to How can the service contact page', ()=> {
-		const expectedHeading = 'How can the service contact James Bond?';
+		const expectedHeading = 'How can the service contact James Bond';
 		const initialHintText = 'You have 500 characters remaining';
 		const finalHintText = 'You have 477 characters remaining';
 
@@ -71,7 +71,7 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 		const expectedHintText = 'You have 25 characters too many';
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Reason for the connection request must be 500 characters or less';
-		const expectedHeading = 'How can the service contact James Bond?';
+		const expectedHeading = 'How can the service contact James Bond';
 
 		//Enter text in the reason text area
 		cy.get('#reason').type(enteredText);

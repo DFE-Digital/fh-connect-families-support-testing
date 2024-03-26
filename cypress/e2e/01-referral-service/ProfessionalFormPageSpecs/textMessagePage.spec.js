@@ -10,9 +10,9 @@ describe('text message page - FHG-2876', ()=> {
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//enter a contact name and continue on family contact name page
 		cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
 		//enter reason and continue on reason for connection request page
@@ -68,7 +68,7 @@ describe('text message page - FHG-2876', ()=> {
 	})
 
 	it('AC6 - should navigate contact methods page using back link', ()=> {
-		const expectedPageHeading = 'How can the service contact James Bond?';
+		const expectedPageHeading = 'How can the service contact James Bond';
 
 		//Click on back link
 		cy.clickBackLink();

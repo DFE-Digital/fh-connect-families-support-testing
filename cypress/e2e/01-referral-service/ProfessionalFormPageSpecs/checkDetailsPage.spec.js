@@ -16,9 +16,9 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//enter a contact name and continue on family contact name page
 		cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
 		//enter reason and continue 
@@ -64,7 +64,7 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 			'Text': '07800980765',
 			'Address': '1 Test StreetBristolBS1 2AD',
 			'How to engage': 'Test service engage with this family',
-			'How the service can contact you': `Email: ${Cypress.env('oneloginusername')}\n                        Telephone: 01132 347 902`
+			'How the service can contact you': `Email: familyhubs.lapro@education.gov.uk Telephone: 01132 347 902`
 			};
 
 		//check page heading
@@ -88,7 +88,7 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 		//check page heading
 		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
 		//click on Yes radio button
-		cy.get('#consent-yes').click();
+		cy.get('#radio-True').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check the page heading
@@ -104,7 +104,7 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 		//check page heading
 		cy.checkPageHeading('.govuk-heading-l', expectedPageHeading);
 		//click on Yes radio button
-		cy.get('#shared-privacy-yes').click();
+		cy.get('#radio-True').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check the page heading
@@ -190,7 +190,7 @@ describe('Check the details page - FHG-2884 FHG-3670', ()=> {
 	})
 
 	it('AC4 - select change link for contact methods', ()=> {
-		const expectedPageHeading = 'How can the service contact James Bond?';
+		const expectedPageHeading = 'How can the service contact James Bond';
 		const checkboxes = ['Text message','Telephone','Email'];
 		const nextPageHeading = 'Check the details you entered before requesting a connection';
 		const pageDetailsMap = new Map([
