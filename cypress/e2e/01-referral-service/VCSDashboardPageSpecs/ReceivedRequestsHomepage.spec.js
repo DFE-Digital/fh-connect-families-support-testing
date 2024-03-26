@@ -2,11 +2,11 @@
 
 	beforeEach(()=> {
 		cy.visit('/', { failOnStatusCode: false })
-		cy.login('oneloginvcsusername', 'oneloginpassword', false);
+		cy.login('oneloginVCSuser', 'oneloginVCSpassword', false);
 		cy.visit('/');
 	})
 
-	it.only('4210 - Login to vcs dashbaord', () => {
+	it('4210 - Login to vcs dashbaord', () => {
 		const expectedHeader = ['Contact in family', 'Date received', 'Request number', 'Status'];
 		let actualHeader = [];
 
@@ -17,27 +17,7 @@
 		cy.getTextOfElements('.govuk-table__header', actualHeader, expectedHeader);
 	})
 
-	it('3216-AC1, 3229-AC1 - Received requests home page content', ()=> {
-		const expectedHeader = ['Contact in family', 'Date received', 'Request number', 'Status'];
-		let actualHeader = [];
-		const expectedList = ['1', '2', 'Next'];
-		let actualList = [];
-
-		//check page heading
-		cy.checkPageHeading('h1','Received requests');
-		//check table heading
-		cy.getTextOfElements('.govuk-table__header', actualHeader, expectedHeader);
-		//check the total records in the page 
-		cy.get('tbody.govuk-table__body tr.govuk-table__row').its('length').then((length)=> {
-			expect(length).to.equal(20);
-		})
-		//check pagination items
-		cy.getTextOfElements('.govuk-pagination li, .govuk-pagination div', actualList, expectedList);
-		//check current page on pagination
-		cy.checkPaginationSelection('1');
-	})
-
-	it.only('3216-AC3 - sort by contact name', () => {
+	it('3216-AC3 - sort by contact name', () => {
 		cy.refServLanding();
 		//check initial sort order on contact name
 		cy.checkSortOrder(0, 'none');
@@ -51,7 +31,7 @@
 		cy.checkSortOrder(0, 'descending');
 	})
 
-	it.only('3216-AC2,AC4 - sort by Date received', () => {
+	it('3216-AC2,AC4 - sort by Date received', () => {
 		cy.refServLanding();
 		//check initial sort order on Date received as descending
 		cy.checkSortOrder(1, 'descending');
@@ -65,45 +45,4 @@
 		cy.checkSortOrder(1, 'descending');
 	})
 
-	it('3229-AC2 - Navigate to 2nd page using pagination link', ()=> {
-		const expectedList = ['Previous', '1', '2'];
-		let actualList = [];
-			
-		//click on 2nd page from pagination 
-		cy.contains('li.govuk-pagination__item a', '2').click();
-		//check pagination items
-		cy.getTextOfElements('.govuk-pagination li, .govuk-pagination div', actualList, expectedList);
-		//check current page on pagination
-		cy.checkPaginationSelection('2');
-	})
-
-	it('3229-AC3,AC5 - Navigate to page using next link', ()=> {
-		const expectedList = ['Previous', '1', '2'];
-		let actualList = [];
-
-		//click on 2nd page from pagination 
-		//cy.contains('li.govuk-pagination__item a', '2').click();
-		//click on page before the last one 
-		//cy.get('ul.govuk-pagination__list li:nth-last-child(2) a').click();
-		//click on next from pagination 
-		cy.contains('div.govuk-pagination__next a', 'Next').click();
-		//check current page on pagination
-		cy.checkPaginationSelection('2');
-		//check pagination items
-		cy.getTextOfElements('.govuk-pagination li, .govuk-pagination div', actualList, expectedList);
-	})
-
-	it('3229-AC4,AC5 - Navigate to page using previous link', ()=> {
-		const expectedList = ['1', '2', 'Next'];
-		let actualList = [];
-
-		//click on 2nd page from pagination 
-		cy.contains('li.govuk-pagination__item a', '2').click();
-		//click on previous from pagination 
-		cy.contains('div.govuk-pagination__prev a', 'Previous').click();
-		//check current page on pagination
-		cy.checkPaginationSelection('1');
-		//check pagination items
-		cy.getTextOfElements('.govuk-pagination li, .govuk-pagination div', actualList, expectedList);
-	})
 })

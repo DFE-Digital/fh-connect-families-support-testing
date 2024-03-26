@@ -18,9 +18,9 @@ describe('Cannot connect family to service page - FHG-2853, FHG-3725', ()=> {
 		let actualStaticText = [];
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//click on No radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent-no', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-False', 'div.govuk-grid-row button');
 		//check heading on cannot connect page
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
 		//check static text on the cannot connect page
@@ -34,7 +34,7 @@ describe('Cannot connect family to service page - FHG-2853, FHG-3725', ()=> {
 		let actualStaticText = [];
 
 		//click on No radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-no', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-False', 'div.govuk-grid-row button');
 		//check heading on cannot connect page
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
 		//check static text on the cannot connect page

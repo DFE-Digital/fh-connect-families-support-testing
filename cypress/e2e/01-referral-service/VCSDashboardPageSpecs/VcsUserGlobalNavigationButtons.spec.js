@@ -1,7 +1,7 @@
 describe('4272 - Navigate to postcode and dashboard pages using global nav buttons', () => {
 	beforeEach(() => {
 		cy.visit('/', { failOnStatusCode: false })
-		cy.login('oneloginvcsusername', 'oneloginpassword', false);
+		cy.login('oneloginVCSuser', 'oneloginVCSpassword', false);
 		cy.visit('/');
 	})
 

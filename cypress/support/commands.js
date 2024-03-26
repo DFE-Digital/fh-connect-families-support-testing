@@ -384,7 +384,7 @@ Cypress.Commands.add('checkSafeGuardingPageContinueButton', () => {
     cy.get('.app-button--inverted').invoke('text').then((text) => {
 		expect(text.trim()).to.equal('Continue');
 		cy.get('.app-button--inverted').click();
-        cy.url().should('include','/ProfessionalReferral/SharePrivacy?ServiceId=329');
+        cy.url().should('include','/ProfessionalReferral/SharePrivacy?ServiceId=809');
 	})
 })
 
@@ -510,7 +510,7 @@ Cypress.Commands.add('checkRequestDetails', (expectedContent)=> {
     cy.get('div.govuk-summary-list__row').each(($row) => {
         // Extract the key and value from each row
         const key = $row.find('dt.govuk-summary-list__key').text().trim();
-        const value = $row.find('dd.govuk-summary-list__value').text().trim();
+        const value = $row.find('dd.govuk-summary-list__value').text().trim().replace(/\n/g, ' ').replace(/\s+/g, ' ');
         expect(value).to.equal(expectedContent[key]);
 
         cy.get($row).find('a:not(.govuk-visually-hidden)')

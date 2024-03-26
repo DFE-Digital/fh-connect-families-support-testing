@@ -10,9 +10,9 @@ describe('Family contact page - FHG-2858', ()=> {
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 	})
 
 	it('should have the correct content', ()=> {

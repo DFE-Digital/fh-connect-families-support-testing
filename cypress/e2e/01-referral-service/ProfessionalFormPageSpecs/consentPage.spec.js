@@ -21,7 +21,7 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedRadioButtons = ['Yes', 'No']
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//check page heading
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
 		//check static text on the consent page
@@ -36,9 +36,9 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedContactPageHeading = 'Who should the service contact?';
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//click on Yes radio button
-		cy.get('#consent-yes').click();
+		cy.get('#radio-True').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check contact in the family page heading
@@ -49,9 +49,9 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedCannotConnectPageHeading = 'Cannot request a connection';
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//click on No radio button
-		cy.get('#consent-no').click();
+		cy.get('#radio-False').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check contact in the family page heading
@@ -64,13 +64,13 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedContactPageHeading = 'Who should the service contact?';
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//Check error banner
 		cy.checkErrorText(errorHeading, errorMessage);
 		//click on Yes radio button
-		cy.get('#consent-yes').click();
+		cy.get('#radio-True').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check contact in the family page heading
@@ -81,7 +81,7 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedSafeguardingPageHeading = 'Share our privacy statement';
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
 		//Click on back link
 		cy.clickBackLink();
 		//verify page heading
