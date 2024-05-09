@@ -27,5 +27,7 @@ module.exports = defineConfig({
     'firefoxWebSecurity': false,
     'defaultCommandTimeout': 15000,
     'responseTimeout': 60000,
+    'experimentalRunAllSpecs': true
+
   },
 });

@@ -2,17 +2,16 @@ describe('How can the service engage with the family - FHG-2880', ()=> {
 	beforeEach(()=> {
 		cy.visit('/');
 		cy.login('oneloginusername', 'oneloginpassword', false);
-		cy.visit('/');
-		cy.refServLanding();
-		cy.searchbypostcode('e1 2en');
-		//Select the first result on search results page
-		cy.get('ul.search-results>li:nth-child(1) a').click();
+		
+		// Navigate to a service page where a connection request can be provided.
+		cy.navigateToElopMentoringServicePage();
+
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
 		cy.get('.app-button--inverted').click();
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//click on Yes radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//enter a contact name and continue on family contact name page
 		cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
 		//enter reason and continue 
