@@ -2,11 +2,10 @@
 	beforeEach(() => {
 		cy.visit('/');
 		cy.login('oneloginusername', 'oneloginpassword', false);
-		cy.visit('/');
-		cy.refServLanding();
-		cy.searchbypostcode('e1 2en');
-		//Select the first result on search results page
-		cy.get('ul.search-results>li:nth-child(1) a').click();
+
+		// Navigate to a service page where a connection request can be provided.
+		cy.navigateToElopMentoringServicePage();
+		
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
 		cy.get('.app-button--inverted').click();
 		//click on privacy statement link

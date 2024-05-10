@@ -107,8 +107,8 @@ describe.skip('| e2e-test006-MngConnect | Manage - add VCS organisation , add la
         cy.get('ul.search-results>li:nth-child(1) a').click();
         cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
         cy.get('.app-button--inverted').click();
-        cy.selectRadioButtonAndContinue('#shared-privacy-yes', 'div.govuk-grid-row button');
-        cy.selectRadioButtonAndContinue('#consent-yes', 'div.govuk-grid-row button');
+        cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
+        cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
         cy.enterTextAndContinue('.govuk-input', 'James Bond', 'div.govuk-grid-row button');
         cy.reasonForConnectionRequestPage();
         cy.selectCheckBoxes('Email');

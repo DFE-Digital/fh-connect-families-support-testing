@@ -380,11 +380,11 @@ Cypress.Commands.add('checkSafeGuardingPagePanelText', (expectedPanelText) => {
     cy.get('.interrupt-panel p').should('have.text',expectedPanelText)
 })
 
-Cypress.Commands.add('checkSafeGuardingPageContinueButton', () => {
+Cypress.Commands.add('checkSafeGuardingPageContinueButton', (expectedLink) => {
     cy.get('.app-button--inverted').invoke('text').then((text) => {
 		expect(text.trim()).to.equal('Continue');
 		cy.get('.app-button--inverted').click();
-        cy.url().should('include','/ProfessionalReferral/SharePrivacy?ServiceId=809');
+        cy.url().should('include', expectedLink);
 	})
 })
 
@@ -545,6 +545,11 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
 
   return originalFn(url, options);
 });
+
+//---- Navigating to URLs under test -----
+Cypress.Commands.add('navigateToElopMentoringServicePage', () => {
+  cy.visit(('/ProfessionalReferral/LocalOfferDetail?ServiceId=809'));
+})
 
 
 //

@@ -2,12 +2,13 @@ describe('Consent page - FHG-2850', ()=> {
 	beforeEach(()=> {
 		cy.visit('/');
 		cy.login('oneloginusername', 'oneloginpassword', false);
-		cy.visit('/');
-		cy.refServLanding();
-		cy.searchbypostcode('e1 2en');
-		//Select the first result on search results page
-		cy.get('ul.search-results>li:nth-child(1) a').click();
+		
+		// Navigate to a service page where a connection request can be provided.
+		cy.navigateToElopMentoringServicePage();
+		
+		// Click Request a connection button
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
+		
 		cy.get('.app-button--inverted').click();
 	})
 
@@ -21,7 +22,7 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedRadioButtons = ['Yes', 'No']
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//check page heading
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
 		//check static text on the consent page
@@ -36,7 +37,7 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedContactPageHeading = 'Who should the service contact?';
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//click on Yes radio button
 		cy.get('#radio-True').click();
 		//click continue button on consent page
@@ -49,7 +50,7 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedCannotConnectPageHeading = 'Cannot request a connection';
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//click on No radio button
 		cy.get('#radio-False').click();
 		//click continue button on consent page
@@ -64,7 +65,7 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedContactPageHeading = 'Who should the service contact?';
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//Check error banner
@@ -81,7 +82,7 @@ describe('Consent page - FHG-2850', ()=> {
 		const expectedSafeguardingPageHeading = 'Share our privacy statement';
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//Click on back link
 		cy.clickBackLink();
 		//verify page heading

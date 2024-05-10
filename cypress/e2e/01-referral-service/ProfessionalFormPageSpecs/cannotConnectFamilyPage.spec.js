@@ -2,12 +2,13 @@ describe('Cannot connect family to service page - FHG-2853, FHG-3725', ()=> {
 	beforeEach(()=> {
 		cy.visit('/');
 		cy.login('oneloginusername', 'oneloginpassword', false);
-		cy.visit('/')
-		cy.refServLanding();
-		cy.searchbypostcode('e1 2en');
-		//Select the first result on search results page
-		cy.get('ul.search-results>li:nth-child(1) a').click();
+		
+		// Navigate to a service page where a connection request can be provided.
+		cy.navigateToElopMentoringServicePage();
+
+		// Click Request a connection button
 		cy.get('.govuk-grid-column-two-thirds > .govuk-button').click();
+
 		cy.get('.app-button--inverted').click();
 	})
 
@@ -18,9 +19,9 @@ describe('Cannot connect family to service page - FHG-2853, FHG-3725', ()=> {
 		let actualStaticText = [];
 
 		//click on Yes radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#radio-True', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//click on No radio button and continue on consent page
-		cy.selectRadioButtonAndContinue('#radio-False', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-False"]', 'div.govuk-grid-row button');
 		//check heading on cannot connect page
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
 		//check static text on the cannot connect page
@@ -34,7 +35,7 @@ describe('Cannot connect family to service page - FHG-2853, FHG-3725', ()=> {
 		let actualStaticText = [];
 
 		//click on No radio button and continue on privacy statement page
-		cy.selectRadioButtonAndContinue('#radio-False', 'div.govuk-grid-row button');
+		cy.selectRadioButtonAndContinue('[id="radio-False"]', 'div.govuk-grid-row button');
 		//check heading on cannot connect page
 		cy.checkPageHeading('.govuk-heading-l', expectedHeading);
 		//check static text on the cannot connect page
