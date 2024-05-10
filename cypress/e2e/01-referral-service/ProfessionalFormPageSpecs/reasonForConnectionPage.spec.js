@@ -51,7 +51,7 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 	})
 
 	it('AC1, AC6 - should navigate to How can the service contact page', ()=> {
-		const expectedHeading = 'How can the service contact James Bond?';
+		const expectedHeading = 'How can the service contact James Bond';
 		const initialHintText = 'You have 500 characters remaining';
 		const finalHintText = 'You have 477 characters remaining';
 
@@ -72,7 +72,7 @@ describe('Reason for connection request page - FHG-2860', ()=> {
 		const expectedHintText = 'You have 25 characters too many';
 		const errorHeading = 'There is a problem';
 		const errorMessage = 'Reason for the connection request must be 500 characters or less';
-		const expectedHeading = 'How can the service contact James Bond?';
+		const expectedHeading = 'How can the service contact James Bond';
 
 		//Enter text in the reason text area
 		cy.get('#reason').type(enteredText);

@@ -69,7 +69,7 @@ describe('telephone number page - FHG-2868', ()=> {
 	})
 
 	it('AC6 - should navigate contact methods page using back link', ()=> {
-		const expectedPageHeading = 'How can the service contact James Bond?';
+		const expectedPageHeading = 'How can the service contact James Bond';
 
 		//Click on back link
 		cy.clickBackLink();

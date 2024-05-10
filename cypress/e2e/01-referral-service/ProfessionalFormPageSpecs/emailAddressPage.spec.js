@@ -69,7 +69,7 @@ describe('What is the email address page - FHG-2866', ()=> {
 	})
 
 	it('AC4 - should navigate contact methods page using back link', ()=> {
-		const expectedPageHeading = 'How can the service contact James Bond?';
+		const expectedPageHeading = 'How can the service contact James Bond';
 
 		//Click on back link
 		cy.clickBackLink();

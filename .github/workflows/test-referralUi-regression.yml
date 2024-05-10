@@ -29,7 +29,6 @@ jobs:
         env:
           DEBUG: '@cypress/github-action'
           CYPRESS_oneloginusername: ${{ secrets.ONELOGIN_ID }}
-          CYPRESS_oneloginvcsusername: ${{ secrets.ONELOGIN_VCS_ID }}
           CYPRESS_oneloginpassword: ${{ secrets.ONELOGIN_PASSWORD }}
           CYPRESS_username: ${{ secrets.INTEGRATION_ID }}
           CYPRESS_password: ${{ secrets.INTEGRATION_PASSWORD }}
@@ -41,6 +40,8 @@ jobs:
           CYPRESS_oneloginVCSpassword: ${{ secrets.ONELOGIN_VCS_PASSWORD }}
           CYPRESS_lamanoneloginusername: ${{ secrets.ONELOGIN_LAMAN_USERID }}
           CYPRESS_lamanoneloginpassword: ${{ secrets.ONELOGIN_LAMAN_PASSWORD }}
+          CYPRESS_vcsmanoneloginusername: ${{ secrets.ONELOGIN_VCSMAN_USERID }}
+          CYPRESS_vcsmanoneloginpassword: ${{ secrets.ONELOGIN_VCSMAN_PASSWORD }}
       - uses: actions/upload-artifact@v2
         with:
           name: report

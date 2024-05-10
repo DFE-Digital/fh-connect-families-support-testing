@@ -39,7 +39,7 @@ describe('Consent page - FHG-2850', ()=> {
 		//click on Yes radio button and continue on privacy statement page
 		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//click on Yes radio button
-		cy.get('#consent-yes').click();
+		cy.get('#radio-True').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check contact in the family page heading
@@ -52,7 +52,7 @@ describe('Consent page - FHG-2850', ()=> {
 		//click on Yes radio button and continue on privacy statement page
 		cy.selectRadioButtonAndContinue('[id="radio-True"]', 'div.govuk-grid-row button');
 		//click on No radio button
-		cy.get('#consent-no').click();
+		cy.get('#radio-False').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check contact in the family page heading
@@ -71,7 +71,7 @@ describe('Consent page - FHG-2850', ()=> {
 		//Check error banner
 		cy.checkErrorText(errorHeading, errorMessage);
 		//click on Yes radio button
-		cy.get('#consent-yes').click();
+		cy.get('#radio-True').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check contact in the family page heading

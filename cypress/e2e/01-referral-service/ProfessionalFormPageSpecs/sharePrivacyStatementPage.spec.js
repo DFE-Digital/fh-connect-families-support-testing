@@ -32,7 +32,7 @@ describe('Share our privacy statement page - FHG-3671', () => {
 		//check radio buttons text
 		cy.getRadioButtonsAndCheckboxes('.govuk-radios__label', actualRadioButtons, expectedRadioButtons);
 		//click on Yes radio button
-		cy.get('#shared-privacy-yes').click();
+		cy.get('#radio-True').click();
 		//click continue button 
 		cy.get('div.govuk-grid-row button').click();
 		//check contact in the family page heading
@@ -43,7 +43,7 @@ describe('Share our privacy statement page - FHG-3671', () => {
 		const expectedNextPageHeading = 'Cannot request a connection';
 
 		//click on No radio button
-		cy.get('#shared-privacy-no').click();
+		cy.get('#radio-False').click();
 		//click continue button 
 		cy.get('div.govuk-grid-row button').click();
 		//check contact in the family page heading
@@ -60,7 +60,7 @@ describe('Share our privacy statement page - FHG-3671', () => {
 		//Check error banner
 		cy.checkErrorText(errorHeading, errorMessage);
 		//click on Yes radio button
-		cy.get('#shared-privacy-yes').click();
+		cy.get('#radio-True').click();
 		//click continue button on consent page
 		cy.get('div.govuk-grid-row button').click();
 		//check contact in the family page heading
