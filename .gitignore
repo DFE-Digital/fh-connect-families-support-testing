@@ -11,6 +11,7 @@ cypress.zip
 cypress/screenshots
 cypress/videos
 cypress/reports
+cypress.env.json
 
 
 # from config, compiled .js files
