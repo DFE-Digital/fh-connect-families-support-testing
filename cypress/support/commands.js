@@ -551,6 +551,14 @@ Cypress.Commands.add('navigateToElopMentoringServicePage', () => {
   cy.visit(('/ProfessionalReferral/LocalOfferDetail?ServiceId=809'));
 })
 
+// check page url
+Cypress.Commands.add('checkPageUrlContains', (expectedUrl) => {
+    cy.url().then((text) => {
+        const trimmedText = text.trim();
+        expect(trimmedText).to.contain(expectedUrl);
+    })
+})
+
 
 //
 // For more comprehensive examples of custom
