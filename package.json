@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "cypress": "^13.3.2",
-    "cypress-mochawesome-reporter": "^3.5.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "eslint": "^8.49.0"
   },
   "scripts": {
